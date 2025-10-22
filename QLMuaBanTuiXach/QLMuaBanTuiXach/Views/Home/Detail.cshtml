@@ -1,0 +1,96 @@
+﻿
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model QLMuaBanTuiXach.Models.SanPham
+
+<main>
+    <div class="container product-detail-container">
+
+        <div class="product-general-info">
+            <h2>@Model.TenSanPham</h2>
+            <p><strong>Thương hiệu:</strong> @Model.ThuongHieu.TenThuongHieu</p>
+            <p><strong>Danh mục:</strong> @Model.DanhMuc.TenDanhMuc</p>
+            <p>@Model.MoTa</p>
+        </div>
+
+        <hr />
+
+        <h3>Các lựa chọn sản phẩm</h3>
+        <div class="variants-list">
+            @foreach (var bt in Model.BienTheSanPham) // Lặp qua các biến thể
+            {
+                <div class="variant-card">
+                    <div class="variant-image">
+                        <img src="@Url.Content(bt.HinhAnh)" alt="@Model.TenSanPham - @bt.MauSac" />
+                    </div>
+                    <div class="variant-info">
+                        <p><strong>Màu sắc:</strong> @bt.MauSac</p>
+                        <p><strong>SKU:</strong> @bt.SKU</p>
+                        <p><strong>Giá:</strong> <span class="variant-price">@bt.GiaBan.ToString("N0") VNĐ</span></p>
+                        <p>
+                            <strong>Kích thước:</strong>
+                            @($"{bt.ChieuDaiCM} x {bt.ChieuRongCM} x {bt.ChieuCaoCM} cm")
+                        </p>
+                        <p>
+                            <strong>Tình trạng:</strong>
+                            @(bt.SoLuongTonKho > 0 ? $"Còn hàng ({bt.SoLuongTonKho})" : "Hết hàng")
+                        </p>
+
+                        @if (bt.SoLuongTonKho > 0)
+                        {
+                            <button class="btn add-to-cart" data-variant-id="@bt.MaBienThe">Thêm vào giỏ</button>
+                        }
+                        else
+                        {
+                            <button class="btn" disabled>Hết hàng</button>
+                        }
+                    </div>
+                </div>
+            }
+        </div>
+
+    </div>
+</main>
+
+<style>
+    .product-detail-container {
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+
+    .variants-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+
+    .variant-card {
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        overflow: hidden;
+        width: 300px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .variant-image img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+    }
+
+    .variant-info {
+        padding: 15px;
+    }
+
+        .variant-info p {
+            margin: 5px 0;
+        }
+
+    .variant-price {
+        font-weight: bold;
+        color: #B22222;
+    }
+</style>
+

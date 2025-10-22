@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <link href="~/Content/style.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <h1 class="logo">Túi Xách Vina</h1>
+            <nav>
+                <ul>
+                    <li><a href="#">Trang Chủ</a></li>
+                    <li><a href="#">Sản Phẩm Mới</a></li>
+                    <li><a href="#">Bộ Sưu Tập</a></li>
+                    <li><a href="#">Liên Hệ</a></li>
+                </ul>
+            </nav>
+            <div class="cart-icon">🛒<span class="cart-count">0</span></div>
+            <div class="avatar-icon"> 
+                <button style="padding: 10px 14px; border-radius: 100% ; border: solid; background-color: transparent; color: gray; cursor: pointer; margin-top: 5px">
+                    <i class="fa-solid fa-user"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    @RenderBody()
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Túi Xách Vina. Mọi quyền được bảo lưu.</p>
+        </div>
+    </footer>
+
+</body>
+</html>

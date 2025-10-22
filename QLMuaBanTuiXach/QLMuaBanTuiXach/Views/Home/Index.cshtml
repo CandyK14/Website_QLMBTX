@@ -1,0 +1,73 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using QLMuaBanTuiXach.Models
+@model List<SanPham>
+<main>
+    <section class="product-grid">
+        <div class="container">
+
+            <h2>Sản Phẩm Nổi Bật</h2>
+
+            <div class="products">
+
+                @foreach (SanPham sp in Model)
+                {
+                    // Lấy biến thể đầu tiên để hiển thị (hoặc null nếu SP không có biến thể)
+                    var firstVariant = sp.BienTheSanPham.FirstOrDefault();
+
+                    // Bọc thẻ <a> quanh card để nhấp vào
+                    <a href="/Home/Detail/?id=@sp.MaSanPham" class="product-card-link">
+                        <div class="product-card">
+                            <div class="product-image">
+                                @if (firstVariant != null && !string.IsNullOrEmpty(firstVariant.HinhAnh))
+                                {
+                                    <img src="@Url.Content(firstVariant.HinhAnh)" alt="@sp.TenSanPham" />
+                                }
+                                else
+                                {
+                                    <img src="@Url.Content("~/Content/img/placeholder.png")" alt="Chưa có ảnh" />
+                                }
+                            </div>
+                            <div class="product-info">
+
+                                <h3>@sp.TenSanPham</h3>
+
+                                <p>Thương hiệu: @(sp.ThuongHieu != null ? sp.ThuongHieu.TenThuongHieu : "N/A")</p>
+
+                                <p class="product-price">
+                                    @(firstVariant != null ? firstVariant.GiaBan.ToString("N0") + " VNĐ" : "Chưa có giá")
+                                </p>
+
+                                <button class="btn add-to-cart">Thêm vào giỏ</button>
+                            </div>
+                        </div>
+                    </a>
+                }
+
+            </div>
+
+
+        </div>
+    </section>
+</main>
+
+<style>
+    .product-card-link {
+        text-decoration: none;
+        color: inherit;
+    }
+
+    .product-card .product-image img {
+        width: 100%;
+        height: 250px; /* Cần điều chỉnh */
+        object-fit: cover;
+    }
+
+    .product-price {
+        font-weight: bold;
+        color: #B22222; /* Màu đỏ đô */
+    }
+</style>
