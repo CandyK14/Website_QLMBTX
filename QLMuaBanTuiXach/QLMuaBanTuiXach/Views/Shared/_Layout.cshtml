@@ -1,4 +1,7 @@
-﻿<!DOCTYPE html>
+﻿@{
+    var nguoiDung = Session["TaiKhoan"] as QLMuaBanTuiXach.Models.NguoiDung;
+}
+<!DOCTYPE html>
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
@@ -6,25 +9,26 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
     <link href="~/Content/style.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
-
+    <title>@ViewBag.Title - Túi Xách Vina</title>
 </head>
 <body>
 
     <header>
         <div class="container">
-            <h1 class="logo">Túi Xách Vina</h1>
+            <a href="@Url.Action("Index", "Home")" class="logo">
+                <img src="~/Content/Images/logo_vina.png" alt="Túi Xách Vina"> <!-- Sửa lại tên file logo nếu cần -->
+            </a>
             <nav>
                 <ul>
-                    <li><a href="#">Trang Chủ</a></li>
+                    <li><a href="@Url.Action("Index", "Home")">Trang Chủ</a></li>
                     <li><a href="#">Sản Phẩm Mới</a></li>
                     <li><a href="#">Bộ Sưu Tập</a></li>
                     <li><a href="#">Liên Hệ</a></li>
                 </ul>
             </nav>
             <div class="cart-icon">🛒<span class="cart-count">0</span></div>
-            <div class="avatar-icon"> 
-                <button style="padding: 10px 14px; border-radius: 100% ; border: solid; background-color: transparent; color: gray; cursor: pointer; margin-top: 5px">
+            <div class="avatar-icon">
+                <button id="user-icon-btn" style="padding: 10px 14px; border-radius: 100% ; border: solid; background-color: transparent; color: gray; cursor: pointer; margin-top: 5px">
                     <i class="fa-solid fa-user"></i>
                 </button>
             </div>
@@ -33,11 +37,113 @@
 
     @RenderBody()
 
+    @if (nguoiDung == null)
+    {
+        <div id="auth-modal-overlay" class="auth-modal-overlay">
+            <div class="auth-modal-content">
+                <span class="auth-modal-close"><i class="fa-solid fa-xmark"></i></span>
+                <div class="auth-section">
+                    <h2>ĐĂNG NHẬP</h2>
+
+                    <!-- ================= THÊM KHỐI NÀY VÀO ================= -->
+                    @if (TempData["LoiDangNhap"] != null)
+                    {
+                        <div style="background-color: #f8d7da; color: #721c24; padding: 10px 15px; border-radius: 5px; margin-bottom: 15px; text-align: center; font-size: 14px;">
+                            @TempData["LoiDangNhap"]
+                        </div>
+                    }
+                    <!-- ====================================================== -->
+
+                    <p>Mời bạn điền email và mật khẩu.</p>
+                    @using (Html.BeginForm("DangNhap", "NguoiDung", FormMethod.Post))
+                    {
+                        <div class="form-group">
+                            <input type="email" name="Email" class="form-input" placeholder="Địa chỉ email" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="password" name="MatKhau" class="form-input" placeholder="Mật khẩu" required>
+                        </div>
+                        <button type="submit" class="form-button">ĐĂNG NHẬP</button>
+                    }
+                    <a href="#" class="form-link">Quên mật khẩu?</a>
+                    <div class="form-divider">Hoặc tiếp tục với</div>
+                    <button class="google-btn">
+                        <i class="fa-brands fa-google"></i> Google
+                    </button>
+                </div>
+                <div class="auth-section create-account">
+                    <h2>TẠO TÀI KHOẢN</h2>
+                    <p>Lưu thông tin của bạn để thanh toán nhanh hơn và xem đơn hàng.</p>
+                    <a href="@Url.Action("DangKy", "NguoiDung")" class="form-button form-button-outline">
+                        TẠO TÀI KHOẢN
+                    </a>
+                </div>
+            </div>
+        </div>
+    }
+
+    @if (nguoiDung != null)
+    {
+        var vaiTro = Session["VaiTro"] as string; // Lấy vai trò từ Session
+
+        // ============================================
+        // === NẾU LÀ ADMIN (QuanTriVien) ===
+        // ============================================
+        if (vaiTro == "QuanTriVien")
+        {
+            <div id="admin-menu-overlay" class="user-menu-overlay" style="display:none;">
+                <div id="admin-menu-sidebar" class="user-menu-sidebar">
+                    <span id="admin-menu-close" class="user-menu-close"><i class="fa-solid fa-xmark"></i></span>
+
+                    <div class="user-info-header" style="background-color: #343a40; color: white;">
+                        <h3>ADMIN: @nguoiDung.HoTen</h3>
+                        <p style="color: #adb5bd;">@nguoiDung.Email</p>
+                    </div>
+
+                    <ul class="user-menu-links">
+                        <li><a href="@Url.Action("Index", "AdminSanPham")"><i class="fa-solid fa-box"></i> Quản lý Sản phẩm</a></li>
+                        <li><a href="#"><i class="fa-solid fa-list-check"></i> Quản lý Danh mục</a></li>
+                        <li><a href="#"><i class="fa-solid fa-tag"></i> Quản lý Thương hiệu</a></li>
+                        <li><a href="#"><i class="fa-solid fa-receipt"></i> Quản lý Đơn hàng</a></li>
+                        <li><a href="#"><i class="fa-solid fa-users"></i> Quản lý Người dùng</a></li>
+                        <li><a href="@Url.Action("DangXuat", "NguoiDung")"><i class="fa-solid fa-arrow-right-from-bracket"></i> Đăng xuất</a></li>
+                    </ul>
+                </div>
+            </div>
+        }
+        // ============================================
+        // === NẾU LÀ USER (KhachHang) ===
+        // ============================================
+        else // Mặc định là Khách hàng
+        {
+            <div id="user-menu-overlay" class="user-menu-overlay" style="display:none;">
+                <div id="user-menu-sidebar" class="user-menu-sidebar">
+                    <span id="user-menu-close" class="user-menu-close"><i class="fa-solid fa-xmark"></i></span>
+
+                    <div class="user-info-header">
+                        <h3>@nguoiDung.HoTen</h3>
+                        <p>@nguoiDung.Email</p>
+                    </div>
+
+                    <ul class="user-menu-links">
+                        <li><a href="#"><i class="fa-solid fa-user-pen"></i> Thông tin</a></li>
+                        <li><a href="#"><i class="fa-solid fa-box-archive"></i> Đơn hàng</a></li>
+                        <li><a href="#"><i class="fa-solid fa-location-dot"></i> Địa chỉ đã lưu</a></li>
+                        <li><a href="#"><i class="fa-solid fa-heart"></i> Danh sách yêu thích</a></li>
+                        <li><a href="@Url.Action("DangXuat", "NguoiDung")"><i class="fa-solid fa-arrow-right-from-bracket"></i> Đăng xuất</a></li>
+                    </ul>
+                </div>
+            </div>
+        }
+    }
+
+
     <footer>
         <div class="container">
-            <p>&copy; 2025 Túi Xách Vina. Mọi quyền được bảo lưu.</p>
+            <p>&copy; @DateTime.Now.Year Túi Xách Vina. Mọi quyền được bảo lưu.</p>
         </div>
     </footer>
 
+    <script src="~/Scripts/main.js"></script>
 </body>
 </html>

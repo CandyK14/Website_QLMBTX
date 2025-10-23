@@ -1,0 +1,62 @@
+﻿@{
+    ViewBag.Title = "Tạo Tài Khoản Mới";
+    // SỬA LẠI: Trỏ về file layout chính của trang chủ
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container" style="padding-top: 40px; padding-bottom: 40px;">
+    <div class="row">
+        <div style="width: 450px; max-width: 100%; margin: 0 auto;">
+
+            @if (TempData["DangKyThanhCong"] != null)
+            {
+                <div style="background-color: #d4edda; color: #155724; padding: 15px; border-radius: 5px; margin-bottom: 20px; text-align: center;">
+                    @TempData["DangKyThanhCong"]
+                    <br />
+                    <a href="#" id="login-link-from-register" class="form-link" style="font-weight: bold; color: #155724;">Nhấp để đăng nhập</a>
+                </div>
+            }
+
+            @if (ViewBag.ThongBaoLoi != null)
+            {
+                <div style="background-color: #f8d7da; color: #721c24; padding: 15px; border-radius: 5px; margin-bottom: 20px; text-align: center;">
+                    @ViewBag.ThongBaoLoi
+                </div>
+            }
+
+
+            <div class="auth-modal-content" style="box-shadow: 0 5px 15px rgba(0,0,0,0.1); display: block; position: relative; width: auto;">
+                <div class="auth-section">
+                    <h2>TẠO TÀI KHOẢN MỚI</h2>
+                    <p>Vui lòng điền thông tin bên dưới.</p>
+
+                    @using (Html.BeginForm("DangKy", "NguoiDung", FormMethod.Post))
+                    {
+                        <div class="form-group">
+                            <input type="text" name="HoTen" class="form-input" placeholder="Họ và Tên" required value="@Request.Form["HoTen"]">
+                            <span style="color: red; font-size: 12px;">@ViewData["Loi_HoTen"]</span>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" name="Email" class="form-input" placeholder="Địa chỉ email" required value="@Request.Form["Email"]">
+                            <span style="color: red; font-size: 12px;">@ViewData["Loi_Email"]</span>
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" name="SoDienThoai" class="form-input" placeholder="Số điện thoại (tùy chọn)" value="@Request.Form["SoDienThoai"]">
+                        </div>
+                        <div class="form-group">
+                            <input type="password" name="MatKhau" class="form-input" placeholder="Mật khẩu" required>
+                            <span style="color: red; font-size: 12px;">@ViewData["Loi_MatKhau"]</span>
+                        </div>
+                        <div class="form-group">
+                            <input type="password" name="MatKhauNhapLai" class="form-input" placeholder="Nhập lại mật khẩu" required>
+                            <span style="color: red; font-size: 12px;">@ViewData["Loi_NhapLai"]</span>
+                        </div>
+
+                        <button type="submit" class="form-button">TẠO TÀI KHOẢN</button>
+                    }
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
