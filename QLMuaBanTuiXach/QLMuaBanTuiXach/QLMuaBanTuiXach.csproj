@@ -124,34 +124,34 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\BienTheSanPham.cs">
-      <DependentUpon>QLTuiXach.tt</DependentUpon>
+      <DependentUpon>QLTuiXach1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ChiTietDonHang.cs">
-      <DependentUpon>QLTuiXach.tt</DependentUpon>
+      <DependentUpon>QLTuiXach1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DanhGia.cs">
-      <DependentUpon>QLTuiXach.tt</DependentUpon>
+      <DependentUpon>QLTuiXach1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DanhMuc.cs">
-      <DependentUpon>QLTuiXach.tt</DependentUpon>
+      <DependentUpon>QLTuiXach1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DiaChi.cs">
-      <DependentUpon>QLTuiXach.tt</DependentUpon>
+      <DependentUpon>QLTuiXach1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DonHang.cs">
-      <DependentUpon>QLTuiXach.tt</DependentUpon>
+      <DependentUpon>QLTuiXach1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\GioHang.cs">
-      <DependentUpon>QLTuiXach.tt</DependentUpon>
+      <DependentUpon>QLTuiXach1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\MaKhuyenMai.cs">
-      <DependentUpon>QLTuiXach.tt</DependentUpon>
+      <DependentUpon>QLTuiXach1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\NguoiDung.cs">
-      <DependentUpon>QLTuiXach.tt</DependentUpon>
+      <DependentUpon>QLTuiXach1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\PhieuDoiTra.cs">
-      <DependentUpon>QLTuiXach.tt</DependentUpon>
+      <DependentUpon>QLTuiXach1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\QLTuiXach.Context.cs">
       <AutoGen>True</AutoGen>
@@ -168,32 +168,50 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>QLTuiXach.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\QLTuiXach1.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>QLTuiXach1.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\QLTuiXach1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>QLTuiXach1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\QLTuiXach1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>QLTuiXach1.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Models\SanPham.cs">
-      <DependentUpon>QLTuiXach.tt</DependentUpon>
+      <DependentUpon>QLTuiXach1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ThuongHieu.cs">
-      <DependentUpon>QLTuiXach.tt</DependentUpon>
+      <DependentUpon>QLTuiXach1.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\bootstrap-grid.css" />
-    <Content Include="Content\bootstrap-grid.min.css" />
-    <Content Include="Content\bootstrap-grid.rtl.css" />
-    <Content Include="Content\bootstrap-grid.rtl.min.css" />
-    <Content Include="Content\bootstrap-reboot.css" />
-    <Content Include="Content\bootstrap-reboot.min.css" />
-    <Content Include="Content\bootstrap-reboot.rtl.css" />
-    <Content Include="Content\bootstrap-reboot.rtl.min.css" />
-    <Content Include="Content\bootstrap-utilities.css" />
-    <Content Include="Content\bootstrap-utilities.min.css" />
-    <Content Include="Content\bootstrap-utilities.rtl.css" />
-    <Content Include="Content\bootstrap-utilities.rtl.min.css" />
-    <Content Include="Content\bootstrap.css" />
-    <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\bootstrap.rtl.css" />
-    <Content Include="Content\bootstrap.rtl.min.css" />
-    <Content Include="Content\image\logo.jpg" />
+    <Content Include="Content\boostrap\bootstrap-grid.css" />
+    <Content Include="Content\boostrap\bootstrap-grid.min.css" />
+    <Content Include="Content\boostrap\bootstrap-grid.rtl.css" />
+    <Content Include="Content\boostrap\bootstrap-grid.rtl.min.css" />
+    <Content Include="Content\boostrap\bootstrap-reboot.css" />
+    <Content Include="Content\boostrap\bootstrap-reboot.min.css" />
+    <Content Include="Content\boostrap\bootstrap-reboot.rtl.css" />
+    <Content Include="Content\boostrap\bootstrap-reboot.rtl.min.css" />
+    <Content Include="Content\boostrap\bootstrap-utilities.css" />
+    <Content Include="Content\boostrap\bootstrap-utilities.min.css" />
+    <Content Include="Content\boostrap\bootstrap-utilities.rtl.css" />
+    <Content Include="Content\boostrap\bootstrap-utilities.rtl.min.css" />
+    <Content Include="Content\boostrap\bootstrap.css" />
+    <Content Include="Content\boostrap\bootstrap.min.css" />
+    <Content Include="Content\boostrap\bootstrap.rtl.css" />
+    <Content Include="Content\boostrap\bootstrap.rtl.min.css" />
+    <Content Include="Content\HinhAnh\banner.jpg" />
+    <Content Include="Content\HinhAnh\banner2-removebg-preview.png" />
+    <Content Include="Content\HinhAnh\banner2.jpg" />
+    <Content Include="Content\HinhAnh\Logo.jpg" />
     <Content Include="Content\style.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
@@ -215,12 +233,29 @@
     <Content Include="Models\QLTuiXach.edmx.diagram">
       <DependentUpon>QLTuiXach.edmx</DependentUpon>
     </Content>
+    <Content Include="Models\QLTuiXach1.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>QLTuiXach1.edmx</DependentUpon>
+      <LastGenOutput>QLTuiXach1.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\QLTuiXach1.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>QLTuiXach1.edmx</DependentUpon>
+      <LastGenOutput>QLTuiXach1.cs</LastGenOutput>
+    </Content>
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.esm.js" />
     <Content Include="Scripts\bootstrap.esm.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <EntityDeploy Include="Models\QLTuiXach1.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>QLTuiXach1.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\QLTuiXach1.edmx.diagram">
+      <DependentUpon>QLTuiXach1.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-3.7.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.7.1.js" />
     <Content Include="Scripts\jquery-3.7.1.min.js" />
@@ -256,22 +291,22 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\bootstrap.rtl.min.css.map" />
-    <Content Include="Content\bootstrap.rtl.css.map" />
-    <Content Include="Content\bootstrap.min.css.map" />
-    <Content Include="Content\bootstrap.css.map" />
-    <Content Include="Content\bootstrap-utilities.rtl.min.css.map" />
-    <Content Include="Content\bootstrap-utilities.rtl.css.map" />
-    <Content Include="Content\bootstrap-utilities.min.css.map" />
-    <Content Include="Content\bootstrap-utilities.css.map" />
-    <Content Include="Content\bootstrap-reboot.rtl.min.css.map" />
-    <Content Include="Content\bootstrap-reboot.rtl.css.map" />
-    <Content Include="Content\bootstrap-reboot.min.css.map" />
-    <Content Include="Content\bootstrap-reboot.css.map" />
-    <Content Include="Content\bootstrap-grid.rtl.min.css.map" />
-    <Content Include="Content\bootstrap-grid.rtl.css.map" />
-    <Content Include="Content\bootstrap-grid.min.css.map" />
-    <Content Include="Content\bootstrap-grid.css.map" />
+    <Content Include="Content\boostrap\bootstrap.rtl.min.css.map" />
+    <Content Include="Content\boostrap\bootstrap.rtl.css.map" />
+    <Content Include="Content\boostrap\bootstrap.min.css.map" />
+    <Content Include="Content\boostrap\bootstrap.css.map" />
+    <Content Include="Content\boostrap\bootstrap-utilities.rtl.min.css.map" />
+    <Content Include="Content\boostrap\bootstrap-utilities.rtl.css.map" />
+    <Content Include="Content\boostrap\bootstrap-utilities.min.css.map" />
+    <Content Include="Content\boostrap\bootstrap-utilities.css.map" />
+    <Content Include="Content\boostrap\bootstrap-reboot.rtl.min.css.map" />
+    <Content Include="Content\boostrap\bootstrap-reboot.rtl.css.map" />
+    <Content Include="Content\boostrap\bootstrap-reboot.min.css.map" />
+    <Content Include="Content\boostrap\bootstrap-reboot.css.map" />
+    <Content Include="Content\boostrap\bootstrap-grid.rtl.min.css.map" />
+    <Content Include="Content\boostrap\bootstrap-grid.rtl.css.map" />
+    <Content Include="Content\boostrap\bootstrap-grid.min.css.map" />
+    <Content Include="Content\boostrap\bootstrap-grid.css.map" />
     <None Include="packages.config" />
     <Content Include="Scripts\bootstrap.min.js.map" />
     <Content Include="Scripts\bootstrap.js.map" />

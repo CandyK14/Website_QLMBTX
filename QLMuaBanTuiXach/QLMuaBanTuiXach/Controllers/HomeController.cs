@@ -11,15 +11,27 @@ namespace QLMuaBanTuiXach.Controllers
 {
     public class HomeController : Controller
     {
-        QL_TuiXachEntities db = new QL_TuiXachEntities();
-        public ActionResult Index()
+        QL_TuiXachEntities1 db = new QL_TuiXachEntities1();
+        public ActionResult Index(string searchString)
         {
-            List<SanPham> dsSP = db.SanPham
-                                   .Include(sp => sp.ThuongHieu)
-                                   .Include(sp => sp.BienTheSanPham)
-                                   .Where(sp => sp.BienTheSanPham.Any())
-                                   .ToList();
-            return View(dsSP);
+            var dsSP = db.SanPham
+                         .Include(sp => sp.ThuongHieu)
+                         .Include(sp => sp.BienTheSanPham); 
+
+            
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                dsSP = dsSP.Where(sp =>
+                    sp.TenSanPham.Contains(searchString) ||
+                    sp.ThuongHieu.TenThuongHieu.Contains(searchString)
+                );
+
+                ViewBag.CurrentSearch = searchString;
+            }
+
+            dsSP = dsSP.Where(sp => sp.BienTheSanPham.Any()); 
+
+            return View(dsSP.ToList());
         }
 
         public ActionResult Detail(int id)

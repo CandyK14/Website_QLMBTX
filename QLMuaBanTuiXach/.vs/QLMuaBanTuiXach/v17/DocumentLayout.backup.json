@@ -1,22 +1,30 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "E:\\github_clone\\Website_QLMBTX\\QLMuaBanTuiXach\\",
+  "WorkspaceRootPath": "D:\\Project LapTrinhWeb\\DoAn\\QLMuaBanTuiXach\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{38D03565-A8A7-4FBC-A867-53B84ABD718B}|QLMuaBanTuiXach\\QLMuaBanTuiXach.csproj|E:\\github_clone\\Website_QLMBTX\\QLMuaBanTuiXach\\qlmuabantuixach\\scripts\\main.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
-      "RelativeMoniker": "D:0:0:{38D03565-A8A7-4FBC-A867-53B84ABD718B}|QLMuaBanTuiXach\\QLMuaBanTuiXach.csproj|solutionrelative:qlmuabantuixach\\scripts\\main.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+      "AbsoluteMoniker": "D:0:0:{38D03565-A8A7-4FBC-A867-53B84ABD718B}|QLMuaBanTuiXach\\QLMuaBanTuiXach.csproj|D:\\Project LapTrinhWeb\\DoAn\\QLMuaBanTuiXach\\qlmuabantuixach\\content\\style.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{38D03565-A8A7-4FBC-A867-53B84ABD718B}|QLMuaBanTuiXach\\QLMuaBanTuiXach.csproj|solutionrelative:qlmuabantuixach\\content\\style.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{38D03565-A8A7-4FBC-A867-53B84ABD718B}|QLMuaBanTuiXach\\QLMuaBanTuiXach.csproj|E:\\github_clone\\Website_QLMBTX\\QLMuaBanTuiXach\\qlmuabantuixach\\controllers\\nguoidungcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{38D03565-A8A7-4FBC-A867-53B84ABD718B}|QLMuaBanTuiXach\\QLMuaBanTuiXach.csproj|solutionrelative:qlmuabantuixach\\controllers\\nguoidungcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{38D03565-A8A7-4FBC-A867-53B84ABD718B}|QLMuaBanTuiXach\\QLMuaBanTuiXach.csproj|E:\\github_clone\\Website_QLMBTX\\QLMuaBanTuiXach\\qlmuabantuixach\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{38D03565-A8A7-4FBC-A867-53B84ABD718B}|QLMuaBanTuiXach\\QLMuaBanTuiXach.csproj|D:\\Project LapTrinhWeb\\DoAn\\QLMuaBanTuiXach\\qlmuabantuixach\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{38D03565-A8A7-4FBC-A867-53B84ABD718B}|QLMuaBanTuiXach\\QLMuaBanTuiXach.csproj|solutionrelative:qlmuabantuixach\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{38D03565-A8A7-4FBC-A867-53B84ABD718B}|QLMuaBanTuiXach\\QLMuaBanTuiXach.csproj|E:\\github_clone\\Website_QLMBTX\\QLMuaBanTuiXach\\qlmuabantuixach\\content\\style.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
-      "RelativeMoniker": "D:0:0:{38D03565-A8A7-4FBC-A867-53B84ABD718B}|QLMuaBanTuiXach\\QLMuaBanTuiXach.csproj|solutionrelative:qlmuabantuixach\\content\\style.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+      "AbsoluteMoniker": "D:0:0:{38D03565-A8A7-4FBC-A867-53B84ABD718B}|QLMuaBanTuiXach\\QLMuaBanTuiXach.csproj|d:\\project laptrinhweb\\doan\\qlmuabantuixach\\qlmuabantuixach\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{38D03565-A8A7-4FBC-A867-53B84ABD718B}|QLMuaBanTuiXach\\QLMuaBanTuiXach.csproj|solutionrelative:qlmuabantuixach\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{38D03565-A8A7-4FBC-A867-53B84ABD718B}|QLMuaBanTuiXach\\QLMuaBanTuiXach.csproj|d:\\project laptrinhweb\\doan\\qlmuabantuixach\\qlmuabantuixach\\controllers\\nguoidungcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{38D03565-A8A7-4FBC-A867-53B84ABD718B}|QLMuaBanTuiXach\\QLMuaBanTuiXach.csproj|solutionrelative:qlmuabantuixach\\controllers\\nguoidungcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{38D03565-A8A7-4FBC-A867-53B84ABD718B}|QLMuaBanTuiXach\\QLMuaBanTuiXach.csproj|d:\\project laptrinhweb\\doan\\qlmuabantuixach\\qlmuabantuixach\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{38D03565-A8A7-4FBC-A867-53B84ABD718B}|QLMuaBanTuiXach\\QLMuaBanTuiXach.csproj|solutionrelative:qlmuabantuixach\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{38D03565-A8A7-4FBC-A867-53B84ABD718B}|QLMuaBanTuiXach\\QLMuaBanTuiXach.csproj|d:\\project laptrinhweb\\doan\\qlmuabantuixach\\qlmuabantuixach\\models\\qltuixach.context.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{38D03565-A8A7-4FBC-A867-53B84ABD718B}|QLMuaBanTuiXach\\QLMuaBanTuiXach.csproj|solutionrelative:qlmuabantuixach\\models\\qltuixach.context.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -26,58 +34,88 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 4,
           "Children": [
             {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "main.js",
-              "DocumentMoniker": "E:\\github_clone\\Website_QLMBTX\\QLMuaBanTuiXach\\QLMuaBanTuiXach\\Scripts\\main.js",
-              "RelativeDocumentMoniker": "QLMuaBanTuiXach\\Scripts\\main.js",
-              "ToolTip": "E:\\github_clone\\Website_QLMBTX\\QLMuaBanTuiXach\\QLMuaBanTuiXach\\Scripts\\main.js",
-              "RelativeToolTip": "QLMuaBanTuiXach\\Scripts\\main.js",
-              "ViewState": "AgIAAIQAAAAAAAAAAAAYwAQAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2025-10-22T17:12:58.357Z",
+              "DocumentIndex": 4,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\Project LapTrinhWeb\\DoAn\\QLMuaBanTuiXach\\QLMuaBanTuiXach\\Views\\Home\\Index.cshtml",
+              "RelativeDocumentMoniker": "QLMuaBanTuiXach\\Views\\Home\\Index.cshtml",
+              "ToolTip": "D:\\Project LapTrinhWeb\\DoAn\\QLMuaBanTuiXach\\QLMuaBanTuiXach\\Views\\Home\\Index.cshtml",
+              "RelativeToolTip": "QLMuaBanTuiXach\\Views\\Home\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-24T04:21:51.853Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "D:\\Project LapTrinhWeb\\DoAn\\QLMuaBanTuiXach\\QLMuaBanTuiXach\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "QLMuaBanTuiXach\\Controllers\\HomeController.cs",
+              "ToolTip": "D:\\Project LapTrinhWeb\\DoAn\\QLMuaBanTuiXach\\QLMuaBanTuiXach\\Controllers\\HomeController.cs",
+              "RelativeToolTip": "QLMuaBanTuiXach\\Controllers\\HomeController.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAxwCYAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-24T04:02:30.102Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "QLTuiXach.Context.cs",
+              "DocumentMoniker": "D:\\Project LapTrinhWeb\\DoAn\\QLMuaBanTuiXach\\QLMuaBanTuiXach\\Models\\QLTuiXach.Context.cs",
+              "RelativeDocumentMoniker": "QLMuaBanTuiXach\\Models\\QLTuiXach.Context.cs",
+              "ToolTip": "D:\\Project LapTrinhWeb\\DoAn\\QLMuaBanTuiXach\\QLMuaBanTuiXach\\Models\\QLTuiXach.Context.cs",
+              "RelativeToolTip": "QLMuaBanTuiXach\\Models\\QLTuiXach.Context.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABsAAABBAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-24T03:53:32.483Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "style.css",
+              "DocumentMoniker": "D:\\Project LapTrinhWeb\\DoAn\\QLMuaBanTuiXach\\QLMuaBanTuiXach\\Content\\style.css",
+              "RelativeDocumentMoniker": "QLMuaBanTuiXach\\Content\\style.css",
+              "ToolTip": "D:\\Project LapTrinhWeb\\DoAn\\QLMuaBanTuiXach\\QLMuaBanTuiXach\\Content\\style.css",
+              "RelativeToolTip": "QLMuaBanTuiXach\\Content\\style.css",
+              "ViewState": "AgIAAA0BAAAAAAAAAAAAABwBAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2025-10-22T17:15:38.643Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "NguoiDungController.cs",
-              "DocumentMoniker": "E:\\github_clone\\Website_QLMBTX\\QLMuaBanTuiXach\\QLMuaBanTuiXach\\Controllers\\NguoiDungController.cs",
+              "DocumentMoniker": "D:\\Project LapTrinhWeb\\DoAn\\QLMuaBanTuiXach\\QLMuaBanTuiXach\\Controllers\\NguoiDungController.cs",
               "RelativeDocumentMoniker": "QLMuaBanTuiXach\\Controllers\\NguoiDungController.cs",
-              "ToolTip": "E:\\github_clone\\Website_QLMBTX\\QLMuaBanTuiXach\\QLMuaBanTuiXach\\Controllers\\NguoiDungController.cs",
+              "ToolTip": "D:\\Project LapTrinhWeb\\DoAn\\QLMuaBanTuiXach\\QLMuaBanTuiXach\\Controllers\\NguoiDungController.cs",
               "RelativeToolTip": "QLMuaBanTuiXach\\Controllers\\NguoiDungController.cs",
-              "ViewState": "AgIAABgAAAAAAAAAAAA1wJAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAQwBgAAAA9AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-10-22T17:30:47.81Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "_Layout.cshtml",
-              "DocumentMoniker": "E:\\github_clone\\Website_QLMBTX\\QLMuaBanTuiXach\\QLMuaBanTuiXach\\Views\\Shared\\_Layout.cshtml",
+              "DocumentMoniker": "D:\\Project LapTrinhWeb\\DoAn\\QLMuaBanTuiXach\\QLMuaBanTuiXach\\Views\\Shared\\_Layout.cshtml",
               "RelativeDocumentMoniker": "QLMuaBanTuiXach\\Views\\Shared\\_Layout.cshtml",
-              "ToolTip": "E:\\github_clone\\Website_QLMBTX\\QLMuaBanTuiXach\\QLMuaBanTuiXach\\Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "D:\\Project LapTrinhWeb\\DoAn\\QLMuaBanTuiXach\\QLMuaBanTuiXach\\Views\\Shared\\_Layout.cshtml",
               "RelativeToolTip": "QLMuaBanTuiXach\\Views\\Shared\\_Layout.cshtml",
-              "ViewState": "AgIAABgAAAAAAAAAAAAAAJUAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAABIAAAAAAAAAAAAAAB4AAABvAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2025-10-22T15:17:22.874Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "style.css",
-              "DocumentMoniker": "E:\\github_clone\\Website_QLMBTX\\QLMuaBanTuiXach\\QLMuaBanTuiXach\\Content\\style.css",
-              "RelativeDocumentMoniker": "QLMuaBanTuiXach\\Content\\style.css",
-              "ToolTip": "E:\\github_clone\\Website_QLMBTX\\QLMuaBanTuiXach\\QLMuaBanTuiXach\\Content\\style.css",
-              "RelativeToolTip": "QLMuaBanTuiXach\\Content\\style.css",
-              "ViewState": "AgIAAFcBAAAAAAAAAAAuwLgBAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2025-10-22T17:15:38.643Z",
               "EditorCaption": ""
             }
           ]

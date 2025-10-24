@@ -63,3 +63,37 @@ E:\github_clone\Website_QLMBTX\QLMuaBanTuiXach\QLMuaBanTuiXach\obj\Debug\QLMuaBa
 E:\github_clone\Website_QLMBTX\QLMuaBanTuiXach\QLMuaBanTuiXach\obj\Debug\QLMuaBan.9474180D.Up2Date
 E:\github_clone\Website_QLMBTX\QLMuaBanTuiXach\QLMuaBanTuiXach\obj\Debug\QLMuaBanTuiXach.dll
 E:\github_clone\Website_QLMBTX\QLMuaBanTuiXach\QLMuaBanTuiXach\obj\Debug\QLMuaBanTuiXach.pdb
+D:\Project LapTrinhWeb\DoAn\QLMuaBanTuiXach\QLMuaBanTuiXach\bin\QLMuaBanTuiXach.dll.config
+D:\Project LapTrinhWeb\DoAn\QLMuaBanTuiXach\QLMuaBanTuiXach\bin\QLMuaBanTuiXach.dll
+D:\Project LapTrinhWeb\DoAn\QLMuaBanTuiXach\QLMuaBanTuiXach\bin\QLMuaBanTuiXach.pdb
+D:\Project LapTrinhWeb\DoAn\QLMuaBanTuiXach\QLMuaBanTuiXach\bin\Antlr3.Runtime.dll
+D:\Project LapTrinhWeb\DoAn\QLMuaBanTuiXach\QLMuaBanTuiXach\bin\EntityFramework.dll
+D:\Project LapTrinhWeb\DoAn\QLMuaBanTuiXach\QLMuaBanTuiXach\bin\EntityFramework.SqlServer.dll
+D:\Project LapTrinhWeb\DoAn\QLMuaBanTuiXach\QLMuaBanTuiXach\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+D:\Project LapTrinhWeb\DoAn\QLMuaBanTuiXach\QLMuaBanTuiXach\bin\Microsoft.Web.Infrastructure.dll
+D:\Project LapTrinhWeb\DoAn\QLMuaBanTuiXach\QLMuaBanTuiXach\bin\Newtonsoft.Json.dll
+D:\Project LapTrinhWeb\DoAn\QLMuaBanTuiXach\QLMuaBanTuiXach\bin\System.Web.Helpers.dll
+D:\Project LapTrinhWeb\DoAn\QLMuaBanTuiXach\QLMuaBanTuiXach\bin\System.Web.Mvc.dll
+D:\Project LapTrinhWeb\DoAn\QLMuaBanTuiXach\QLMuaBanTuiXach\bin\System.Web.Optimization.dll
+D:\Project LapTrinhWeb\DoAn\QLMuaBanTuiXach\QLMuaBanTuiXach\bin\System.Web.Razor.dll
+D:\Project LapTrinhWeb\DoAn\QLMuaBanTuiXach\QLMuaBanTuiXach\bin\System.Web.WebPages.Deployment.dll
+D:\Project LapTrinhWeb\DoAn\QLMuaBanTuiXach\QLMuaBanTuiXach\bin\System.Web.WebPages.dll
+D:\Project LapTrinhWeb\DoAn\QLMuaBanTuiXach\QLMuaBanTuiXach\bin\System.Web.WebPages.Razor.dll
+D:\Project LapTrinhWeb\DoAn\QLMuaBanTuiXach\QLMuaBanTuiXach\bin\WebGrease.dll
+D:\Project LapTrinhWeb\DoAn\QLMuaBanTuiXach\QLMuaBanTuiXach\bin\Antlr3.Runtime.pdb
+D:\Project LapTrinhWeb\DoAn\QLMuaBanTuiXach\QLMuaBanTuiXach\bin\EntityFramework.xml
+D:\Project LapTrinhWeb\DoAn\QLMuaBanTuiXach\QLMuaBanTuiXach\bin\EntityFramework.SqlServer.xml
+D:\Project LapTrinhWeb\DoAn\QLMuaBanTuiXach\QLMuaBanTuiXach\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+D:\Project LapTrinhWeb\DoAn\QLMuaBanTuiXach\QLMuaBanTuiXach\bin\Newtonsoft.Json.xml
+D:\Project LapTrinhWeb\DoAn\QLMuaBanTuiXach\QLMuaBanTuiXach\bin\System.Web.Helpers.xml
+D:\Project LapTrinhWeb\DoAn\QLMuaBanTuiXach\QLMuaBanTuiXach\bin\System.Web.Mvc.xml
+D:\Project LapTrinhWeb\DoAn\QLMuaBanTuiXach\QLMuaBanTuiXach\bin\System.Web.Optimization.xml
+D:\Project LapTrinhWeb\DoAn\QLMuaBanTuiXach\QLMuaBanTuiXach\bin\System.Web.Razor.xml
+D:\Project LapTrinhWeb\DoAn\QLMuaBanTuiXach\QLMuaBanTuiXach\bin\System.Web.WebPages.xml
+D:\Project LapTrinhWeb\DoAn\QLMuaBanTuiXach\QLMuaBanTuiXach\bin\System.Web.WebPages.Deployment.xml
+D:\Project LapTrinhWeb\DoAn\QLMuaBanTuiXach\QLMuaBanTuiXach\bin\System.Web.WebPages.Razor.xml
+D:\Project LapTrinhWeb\DoAn\QLMuaBanTuiXach\QLMuaBanTuiXach\obj\Debug\QLMuaBanTuiXach.csproj.AssemblyReference.cache
+D:\Project LapTrinhWeb\DoAn\QLMuaBanTuiXach\QLMuaBanTuiXach\obj\Debug\QLMuaBanTuiXach.csproj.CoreCompileInputs.cache
+D:\Project LapTrinhWeb\DoAn\QLMuaBanTuiXach\QLMuaBanTuiXach\obj\Debug\QLMuaBan.9474180D.Up2Date
+D:\Project LapTrinhWeb\DoAn\QLMuaBanTuiXach\QLMuaBanTuiXach\obj\Debug\QLMuaBanTuiXach.dll
+D:\Project LapTrinhWeb\DoAn\QLMuaBanTuiXach\QLMuaBanTuiXach\obj\Debug\QLMuaBanTuiXach.pdb
