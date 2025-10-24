@@ -118,6 +118,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AdminSanPhamController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\NguoiDungController.cs" />
     <Compile Include="Global.asax.cs">
@@ -192,6 +193,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\admin_style.css" />
     <Content Include="Content\boostrap\bootstrap-grid.css" />
     <Content Include="Content\boostrap\bootstrap-grid.min.css" />
     <Content Include="Content\boostrap\bootstrap-grid.rtl.css" />
@@ -283,6 +285,13 @@
     <Content Include="Views\Home\Detail.cshtml" />
     <Content Include="Views\Shared\_LayoutAuth.cshtml" />
     <Content Include="Views\NguoiDung\DangKy.cshtml" />
+    <Content Include="Views\Shared\_LayoutAdmin.cshtml" />
+    <Content Include="Views\AdminSanPham\Index.cshtml" />
+    <Content Include="Views\AdminSanPham\Create.cshtml" />
+    <Content Include="Views\AdminSanPham\Edit.cshtml" />
+    <Content Include="Views\AdminSanPham\Details.cshtml" />
+    <Content Include="Views\AdminSanPham\Delete.cshtml" />
+    <Content Include="Views\NguoiDung\ThongTinCaNhan.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,33 +1,74 @@
-﻿<!DOCTYPE html>
-<html lang="vi">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - Túi Xách Vina</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
-    <link href="~/Content/style.css" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-</head>
-<body style="background-color: #f9f9f9;">
-
-    <header style="box-shadow: none;">
-        <div class="container" style="justify-content: center;">
-            <a href="@Url.Action("Index", "Home")" style="text-decoration:none;">
-                <h1 class="logo">Túi Xách Vina</h1>
-            </a>
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml"; 
+    var nguoiDung = Session["TaiKhoan"] as QLMuaBanTuiXach.Models.NguoiDung;
+    if (nguoiDung == null)
+    {
+        TempData["AuthMessage"] = "Vui lòng đăng nhập để truy cập trang này.";
+        <script>window.location.href = '@Url.Action("Index", "Home", new { login = true })';</script>
+        return; 
+    }
+}
+<div class="container account-layout my-4 my-md-5">
+    <div class="row g-4">
+        <div class="col-md-3">
+            <div class="card shadow-sm">
+                <div class="card-header bg-light">
+                    <h5 class="mb-0">Tài Khoản Của Tôi</h5>
+                </div>
+                <div class="list-group list-group-flush account-menu-bs">
+                    <a href="@Url.Action("ThongTinCaNhan", "NguoiDung")" class="list-group-item list-group-item-action d-flex align-items-center @(ViewBag.ActiveMenu == "ThongTin" ? "active" : "")">
+                        <i class="fa-solid fa-user-pen fa-fw me-3"></i> Thông tin cá nhân
+                    </a>
+                    <a href="#" class="list-group-item list-group-item-action d-flex align-items-center @(ViewBag.ActiveMenu == "DonHang" ? "active" : "")">
+                        <i class="fa-solid fa-box-archive fa-fw me-3"></i> Quản lý đơn hàng
+                    </a>
+                    <a href="#" class="list-group-item list-group-item-action d-flex align-items-center @(ViewBag.ActiveMenu == "DiaChi" ? "active" : "")">
+                        <i class="fa-solid fa-location-dot fa-fw me-3"></i> Sổ địa chỉ
+                    </a>
+                    <a href="#" class="list-group-item list-group-item-action d-flex align-items-center @(ViewBag.ActiveMenu == "YeuThich" ? "active" : "")">
+                        <i class="fa-solid fa-heart fa-fw me-3"></i> Sản phẩm yêu thích
+                    </a>
+                    <a href="@Url.Action("DoiMatKhau", "NguoiDung")" class="list-group-item list-group-item-action d-flex align-items-center @(ViewBag.ActiveMenu == "MatKhau" ? "active" : "")">
+                        <i class="fa-solid fa-key fa-fw me-3"></i> Đổi mật khẩu
+                    </a>
+                    <a href="@Url.Action("DangXuat", "NguoiDung")" class="list-group-item list-group-item-action d-flex align-items-center">
+                        <i class="fa-solid fa-arrow-right-from-bracket fa-fw me-3"></i> Đăng xuất
+                    </a>
+                </div>
+            </div>
         </div>
-    </header>
 
-    <div style="padding: 40px 0;">
-        @RenderBody()
+        <div class="col-md-9">
+            <div class="card shadow-sm">
+                <div class="card-body p-4">
+                    @RenderBody()
+                </div>
+            </div>
+        </div>
+
     </div>
+</div>
 
-    <footer>
-        <div class="container">
-            <p>&copy; @DateTime.Now.Year Túi Xách Vina. Mọi quyền được bảo lưu.</p>
-        </div>
-    </footer>
+@section scripts {
+    @RenderSection("scripts", required: false)
+    <style>
+        .account-menu-bs .list-group-item.active {
+            color: #b98d5c; /* Màu chữ chính */
+            background-color: #f0e9e1; /* Màu nền nhạt */
+            border-color: #e9e0d7; /* Màu viền */
+            font-weight: 500;
+        }
 
-    <script src="~/Scripts/main.js"></script>
-</body>
-</html>
+            .account-menu-bs .list-group-item.active i {
+                color: #b98d5c; /* Màu icon */
+            }
+
+        .fa-fw {
+            text-align: center;
+        }
+        /* Đảm bảo icon căn giữa */
+    </style>
+}
+
+
+

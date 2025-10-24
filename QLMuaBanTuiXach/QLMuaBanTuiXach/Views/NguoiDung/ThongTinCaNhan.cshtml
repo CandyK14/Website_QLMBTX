@@ -1,0 +1,139 @@
+﻿@model QLMuaBanTuiXach.Models.NguoiDung
+
+@{
+    ViewBag.Title = "Thông Tin Tài Khoản";
+    Layout = "~/Views/Shared/_LayoutAuth.cshtml";
+}
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div style="width: 550px; max-width: 100%;">
+            <div class="card shadow-sm">
+                <div class="card-header">
+                    <h3 class="mb-0">THÔNG TIN TÀI KHOẢN</h3>
+                </div>
+                <div class="card-body">
+
+                    @if (TempData["CapNhatThanhCong"] != null)
+                    {
+                        <div class="alert alert-success" style="background-color: #d4edda; color: #155724; padding: 15px; border-radius: 5px; margin-bottom: 20px;">
+                            @TempData["CapNhatThanhCong"]
+                        </div>
+                    }
+
+                    @* BẮT ĐẦU FORM CHỈNH SỬA *@
+                    @using (Html.BeginForm("ThongTinCaNhan", "NguoiDung", FormMethod.Post))
+                    {
+                        @Html.AntiForgeryToken() // Chống CSRF
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" }) // Hiển thị lỗi chung (nếu có)
+
+                        <div class="row mb-3 align-items-center">
+                            @Html.LabelFor(model => model.HoTen, "Họ và Tên:", htmlAttributes: new { @class = "col-sm-4 col-form-label required" })
+                            <div class="col-sm-8">
+                                @Html.EditorFor(model => model.HoTen, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.HoTen, "", new { @class = "text-danger mt-1 d-block" })
+                            </div>
+                        </div>
+
+                        <div class="row mb-3 align-items-center">
+                            @Html.LabelFor(model => model.Email, "Email:", htmlAttributes: new { @class = "col-sm-4 col-form-label" })
+                            <div class="col-sm-8">
+                                @* Email không cho sửa, chỉ hiển thị *@
+                                @Html.TextBoxFor(model => model.Email, new { @class = "form-control", @readonly = "readonly", style = "background-color: #e9ecef;" })
+                            </div>
+                        </div>
+
+                        <div class="row mb-3 align-items-center">
+                            @Html.LabelFor(model => model.SoDienThoai, "Số Điện Thoại:", htmlAttributes: new { @class = "col-sm-4 col-form-label" })
+                            <div class="col-sm-8">
+                                @Html.EditorFor(model => model.SoDienThoai, new { htmlAttributes = new { @class = "form-control", placeholder = "Chưa cập nhật" } })
+                                @Html.ValidationMessageFor(model => model.SoDienThoai, "", new { @class = "text-danger mt-1 d-block" })
+                            </div>
+                        </div>
+
+                        <div class="row mb-3 align-items-center">
+                            @Html.Label("NgayTao", "Ngày Tham Gia:", htmlAttributes: new { @class = "col-sm-4 col-form-label" })
+                            <div class="col-sm-8">
+                                @* Chỉ hiển thị, không cho sửa *@
+                                <input type="text" value="@(Model.NgayTao.HasValue ? Model.NgayTao.Value.ToString("dd/MM/yyyy HH:mm") : "N/A")" class="form-control" readonly style="background-color: #e9ecef;" />
+                            </div>
+                        </div>
+
+                        <div class="row mb-3 align-items-center">
+                            @Html.Label("VaiTro", "Vai Trò:", htmlAttributes: new { @class = "col-sm-4 col-form-label" })
+                            <div class="col-sm-8">
+                                @* Chỉ hiển thị, không cho sửa *@
+                                <input type="text" value="@Model.VaiTro" class="form-control" readonly style="background-color: #e9ecef;" />
+                            </div>
+                        </div>
+
+                        <div class="row mt-4">
+                            <div class="col-sm-8 offset-sm-4">
+                                @* Đẩy nút sang phải *@
+                                <button type="submit" class="btn btn-primary btn-submit-effect">
+                                    <i class="fa-solid fa-save me-1"></i> Lưu Thay Đổi
+                                </button>
+                                <a href="@Url.Action("Index", "Home")" class="btn btn-secondary btn-cancel-effect ms-2">Quay lại</a>
+                            </div>
+                        </div>
+                    }
+                    @* KẾT THÚC FORM CHỈNH SỬA *@
+
+                </div>
+                <div class="card-footer bg-light">
+                    @* Link quản lý địa chỉ (sẽ làm sau) *@
+                    <a href="@Url.Action("QuanLyDiaChi", "NguoiDung")" class="btn btn-link btn-sm">Quản lý Sổ địa chỉ</a>
+                    @* Link đổi mật khẩu (sẽ làm sau) *@
+                    <a href="@Url.Action("DoiMatKhau", "NguoiDung")" class="btn btn-link btn-sm ms-2">Đổi mật khẩu</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@* Thêm lại CSS hiệu ứng nếu cần *@
+@section scripts {
+    <style>
+        .required::after {
+            content: " *";
+            color: red;
+        }
+
+        .form-control, .form-select {
+            transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+        }
+
+            .form-control:focus, .form-select:focus {
+                border-color: #86b7fe;
+                outline: 0;
+                box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+            }
+
+        .btn-submit-effect, .btn-cancel-effect {
+            transition: transform 0.1s ease-out, background-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+        }
+
+            .btn-submit-effect:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+            }
+
+            .btn-cancel-effect:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            }
+
+        .btn-primary i {
+            margin-right: 0.3rem;
+        }
+
+        .col-form-label {
+            font-weight: 500;
+        }
+
+        .text-danger {
+            font-size: 0.875em;
+        }
+    </style>
+}
+

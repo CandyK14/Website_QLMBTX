@@ -1,0 +1,50 @@
+﻿@model QLMuaBanTuiXach.Models.SanPham
+
+@{
+    ViewBag.Title = "Xác Nhận Xóa Sản Phẩm";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="card shadow-sm border-danger">
+    @* Thêm border-danger để nhấn mạnh *@
+    <div class="card-header bg-danger text-white">
+        @* Header màu đỏ *@
+        <h3 class="mb-0">XÁC NHẬN XÓA SẢN PHẨM</h3>
+    </div>
+    <div class="card-body">
+        <p class="lead text-danger">Bạn có chắc chắn muốn xóa sản phẩm này không?</p>
+        <p class="text-muted">Hành động này sẽ xóa sản phẩm và tất cả các biến thể liên quan (nếu có). Không thể hoàn tác.</p>
+        <hr />
+
+        <dl class="row">
+            <dt class="col-sm-3">Tên Sản Phẩm</dt>
+            <dd class="col-sm-9">@Html.DisplayFor(model => model.TenSanPham)</dd>
+
+            <dt class="col-sm-3">Danh Mục</dt>
+            <dd class="col-sm-9">@(Model.DanhMuc != null ? Model.DanhMuc.TenDanhMuc : "N/A")</dd>
+
+            <dt class="col-sm-3">Thương Hiệu</dt>
+            <dd class="col-sm-9">@(Model.ThuongHieu != null ? Model.ThuongHieu.TenThuongHieu : "N/A")</dd>
+
+            <dt class="col-sm-3">Số lượng biến thể</dt>
+            <dd class="col-sm-9">@(Model.BienTheSanPham != null ? Model.BienTheSanPham.Count : 0)</dd> @* Hiển thị số lượng biến thể sẽ bị xóa *@
+
+            @* Có thể thêm các trường khác nếu muốn *@
+        </dl>
+
+    </div>
+    <div class="card-footer bg-light text-end">
+        @using (Html.BeginForm())
+        {@* Form sẽ post về action DeleteConfirmed *@
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <button type="submit" class="btn btn-danger">
+                <i class="fa-solid fa-trash-alt me-1"></i> Xác Nhận Xóa
+            </button>
+            @Html.ActionLink("Hủy Bỏ", "Index", null, new { @class = "btn btn-secondary ms-2" })
+        </div>
+    }
+    </div>
+</div>
+

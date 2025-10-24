@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
     <link href="~/Content/style.css" rel="stylesheet" />
+    <link href="~/Content/boostrap/bootstrap.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <title>@ViewBag.Title - Túi Xách CharlesNola & CandyK</title>
 </head>
@@ -28,7 +29,7 @@
             </nav>
             <div class="search-bar">
                 <form action="/Home/Index" class="search-form" method="get">
-                    <input type="text" name="searchString" class="search-input" placeholder="Tìm kiếm sản phẩm"/>
+                    <input type="text" name="searchString" class="search-input" placeholder="Tìm kiếm sản phẩm" />
                     <button type="submit" class="search-btn">
                         <i class="fa-solid fa-search"></i>
                     </button>
@@ -134,7 +135,7 @@
                     </div>
 
                     <ul class="user-menu-links">
-                        <li><a href="#"><i class="fa-solid fa-user-pen"></i> Thông tin</a></li>
+                        <li><a href="@Url.Action("ThongTinCaNhan", "NguoiDung")"><i class="fa-solid fa-user-pen"></i> Thông tin</a></li>
                         <li><a href="#"><i class="fa-solid fa-box-archive"></i> Đơn hàng</a></li>
                         <li><a href="#"><i class="fa-solid fa-location-dot"></i> Địa chỉ đã lưu</a></li>
                         <li><a href="#"><i class="fa-solid fa-heart"></i> Danh sách yêu thích</a></li>
@@ -151,11 +152,12 @@
             <div class="banner2">
                 <img class="banner-footer" src="~/Content/HinhAnh/banner2-removebg-preview.png" />
             </div>
-            
+
             <p>&copy; @DateTime.Now.Year Túi Xách CharlesNola & CandyK. Mọi quyền được bảo lưu.</p>
         </div>
     </footer>
 
     <script src="~/Scripts/main.js"></script>
+    @RenderSection("scripts", required: false)
 </body>
 </html>

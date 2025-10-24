@@ -1,0 +1,152 @@
+﻿@model QLMuaBanTuiXach.Models.SanPham
+
+@{
+    ViewBag.Title = "Chỉnh Sửa Sản Phẩm";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="card shadow-sm">
+    <div class="card-header">
+        <h3 class="mb-0">CHỈNH SỬA THÔNG TIN SẢN PHẨM</h3>
+    </div>
+    <div class="card-body">
+        @using (Html.BeginForm()) // Form sẽ post về action Edit
+        {
+            @Html.AntiForgeryToken() // Chống CSRF
+
+            <div class="form-horizontal">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @Html.HiddenFor(model => model.MaSanPham) // Giữ lại ID sản phẩm
+
+                @* Tên Sản Phẩm *@
+                <div class="row mb-3">
+                    @Html.LabelFor(model => model.TenSanPham, "Tên Sản Phẩm", htmlAttributes: new { @class = "col-md-3 col-form-label required" })
+                    <div class="col-md-9">
+                        @Html.EditorFor(model => model.TenSanPham, new { htmlAttributes = new { @class = "form-control", placeholder = "Nhập tên túi xách...", required = "required" } })
+                        @Html.ValidationMessageFor(model => model.TenSanPham, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                @* Mô Tả *@
+                <div class="row mb-3">
+                    @Html.LabelFor(model => model.MoTa, "Mô Tả", htmlAttributes: new { @class = "col-md-3 col-form-label" })
+                    <div class="col-md-9">
+                        @Html.TextAreaFor(model => model.MoTa, 5, 90, new { @class = "form-control", placeholder = "Mô tả chi tiết về sản phẩm..." })
+                        @Html.ValidationMessageFor(model => model.MoTa, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                @* Danh Mục *@
+                <div class="row mb-3">
+                    @Html.LabelFor(model => model.MaDanhMuc, "Danh Mục", htmlAttributes: new { @class = "col-md-3 col-form-label" })
+                    <div class="col-md-9">
+                        @Html.DropDownList("MaDanhMuc", null, "-- Chọn Danh Mục --", htmlAttributes: new { @class = "form-select" })
+                        @Html.ValidationMessageFor(model => model.MaDanhMuc, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                @* Thương Hiệu *@
+                <div class="row mb-3">
+                    @Html.LabelFor(model => model.MaThuongHieu, "Thương Hiệu", htmlAttributes: new { @class = "col-md-3 col-form-label" })
+                    <div class="col-md-9">
+                        @Html.DropDownList("MaThuongHieu", null, "-- Chọn Thương Hiệu --", htmlAttributes: new { @class = "form-select" })
+                        @Html.ValidationMessageFor(model => model.MaThuongHieu, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <hr />
+                <h5 class="mb-3">Thuộc tính khác</h5>
+
+                @* Chất Liệu Chính *@
+                <div class="row mb-3">
+                    @Html.LabelFor(model => model.ChatLieuChinh, "Chất Liệu Chính", htmlAttributes: new { @class = "col-md-3 col-form-label" })
+                    <div class="col-md-9">
+                        @Html.EditorFor(model => model.ChatLieuChinh, new { htmlAttributes = new { @class = "form-control", placeholder = "Ví dụ: Da PU, Vải Canvas..." } })
+                        @Html.ValidationMessageFor(model => model.ChatLieuChinh, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                @* Dịp Sử Dụng *@
+                <div class="row mb-3">
+                    @Html.LabelFor(model => model.DipSuDung, "Dịp Sử Dụng", htmlAttributes: new { @class = "col-md-3 col-form-label" })
+                    <div class="col-md-9">
+                        @Html.EditorFor(model => model.DipSuDung, new { htmlAttributes = new { @class = "form-control", placeholder = "Ví dụ: Đi làm, Dạo phố, Dự tiệc..." } })
+                        @Html.ValidationMessageFor(model => model.DipSuDung, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                @* Bộ Sưu Tập *@
+                <div class="row mb-3">
+                    @Html.LabelFor(model => model.BoSuuTap, "Bộ Sưu Tập", htmlAttributes: new { @class = "col-md-3 col-form-label" })
+                    <div class="col-md-9">
+                        @Html.EditorFor(model => model.BoSuuTap, new { htmlAttributes = new { @class = "form-control", placeholder = "Ví dụ: Summer Collection, Basic..." } })
+                        @Html.ValidationMessageFor(model => model.BoSuuTap, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                @* Ngày Tạo (Ẩn đi vì không sửa) *@
+                @Html.HiddenFor(model => model.NgayTao)
+
+                @* Nút Lưu được chuyển xuống footer *@
+                <div class="form-group mt-4">
+                    <div class="col-md-offset-3 col-md-9">
+                        <button type="submit" class="btn btn-primary btn-submit-effect">
+                            <i class="fa-solid fa-save me-1"></i> Lưu Thay Đổi
+                        </button>
+                        @Html.ActionLink("Quay lại Danh sách", "Index", null, new { @class = "btn btn-secondary btn-cancel-effect ms-2" })
+                    </div>
+                </div>
+
+            </div>
+        }
+    </div>
+    @* Card footer không cần thiết nữa vì nút đã ở trong form *@
+</div>
+
+@section scripts {
+    @* Script validation của MVC (nếu cần) *@
+    @* @Scripts.Render("~/bundles/jqueryval") *@
+    <style>
+        .required::after {
+            content: " *";
+            color: red;
+        }
+
+        .form-control, .form-select {
+            transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+        }
+
+            .form-control:focus, .form-select:focus {
+                border-color: #86b7fe;
+                outline: 0;
+                box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+            }
+
+        .btn-submit-effect, .btn-cancel-effect {
+            transition: transform 0.1s ease-out, background-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+        }
+
+            .btn-submit-effect:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+            }
+
+            .btn-cancel-effect:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            }
+
+        .btn-primary i {
+            margin-right: 0.3rem;
+        }
+
+        .col-form-label {
+            font-weight: 500;
+        }
+        /* Label đậm hơn */
+        .form-horizontal .row {
+            align-items: center;
+        }
+        /* Căn giữa label và input */
+    </style>
+}
+

@@ -150,5 +150,65 @@ namespace QLMuaBanTuiXach.Controllers
             Session.Clear();
             return RedirectToAction("Index", "Home");
         }
+        public ActionResult ThongTinCaNhan()
+        {
+            if (Session["TaiKhoan"] == null)
+            {
+                TempData["Loi"] = "Vui lòng đăng nhập để xem thông tin.";
+                return RedirectToAction("Index", "Home", new { login = true });
+            }
+
+            NguoiDung currentUser = (NguoiDung)Session["TaiKhoan"];
+            NguoiDung nguoiDungDB = db.NguoiDung.Find(currentUser.MaNguoiDung);
+
+            if (nguoiDungDB == null)
+            {
+                Session.Clear(); 
+                TempData["Loi"] = "Đã xảy ra lỗi, vui lòng đăng nhập lại.";
+                return RedirectToAction("Index", "Home", new { login = true });
+            }
+            ViewBag.ActiveMenu = "ThongTin";
+            return View(nguoiDungDB);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken] 
+        public ActionResult ThongTinCaNhan(FormCollection collection)
+        {
+            if (Session["TaiKhoan"] == null)
+            {
+                return RedirectToAction("Index", "Home", new { login = true });
+            }
+
+            NguoiDung currentUser = (NguoiDung)Session["TaiKhoan"];
+            NguoiDung nguoiDungToUpdate = db.NguoiDung.Find(currentUser.MaNguoiDung);
+
+            if (nguoiDungToUpdate == null)
+            {
+                Session.Clear();
+                TempData["Loi"] = "Đã xảy ra lỗi, vui lòng đăng nhập lại.";
+                return RedirectToAction("Index", "Home", new { login = true });
+            }
+
+            var hoTenMoi = collection["HoTen"];
+            var soDienThoaiMoi = collection["SoDienThoai"];
+            if (string.IsNullOrEmpty(hoTenMoi))
+            {
+                ModelState.AddModelError("HoTen", "Họ tên không được để trống.");
+            }
+            if (ModelState.IsValid)
+            {
+                nguoiDungToUpdate.HoTen = hoTenMoi;
+                nguoiDungToUpdate.SoDienThoai = soDienThoaiMoi;
+                db.Entry(nguoiDungToUpdate).State = System.Data.Entity.EntityState.Modified;
+                db.SaveChanges();
+                Session["TaiKhoan"] = nguoiDungToUpdate;
+                Session["TenNguoiDung"] = nguoiDungToUpdate.HoTen;
+
+                TempData["CapNhatThanhCong"] = "Cập nhật thông tin thành công!";
+                return RedirectToAction("ThongTinCaNhan");
+            }
+            return View(nguoiDungToUpdate);
+        }
     }
 }

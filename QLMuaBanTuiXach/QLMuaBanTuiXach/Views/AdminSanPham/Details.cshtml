@@ -1,0 +1,110 @@
+﻿@model QLMuaBanTuiXach.Models.SanPham
+
+@{
+    ViewBag.Title = "Chi Tiết Sản Phẩm";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="card shadow-sm">
+    <div class="card-header d-flex justify-content-between align-items-center">
+        <h3 class="mb-0">CHI TIẾT SẢN PHẨM</h3>
+        <div>
+            @Html.ActionLink("Chỉnh Sửa", "Edit", new { id = Model.MaSanPham }, new { @class = "btn btn-warning btn-sm" })
+            @Html.ActionLink("Quay lại Danh sách", "Index", null, new { @class = "btn btn-secondary btn-sm ms-2" })
+        </div>
+    </div>
+    <div class="card-body">
+        <dl class="row">
+            <dt class="col-sm-3">Tên Sản Phẩm</dt>
+            <dd class="col-sm-9">@Html.DisplayFor(model => model.TenSanPham)</dd>
+
+            <dt class="col-sm-3">Mô Tả</dt>
+            <dd class="col-sm-9">@Html.Raw(Model.MoTa != null ? Model.MoTa.Replace("\n", "<br />") : "")</dd> @* Display description with line breaks *@
+
+            <dt class="col-sm-3">Danh Mục</dt>
+            <dd class="col-sm-9">@(Model.DanhMuc != null ? Model.DanhMuc.TenDanhMuc : "N/A")</dd>
+
+            <dt class="col-sm-3">Thương Hiệu</dt>
+            <dd class="col-sm-9">@(Model.ThuongHieu != null ? Model.ThuongHieu.TenThuongHieu : "N/A")</dd>
+
+            <dt class="col-sm-3">Chất Liệu Chính</dt>
+            <dd class="col-sm-9">@Html.DisplayFor(model => model.ChatLieuChinh)</dd>
+
+            <dt class="col-sm-3">Dịp Sử Dụng</dt>
+            <dd class="col-sm-9">@Html.DisplayFor(model => model.DipSuDung)</dd>
+
+            <dt class="col-sm-3">Bộ Sưu Tập</dt>
+            <dd class="col-sm-9">@Html.DisplayFor(model => model.BoSuuTap)</dd>
+
+            <dt class="col-sm-3">Ngày Tạo</dt>
+            <dd class="col-sm-9">@Html.DisplayFor(model => model.NgayTao)</dd>
+        </dl>
+
+        <hr />
+        <h4 class="mt-4 mb-3">Các Biến Thể Sản Phẩm</h4>
+
+        @if (Model.BienTheSanPham != null && Model.BienTheSanPham.Any())
+        {
+            <table class="table table-bordered table-striped table-hover table-sm">
+                @* table-sm for smaller padding *@
+                <thead class="table-light">
+                    <tr>
+                        <th>SKU</th>
+                        <th>Màu Sắc</th>
+                        <th>Kích Thước (Cm)</th>
+                        <th>Cân Nặng (Gram)</th>
+                        <th>Giá Bán (VNĐ)</th>
+                        <th>Giá Gốc (VNĐ)</th>
+                        <th>SL Tồn Kho</th>
+                        <th>Hình Ảnh</th>
+                        <th></th> @* For Action buttons *@
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.BienTheSanPham)
+                    {
+                        <tr>
+                            <td>@Html.DisplayFor(modelItem => item.SKU)</td>
+                            <td>@Html.DisplayFor(modelItem => item.MauSac)</td>
+                            <td>
+                                @if (item.ChieuDaiCM.HasValue || item.ChieuRongCM.HasValue || item.ChieuCaoCM.HasValue)
+                                {
+                                    @($"{item.ChieuDaiCM ?? 0} x {item.ChieuRongCM ?? 0} x {item.ChieuCaoCM ?? 0}")
+                                }
+                            </td>
+                            <td>@Html.DisplayFor(modelItem => item.CanNangGram)</td>
+                            <td class="text-end">@item.GiaBan.ToString("N0")</td> @* Format currency *@
+                            <td class="text-end">@(item.GiaGoc.HasValue ? item.GiaGoc.Value.ToString("N0") : "")</td>
+                            <td class="text-center">@Html.DisplayFor(modelItem => item.SoLuongTonKho)</td>
+                            <td>
+                                @if (!string.IsNullOrEmpty(item.HinhAnh))
+                                {
+                                    <img src="@Url.Content(item.HinhAnh)" alt="Ảnh biến thể" style="max-height: 50px; max-width: 50px; object-fit: cover; border-radius: 4px;"
+                                         onerror="this.onerror=null;this.src='@Url.Content("~/Content/img/placeholder.png")';" /> @* Fallback image *@
+                                    }
+                            </td>
+                            <td>
+                                @* Placeholder for Edit/Delete variant buttons - We will add these later *@
+                                @* @Html.ActionLink("Sửa", "EditVariant", new { id=item.MaBienThe }, new { @class="btn btn-outline-warning btn-xs"}) *@
+                                @* @Html.ActionLink("Xóa", "DeleteVariant", new { id=item.MaBienThe }, new { @class="btn btn-outline-danger btn-xs"}) *@
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+        else
+        {
+            <div class="alert alert-info">Sản phẩm này chưa có biến thể nào.</div>
+        }
+        @* Button to add new variant - We will add this functionality later *@
+        @* <div class="mt-3">
+                 @Html.ActionLink("Thêm Biến Thể Mới", "CreateVariant", new { productId = Model.MaSanPham }, new { @class = "btn btn-success" })
+            </div> *@
+
+    </div>
+    <div class="card-footer text-muted">
+        @* Additional footer info if needed *@
+    </div>
+</div>
+

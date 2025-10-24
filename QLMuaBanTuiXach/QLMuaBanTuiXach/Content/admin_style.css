@@ -1,0 +1,149 @@
+﻿/* admin_style.css */
+
+/* Basic body styling */
+body {
+    font-family: 'Poppins', sans-serif; /* Sử dụng font phổ biến */
+    background: #f8f9fa; /* Màu nền nhẹ cho toàn bộ trang */
+}
+
+/* Wrapper for sidebar and content */
+.wrapper {
+    display: flex;
+    width: 100%;
+    align-items: stretch;
+}
+
+/* Sidebar styles */
+#sidebar {
+    min-width: 250px;
+    max-width: 250px;
+    background: #343a40; /* Màu nền tối cho sidebar */
+    color: #fff;
+    transition: all 0.3s;
+    height: 100vh; /* Chiều cao đầy đủ của viewport */
+    position: sticky; /* Giữ sidebar cố định khi cuộn */
+    top: 0;
+    left: 0;
+}
+
+    #sidebar.active {
+        margin-left: -250px;
+    }
+
+    #sidebar .sidebar-header {
+        padding: 20px;
+        background: #212529; /* Màu nền đậm hơn cho header sidebar */
+    }
+
+    #sidebar ul.components {
+        padding: 20px 0;
+        border-bottom: 1px solid #47748b;
+    }
+
+    #sidebar ul p {
+        color: #fff;
+        padding: 10px;
+    }
+
+    #sidebar ul li a {
+        padding: 10px;
+        font-size: 1.1em;
+        display: block;
+        color: #adb5bd; /* Màu chữ nhạt */
+        text-decoration: none; /* Bỏ gạch chân */
+        transition: all 0.3s;
+    }
+
+        #sidebar ul li a:hover {
+            color: #fff;
+            background: #495057; /* Màu nền khi hover */
+        }
+
+/* Content area */
+#content {
+    width: 100%;
+    min-height: 100vh;
+    transition: all 0.3s;
+    padding: 20px;
+}
+
+/* Tùy chỉnh cho các thẻ card trong trang Admin */
+.card {
+    border-radius: 0.5rem; /* Bo tròn góc card */
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075); /* Bóng mờ nhẹ */
+}
+
+.card-header {
+    background-color: #e9ecef; /* Màu nền header card */
+    border-bottom: 1px solid rgba(0,0,0,.125);
+    padding: 1rem 1.5rem;
+    border-top-left-radius: calc(0.5rem - 1px);
+    border-top-right-radius: calc(0.5rem - 1px);
+}
+
+.card-footer {
+    background-color: #f8f9fa; /* Màu nền footer card */
+    border-top: 1px solid rgba(0,0,0,.125);
+    padding: 0.75rem 1.25rem;
+}
+
+
+/* CSS cho form */
+.form-horizontal .control-label {
+    text-align: right; /* Căn phải cho label trong form */
+}
+
+/* Hiệu ứng cho input và select */
+.form-control,
+.form-select {
+    transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    border-radius: 0.3rem; /* Bo tròn góc input */
+}
+
+    .form-control:focus,
+    .form-select:focus {
+        border-color: #86b7fe; /* Màu viền khi focus */
+        outline: 0;
+        box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25); /* Hiệu ứng shadow khi focus */
+    }
+
+/* Hiệu ứng cho nút */
+.btn {
+    transition: transform 0.15s ease-out, background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    border-radius: 0.3rem; /* Bo tròn góc nút */
+}
+
+.btn-primary:hover {
+    background-color: #0b5ed7; /* Đậm hơn khi hover */
+    border-color: #0a58ca;
+    transform: translateY(-1px); /* Hơi nhấc lên */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Thêm bóng */
+}
+
+.btn-secondary:hover {
+    background-color: #5c636a;
+    border-color: #565e64;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Thêm CSS cho trường bắt buộc */
+.required::after {
+    content: " *";
+    color: red;
+    margin-left: 2px;
+}
+
+/* Các tùy chỉnh nhỏ khác cho layout */
+h3, h5 {
+    color: #343a40; /* Màu tiêu đề */
+}
+
+a {
+    color: #007bff; /* Màu link mặc định */
+    text-decoration: none;
+}
+
+    a:hover {
+        text-decoration: underline;
+    }
