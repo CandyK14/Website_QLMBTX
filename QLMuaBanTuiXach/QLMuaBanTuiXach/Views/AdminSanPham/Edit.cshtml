@@ -7,23 +7,30 @@
 
 <div class="card shadow-sm">
     <div class="card-header">
-        <h3 class="mb-0">CHỈNH SỬA THÔNG TIN SẢN PHẨM</h3>
+        <h3 class="mb-0"><i class="fa-solid fa-pen-to-square me-2"></i>CHỈNH SỬA SẢN PHẨM</h3>
     </div>
     <div class="card-body">
-        @using (Html.BeginForm()) // Form sẽ post về action Edit
+        @* Form sẽ post về action Edit *@
+        @using (Html.BeginForm())
         {
             @Html.AntiForgeryToken() // Chống CSRF
 
             <div class="form-horizontal">
-                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                @Html.HiddenFor(model => model.MaSanPham) @*// Giữ lại ID sản phẩm*@
+                <h4>Thông tin Sản phẩm Chính</h4>
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "alert alert-danger" })
+
+                @* Thêm HiddenFor để gửi MaSanPham đi *@
+                @Html.HiddenFor(model => model.MaSanPham)
+                @* Thêm HiddenFor cho NgayTao để giữ giá trị cũ *@
+                @Html.HiddenFor(model => model.NgayTao)
 
                 @* Tên Sản Phẩm *@
                 <div class="row mb-3">
                     @Html.LabelFor(model => model.TenSanPham, "Tên Sản Phẩm", htmlAttributes: new { @class = "col-md-3 col-form-label required" })
                     <div class="col-md-9">
-                        @Html.EditorFor(model => model.TenSanPham, new { htmlAttributes = new { @class = "form-control", placeholder = "Nhập tên túi xách...", required = "required" } })
-                        @Html.ValidationMessageFor(model => model.TenSanPham, "", new { @class = "text-danger" })
+                        @Html.EditorFor(model => model.TenSanPham, new { htmlAttributes = new { @class = "form-control", required = "required" } })
+                        @Html.ValidationMessageFor(model => model.TenSanPham, "", new { @class = "text-danger mt-1 d-block" })
                     </div>
                 </div>
 
@@ -31,8 +38,8 @@
                 <div class="row mb-3">
                     @Html.LabelFor(model => model.MoTa, "Mô Tả", htmlAttributes: new { @class = "col-md-3 col-form-label" })
                     <div class="col-md-9">
-                        @Html.TextAreaFor(model => model.MoTa, 5, 90, new { @class = "form-control", placeholder = "Mô tả chi tiết về sản phẩm..." })
-                        @Html.ValidationMessageFor(model => model.MoTa, "", new { @class = "text-danger" })
+                        @Html.TextAreaFor(model => model.MoTa, 5, 90, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.MoTa, "", new { @class = "text-danger mt-1 d-block" })
                     </div>
                 </div>
 
@@ -40,8 +47,9 @@
                 <div class="row mb-3">
                     @Html.LabelFor(model => model.MaDanhMuc, "Danh Mục", htmlAttributes: new { @class = "col-md-3 col-form-label" })
                     <div class="col-md-9">
+                        @* DropDownList này sẽ tự động chọn giá trị hiện tại nhờ ViewBag từ Controller *@
                         @Html.DropDownList("MaDanhMuc", null, "-- Chọn Danh Mục --", htmlAttributes: new { @class = "form-select" })
-                        @Html.ValidationMessageFor(model => model.MaDanhMuc, "", new { @class = "text-danger" })
+                        @Html.ValidationMessageFor(model => model.MaDanhMuc, "", new { @class = "text-danger mt-1 d-block" })
                     </div>
                 </div>
 
@@ -50,19 +58,19 @@
                     @Html.LabelFor(model => model.MaThuongHieu, "Thương Hiệu", htmlAttributes: new { @class = "col-md-3 col-form-label" })
                     <div class="col-md-9">
                         @Html.DropDownList("MaThuongHieu", null, "-- Chọn Thương Hiệu --", htmlAttributes: new { @class = "form-select" })
-                        @Html.ValidationMessageFor(model => model.MaThuongHieu, "", new { @class = "text-danger" })
+                        @Html.ValidationMessageFor(model => model.MaThuongHieu, "", new { @class = "text-danger mt-1 d-block" })
                     </div>
                 </div>
 
                 <hr />
-                <h5 class="mb-3">Thuộc tính khác</h5>
+                <h5 class="mb-3">Thuộc tính khác (Sản phẩm chính)</h5>
 
                 @* Chất Liệu Chính *@
                 <div class="row mb-3">
                     @Html.LabelFor(model => model.ChatLieuChinh, "Chất Liệu Chính", htmlAttributes: new { @class = "col-md-3 col-form-label" })
                     <div class="col-md-9">
-                        @Html.EditorFor(model => model.ChatLieuChinh, new { htmlAttributes = new { @class = "form-control", placeholder = "Ví dụ: Da PU, Vải Canvas..." } })
-                        @Html.ValidationMessageFor(model => model.ChatLieuChinh, "", new { @class = "text-danger" })
+                        @Html.EditorFor(model => model.ChatLieuChinh, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.ChatLieuChinh, "", new { @class = "text-danger mt-1 d-block" })
                     </div>
                 </div>
 
@@ -70,8 +78,8 @@
                 <div class="row mb-3">
                     @Html.LabelFor(model => model.DipSuDung, "Dịp Sử Dụng", htmlAttributes: new { @class = "col-md-3 col-form-label" })
                     <div class="col-md-9">
-                        @Html.EditorFor(model => model.DipSuDung, new { htmlAttributes = new { @class = "form-control", placeholder = "Ví dụ: Đi làm, Dạo phố, Dự tiệc..." } })
-                        @Html.ValidationMessageFor(model => model.DipSuDung, "", new { @class = "text-danger" })
+                        @Html.EditorFor(model => model.DipSuDung, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.DipSuDung, "", new { @class = "text-danger mt-1 d-block" })
                     </div>
                 </div>
 
@@ -79,16 +87,14 @@
                 <div class="row mb-3">
                     @Html.LabelFor(model => model.BoSuuTap, "Bộ Sưu Tập", htmlAttributes: new { @class = "col-md-3 col-form-label" })
                     <div class="col-md-9">
-                        @Html.EditorFor(model => model.BoSuuTap, new { htmlAttributes = new { @class = "form-control", placeholder = "Ví dụ: Summer Collection, Basic..." } })
-                        @Html.ValidationMessageFor(model => model.BoSuuTap, "", new { @class = "text-danger" })
+                        @Html.EditorFor(model => model.BoSuuTap, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.BoSuuTap, "", new { @class = "text-danger mt-1 d-block" })
                     </div>
                 </div>
-                @* Ngày Tạo (Ẩn đi vì không sửa) *@
-                @Html.HiddenFor(model => model.NgayTao)
 
-                @* Nút Lưu được chuyển xuống footer *@
-                <div class="form-group mt-4">
-                    <div class="col-md-offset-3 col-md-9">
+                @* Nút Lưu và Quay lại *@
+                <div class="row mt-4">
+                    <div class="col-md-9 offset-md-3">
                         <button type="submit" class="btn btn-primary btn-submit-effect">
                             <i class="fa-solid fa-save me-1"></i> Lưu Thay Đổi
                         </button>
@@ -96,14 +102,91 @@
                     </div>
                 </div>
 
-            </div>
+            </div> @* Đóng div form-horizontal *@
+        } @* Đóng using Html.BeginForm *@
+
+        @* ======================================================= *@
+        @* PHẦN HIỂN THỊ VÀ QUẢN LÝ BIẾN THỂ SẢN PHẨM *@
+        @* ======================================================= *@
+        <h4 class="mt-5">Quản lý Biến Thể Sản Phẩm</h4>
+        <hr />
+
+        @* Nút để thêm biến thể mới (sẽ tạo action sau) *@
+        <p>
+            @* TODO: Thay đổi Action/Controller phù hợp khi tạo chức năng thêm biến thể *@
+            @Html.ActionLink("Thêm Biến Thể Mới", "ThemBienThe", "AdminSanPham", new { maSanPham = Model.MaSanPham }, new { @class = "btn btn-success btn-sm" })
+        </p>
+
+        @if (Model.BienTheSanPham != null && Model.BienTheSanPham.Any())
+        {
+            <div class="table-responsive">
+                @* Bọc bảng trong div responsive *@
+                <table class="table table-bordered table-striped table-hover table-sm mt-3 align-middle">
+                    @* align-middle để căn giữa theo chiều dọc *@
+                    <thead class="table-light">
+                        <tr>
+                            <th>SKU</th>
+                            <th>Màu Sắc</th>
+                            <th>Giá Bán (VNĐ)</th>
+                            <th>SL Tồn</th>
+                            @* THÊM CÁC CỘT MỚI *@
+                            <th>Dài(cm)</th>
+                            <th>Rộng(cm)</th>
+                            <th>Cao(cm)</th>
+                            <th>Nặng(g)</th>
+                            <th>Hình Ảnh</th>
+                            <th style="min-width: 100px;"></th> @* Cột cho nút hành động, đặt min-width *@
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var bienThe in Model.BienTheSanPham)
+                        {
+                            <tr>
+                                <td>@Html.DisplayFor(modelItem => bienThe.SKU)</td>
+                                <td>@Html.DisplayFor(modelItem => bienThe.MauSac)</td>
+                                <td>@String.Format("{0:N0}", bienThe.GiaBan)</td>
+                                <td>@Html.DisplayFor(modelItem => bienThe.SoLuongTonKho)</td>
+                                @* THÊM DỮ LIỆU CÁC CỘT MỚI *@
+                                <td>@Html.DisplayFor(modelItem => bienThe.ChieuDaiCM)</td>
+                                <td>@Html.DisplayFor(modelItem => bienThe.ChieuRongCM)</td>
+                                <td>@Html.DisplayFor(modelItem => bienThe.ChieuCaoCM)</td>
+                                <td>@Html.DisplayFor(modelItem => bienThe.CanNangGram)</td>
+                                <td>
+                                    @if (!string.IsNullOrEmpty(bienThe.HinhAnh))
+                                    {
+                                        <img src="@Url.Content(bienThe.HinhAnh)" alt="Ảnh biến thể" style="max-width: 60px; height: auto;" />
+                                    }
+                                    else
+                                    {
+                                        <span class="text-muted fst-italic">(Chưa có ảnh)</span>
+                                    }
+                                </td>
+                                <td>
+                                    @* TODO: Thay đổi Action/Controller phù hợp khi tạo chức năng sửa/xóa biến thể *@
+                                    @Html.ActionLink("Sửa", "SuaBienThe", "AdminSanPham", new { id = bienThe.MaBienThe }, new { @class = "btn btn-warning btn-xs me-1" })
+                                    @Html.ActionLink("Xóa", "XoaBienThe", "AdminSanPham", new { id = bienThe.MaBienThe }, new { @class = "btn btn-danger btn-xs" })
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div> @* Đóng div table-responsive *@
         }
+        else
+        {
+            <p class="alert alert-info">Sản phẩm này chưa có biến thể nào.</p>
+        }
+        @* ======================================================= *@
+        @* KẾT THÚC PHẦN BIẾN THỂ SẢN PHẨM *@
+        @* ======================================================= *@
+
+    </div> @* Đóng div card-body *@
+    <div class="card-footer bg-light">
+        Quản lý thông tin chi tiết (giá, màu sắc, ảnh...) cho từng biến thể ở bảng trên.
     </div>
-    @* Card footer không cần thiết nữa vì nút đã ở trong form *@
-</div>
+</div> @* Đóng div card *@
 
 @section scripts {
-    @* Script validation của MVC (nếu cần) *@
     @* @Scripts.Render("~/bundles/jqueryval") *@
     <style>
         .required::after {
@@ -113,6 +196,7 @@
 
         .form-control, .form-select {
             transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+            border-radius: 0.3rem;
         }
 
             .form-control:focus, .form-select:focus {
@@ -123,6 +207,7 @@
 
         .btn-submit-effect, .btn-cancel-effect {
             transition: transform 0.1s ease-out, background-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+            border-radius: 0.3rem;
         }
 
             .btn-submit-effect:hover {
@@ -142,11 +227,27 @@
         .col-form-label {
             font-weight: 500;
         }
-        /* Label đậm hơn */
+
         .form-horizontal .row {
-            align-items: center;
+            align-items: flex-start;
         }
-        /* Căn giữa label và input */
+
+        .text-danger {
+            font-size: 0.875em;
+        }
+        /* CSS cho nút nhỏ hơn trong bảng */
+        .btn-xs {
+            padding: 0.15rem 0.4rem;
+            font-size: 0.75rem;
+        }
+        /* Giúp bảng cuộn ngang trên màn hình nhỏ */
+        .table-responsive {
+            overflow-x: auto;
+        }
+        /* Căn giữa nội dung trong ô bảng theo chiều dọc */
+        .align-middle td, .align-middle th {
+            vertical-align: middle;
+        }
     </style>
 }
 

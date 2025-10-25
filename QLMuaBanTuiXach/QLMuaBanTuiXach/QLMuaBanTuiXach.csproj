@@ -260,9 +260,13 @@
     <Content Include="Views\AdminSanPham\Details.cshtml" />
     <Content Include="Views\AdminSanPham\Delete.cshtml" />
     <Content Include="Views\NguoiDung\ThongTinCaNhan.cshtml" />
+    <Content Include="Views\AdminSanPham\ThemBienThe.cshtml" />
+    <Content Include="Views\AdminSanPham\SuaBienThe.cshtml" />
+    <Content Include="Views\AdminSanPham\XoaBienThe.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\HinhAnh\SanPham\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
