@@ -199,6 +199,28 @@
     <Content Include="Content\HinhAnh\banner2-removebg-preview.png" />
     <Content Include="Content\HinhAnh\banner2.jpg" />
     <Content Include="Content\HinhAnh\Logo.jpg" />
+    <Content Include="Content\HinhAnh\SanPham\10_den.jpg" />
+    <Content Include="Content\HinhAnh\SanPham\10_nau.jpg" />
+    <Content Include="Content\HinhAnh\SanPham\1_be.jpg" />
+    <Content Include="Content\HinhAnh\SanPham\1_den.jpg" />
+    <Content Include="Content\HinhAnh\SanPham\1_trang.jpg" />
+    <Content Include="Content\HinhAnh\SanPham\2_nau.jpg" />
+    <Content Include="Content\HinhAnh\SanPham\2_navy.jpg" />
+    <Content Include="Content\HinhAnh\SanPham\2_xam.jpg" />
+    <Content Include="Content\HinhAnh\SanPham\3_den.jpg" />
+    <Content Include="Content\HinhAnh\SanPham\4_bac.jpg" />
+    <Content Include="Content\HinhAnh\SanPham\4_vang.jpg" />
+    <Content Include="Content\HinhAnh\SanPham\5_den.jpg" />
+    <Content Include="Content\HinhAnh\SanPham\5_trang.jpg" />
+    <Content Include="Content\HinhAnh\SanPham\6_den.jpg" />
+    <Content Include="Content\HinhAnh\SanPham\6_nau.jpg" />
+    <Content Include="Content\HinhAnh\SanPham\7_den.jpg" />
+    <Content Include="Content\HinhAnh\SanPham\7_do.jpg" />
+    <Content Include="Content\HinhAnh\SanPham\8_den.jpg" />
+    <Content Include="Content\HinhAnh\SanPham\8_nat.jpg" />
+    <Content Include="Content\HinhAnh\SanPham\9_den.jpg" />
+    <Content Include="Content\HinhAnh\SanPham\9_hong.jpg" />
+    <Content Include="Content\HinhAnh\SanPham\9_xanh.jpg" />
     <Content Include="Content\style.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
@@ -266,7 +288,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Content\HinhAnh\SanPham\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
