@@ -12,7 +12,7 @@ namespace QLMuaBanTuiXach.Controllers
     public class NguoiDungController : Controller
     {
         
-        QL_TuiXachEntities1 db = new QL_TuiXachEntities1();
+        QL_TuiXachEntities db = new QL_TuiXachEntities();
 
         
         public ActionResult DangKy()

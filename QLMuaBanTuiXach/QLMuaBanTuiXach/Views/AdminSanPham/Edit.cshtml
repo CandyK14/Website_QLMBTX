@@ -16,7 +16,7 @@
 
             <div class="form-horizontal">
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                @Html.HiddenFor(model => model.MaSanPham) // Giữ lại ID sản phẩm
+                @Html.HiddenFor(model => model.MaSanPham) @*// Giữ lại ID sản phẩm*@
 
                 @* Tên Sản Phẩm *@
                 <div class="row mb-3">

@@ -1,63 +1,219 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 @using QLMuaBanTuiXach.Models
 @model List<SanPham>
+@{
+    // Lấy dữ liệu lọc từ ViewBag (đã được Controller gửi qua)
+    // Dùng if/else thay vì '??'
+    var allBrands = (ViewBag.Brands as List<ThuongHieu>);
+    if (allBrands == null)
+    {
+        allBrands = new List<ThuongHieu>();
+    }
+
+    var allColors = (ViewBag.Colors as List<string>);
+    if (allColors == null)
+    {
+        allColors = new List<string>();
+    }
+
+    var allMaterials = (ViewBag.Materials as List<string>);
+    if (allMaterials == null)
+    {
+        allMaterials = new List<string>();
+    }
+
+    var allOccasions = (ViewBag.Occasions as List<string>);
+    if (allOccasions == null)
+    {
+        allOccasions = new List<string>();
+    }
+
+    var allCollections = (ViewBag.Collections as List<string>);
+    if (allCollections == null)
+    {
+        allCollections = new List<string>();
+    }
+}
+
+
 <main>
     <section class="product-grid">
         <div class="container">
             <div class="banner">
                 <img class="banner-img" src="~/Content/HinhAnh/banner2.jpg" />
             </div>
-            
-            <h2>Sản Phẩm Nổi Bật</h2>
 
-            <div class="products">
+            <div class="filter-layout-container">
 
-                @foreach (SanPham sp in Model)
-                {
-                    // Lấy biến thể đầu tiên để hiển thị (hoặc null nếu SP không có biến thể)
-                    var firstVariant = sp.BienTheSanPham.FirstOrDefault();
+                <aside class="filter-sidebar">
+                    <h4>Bộ lọc sản phẩm</h4>
 
-                    // Bọc thẻ <a> quanh card để nhấp vào
-                    <a href="/Home/Detail/?id=@sp.MaSanPham" class="product-card-link">
-                        <div class="product-card">
-                            <div class="product-image">
-                                @if (firstVariant != null && !string.IsNullOrEmpty(firstVariant.HinhAnh))
+                    @using (Html.BeginForm("Filter", "Home", FormMethod.Get))
+                    {
+                        <input type="hidden" name="searchString" value="@ViewBag.CurrentSearch" />
+
+                        <div class="filter-group">
+                            <h5>Thương hiệu</h5>
+                            <select name="brand">
+                                <option value="0">Tất cả</option> @foreach (var item in allBrands)
                                 {
-                                    <img src="@Url.Content(firstVariant.HinhAnh)" alt="@sp.TenSanPham" />
+                                    <option value="@item.MaThuongHieu" @(ViewBag.CurrentBrand == item.MaThuongHieu ? "selected" : "")>
+                                        @item.TenThuongHieu
+                                    </option>
                                 }
-                                else
+                            </select>
+                        </div>
+
+                        <div class="filter-group">
+                            <h5>Màu sắc</h5>
+                            <select name="color">
+                                <option value="">Tất cả</option>
+                                @foreach (var item in allColors)
                                 {
-                                    <img src="@Url.Content("~/Content/img/placeholder.png")" alt="Chưa có ảnh" />
+                                    <option value="@item" @(ViewBag.CurrentColor == item ? "selected" : "")>
+                                        @item
+                                    </option>
                                 }
-                            </div>
-                            <div class="product-info">
+                            </select>
+                        </div>
 
-                                <h3>@sp.TenSanPham</h3>
-
-                                <p>Thương hiệu: @(sp.ThuongHieu != null ? sp.ThuongHieu.TenThuongHieu : "N/A")</p>
-
-                                <p class="product-price">
-                                    @(firstVariant != null ? firstVariant.GiaBan.ToString("N0") + " VNĐ" : "Chưa có giá")
-                                </p>
-
-                                <button class="btn add-to-cart">Thêm vào giỏ</button>
+                        <div class="filter-group">
+                            <h5>Giá bán (VNĐ)</h5>
+                            <div class="filter-range-group">
+                                <input type="number" name="minPrice" placeholder="Giá từ" value="@(ViewBag.CurrentMinPrice == 0 ? "" : ViewBag.CurrentMinPrice)" />
+                                <input type="number" name="maxPrice" placeholder="Giá đến" value="@(ViewBag.CurrentMaxPrice == 0 ? "" : ViewBag.CurrentMaxPrice)" />
                             </div>
                         </div>
-                    </a>
-                }
 
+                        <div class="filter-group">
+                            <h5>Chất liệu</h5>
+                            <select name="material">
+                                <option value="">Tất cả</option>
+                                @foreach (var item in allMaterials)
+                                {
+                                    <option value="@item" @(ViewBag.CurrentMaterial == item ? "selected" : "")>
+                                        @item
+                                    </option>
+                                }
+                            </select>
+                        </div>
+
+                        <div class="filter-group">
+                            <h5>Dịp sử dụng</h5>
+                            <select name="occasion">
+                                <option value="">Tất cả</option>
+                                @foreach (var item in allOccasions)
+                                {
+                                    <option value="@item" @(ViewBag.CurrentOccasion == item ? "selected" : "")>
+                                        @item
+                                    </option>
+                                }
+                            </select>
+                        </div>
+
+                        <div class="filter-group">
+                            <h5>Bộ sưu tập</h5>
+                            <select name="collection">
+                                <option value="">Tất cả</option>
+                                @foreach (var item in allCollections)
+                                {
+                                    <option value="@item" @(ViewBag.CurrentCollection == item ? "selected" : "")>
+                                        @item
+                                    </option>
+                                }
+                            </select>
+                        </div>
+
+                        <div class="filter-group">
+                            <h5>Kích thước (cm)</h5>
+                            <label>Dài (Từ-Đến)</label>
+                            <div class="filter-range-group">
+                                <input type="number" name="minLength" placeholder="Min" value="@(ViewBag.CurrentMinLength == 0 ? "" : ViewBag.CurrentMinLength)" />
+                                <input type="number" name="maxLength" placeholder="Max" value="@(ViewBag.CurrentMaxLength == 0 ? "" : ViewBag.CurrentMaxLength)" />
+                            </div>
+                            <label>Rộng (Từ-Đến)</label>
+                            <div class="filter-range-group">
+                                <input type="number" name="minWidth" placeholder="Min" value="@(ViewBag.CurrentMinWidth == 0 ? "" : ViewBag.CurrentMinWidth)" />
+                                <input type="number" name="maxWidth" placeholder="Max" value="@(ViewBag.CurrentMaxWidth == 0 ? "" : ViewBag.CurrentMaxWidth)" />
+                            </div>
+                            <label>Cao (Từ-Đến)</label>
+                            <div class="filter-range-group">
+                                <input type="number" name="minHeight" placeholder="Min" value="@(ViewBag.CurrentMinHeight == 0 ? "" : ViewBag.CurrentMinHeight)" />
+                                <input type="number" name="maxHeight" placeholder="Max" value="@(ViewBag.CurrentMaxHeight == 0 ? "" : ViewBag.CurrentMaxHeight)" />
+                            </div>
+                        </div>
+
+                        <div class="filter-group">
+                            <h5>Cân nặng (gram)</h5>
+                            <div class="filter-range-group">
+                                <input type="number" name="minWeight" placeholder="Từ" value="@(ViewBag.CurrentMinWeight == 0 ? "" : ViewBag.CurrentMinWeight)" />
+                                <input type="number" name="maxWeight" placeholder="Đến" value="@(ViewBag.CurrentMaxWeight == 0 ? "" : ViewBag.CurrentMaxWeight)" />
+                            </div>
+                        </div>
+
+
+                        <button type="submit" class="filter-submit-btn">Lọc Sản Phẩm</button>
+                    }
+                </aside>
+
+                <div class="product-main-content">
+
+                    @if (ViewBag.CurrentSearch != null)
+                    {
+                        <h2>Kết quả tìm kiếm cho: "@ViewBag.CurrentSearch"</h2>
+                    }
+                    else
+                    {
+                        <h2>Sản Phẩm Nổi Bật</h2>
+                    }
+
+                    @if (!Model.Any())
+                    {
+                        <p style="text-align: center; font-size: 1.2em; margin: 40px 0;">
+                            Không tìm thấy sản phẩm nào phù hợp với bộ lọc của bạn.
+                        </p>
+                    }
+
+                    <div class="products">
+                        @foreach (SanPham sp in Model)
+                        {
+                            var firstVariant = sp.BienTheSanPham.FirstOrDefault();
+                            <a href="/Home/Detail/?id=@sp.MaSanPham" class="product-card-link">
+                                <div class="product-card">
+                                    <div class="product-image">
+                                        @if (firstVariant != null && !string.IsNullOrEmpty(firstVariant.HinhAnh))
+                                        {
+                                            <img src="@Url.Content(firstVariant.HinhAnh)" alt="@sp.TenSanPham" />
+                                        }
+                                        else
+                                        {
+                                            <img src="@Url.Content("~/Content/img/placeholder.png")" alt="Chưa có ảnh" />
+                                        }
+                                    </div>
+                                    <div class="product-info">
+                                        <h3>@sp.TenSanPham</h3>
+                                        <p>Thương hiệu: @(sp.ThuongHieu != null ? sp.ThuongHieu.TenThuongHieu : "N/A")</p>
+                                        <p class="product-price">
+                                            @(firstVariant != null ? firstVariant.GiaBan.ToString("N0") + " VNĐ" : "Chưa có giá")
+                                        </p>
+                                        <button style="border:solid; border-color:gray" class="btn add-to-cart">Thêm vào giỏ</button>
+                                    </div>
+                                </div>
+                            </a>
+                        }
+                    </div>
+
+                </div>
             </div>
-
-
         </div>
     </section>
 </main>
 
 <style>
+   
     .product-card-link {
         text-decoration: none;
         color: inherit;
@@ -65,25 +221,91 @@
 
     .product-card .product-image img {
         width: 100%;
-        height: 250px; 
+        height: 250px;
         object-fit: cover;
     }
 
     .product-price {
         font-weight: bold;
-        color: #B22222; 
+        color: #B22222;
     }
+
     .banner {
         width: 100%;
-        text-align: center; 
-        margin: 20px 0;
+        text-align: center
     }
 
     .banner-img {
-        width: 40%; 
-        height: auto; 
+        width: 25%;
+        height: auto;
         display: inline-block;
         object-fit: contain;
         border-radius: 10px;
     }
+
+    
+    .filter-layout-container {
+        display: flex;
+        gap: 30px;
+    }
+
+    .filter-sidebar {
+        flex: 0 0 220px; 
+        position: sticky; 
+       
+        top: 150px;
+        /* Thêm 2 dòng này để thanh lọc tự cuộn (nếu quá dài) */
+        height: calc(100vh - 160px); 
+        overflow-y: auto; 
+        padding-right: 5px; 
+    }
+
+    .product-main-content {
+        flex: 1;
+    }
+
+    .filter-group {
+        margin-bottom: 20px;
+    }
+
+        .filter-group h5 {
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .filter-group select, .filter-group input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box; /* Thêm: Đảm bảo padding không làm vỡ layout */
+        }
+
+    .filter-range-group {
+        display: flex;
+        gap: 10px;
+    }
+
+        .filter-range-group label {
+            font-size: 13px;
+            color: #555;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+    .filter-submit-btn {
+        width: 100%;
+        padding: 12px;
+        font-weight: 700;
+        background-color: #333;
+        color: white;
+        border: none;
+        cursor: pointer;
+        border-radius: 5px;
+    }
+
+        .filter-submit-btn:hover {
+            background-color: #555
+        }
 </style>

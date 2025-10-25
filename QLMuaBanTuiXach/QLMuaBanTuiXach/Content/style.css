@@ -13,13 +13,6 @@ body {
     padding: 0 20px;
 }
 
-.logo img {
-    height: 130px;
-    width: auto;
-    object-fit: contain;
-    display: block;
-    margin-top: -5px;
-}
 
 
 header {
@@ -242,7 +235,7 @@ footer {
 }
 
 .banner-footer {
-    width: 50%;
+    width: 40%;
     height: auto;
     object-fit: contain;
 }

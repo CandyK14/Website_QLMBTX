@@ -10,6 +10,7 @@
 
         <div class="product-general-info">
             <h2>@Model.TenSanPham</h2>
+            <img  src="~/Content/HinhAnh/123.jpg" />
             <p><strong>Thương hiệu:</strong> @Model.ThuongHieu.TenThuongHieu</p>
             <p><strong>Danh mục:</strong> @Model.DanhMuc.TenDanhMuc</p>
             <p>@Model.MoTa</p>
@@ -17,9 +18,9 @@
 
         <hr />
 
-        <h3>Các lựa chọn sản phẩm</h3>
+        <h3>Các màu sắc khác</h3>
         <div class="variants-list">
-            @foreach (var bt in Model.BienTheSanPham) // Lặp qua các biến thể
+            @foreach (var bt in Model.BienTheSanPham) 
             {
                 <div class="variant-card">
                     <div class="variant-image">
@@ -40,7 +41,7 @@
 
                         @if (bt.SoLuongTonKho > 0)
                         {
-                            <button class="btn add-to-cart" data-variant-id="@bt.MaBienThe">Thêm vào giỏ</button>
+                            <button style="border:solid; border-color:gray" class="btn add-to-cart" data-variant-id="@bt.MaBienThe">Thêm vào giỏ</button>
                         }
                         else
                         {

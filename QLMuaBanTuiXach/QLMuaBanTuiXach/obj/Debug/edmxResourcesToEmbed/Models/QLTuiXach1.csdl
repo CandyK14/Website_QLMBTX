@@ -391,7 +391,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="QL_TuiXachEntities1" annotation:LazyLoadingEnabled="true">
+  <EntityContainer Name="QL_TuiXachEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="BienTheSanPham" EntityType="Self.BienTheSanPham" />
     <EntitySet Name="ChiTietDonHang" EntityType="Self.ChiTietDonHang" />
     <EntitySet Name="DanhGia" EntityType="Self.DanhGia" />

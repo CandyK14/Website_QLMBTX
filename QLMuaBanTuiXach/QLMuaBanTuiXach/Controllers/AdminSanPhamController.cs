@@ -12,7 +12,7 @@ namespace QLMuaBanTuiXach.Controllers
 {
     public class AdminSanPhamController : Controller
     {
-        private QL_TuiXachEntities1 db = new QL_TuiXachEntities1();
+        private QL_TuiXachEntities db = new QL_TuiXachEntities();
 
         private bool IsAdmin()
         {

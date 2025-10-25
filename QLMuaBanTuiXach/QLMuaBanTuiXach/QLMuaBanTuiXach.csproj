@@ -125,34 +125,34 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\BienTheSanPham.cs">
-      <DependentUpon>QLTuiXach1.tt</DependentUpon>
+      <DependentUpon>QLTuiXach.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ChiTietDonHang.cs">
-      <DependentUpon>QLTuiXach1.tt</DependentUpon>
+      <DependentUpon>QLTuiXach.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DanhGia.cs">
-      <DependentUpon>QLTuiXach1.tt</DependentUpon>
+      <DependentUpon>QLTuiXach.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DanhMuc.cs">
-      <DependentUpon>QLTuiXach1.tt</DependentUpon>
+      <DependentUpon>QLTuiXach.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DiaChi.cs">
-      <DependentUpon>QLTuiXach1.tt</DependentUpon>
+      <DependentUpon>QLTuiXach.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DonHang.cs">
-      <DependentUpon>QLTuiXach1.tt</DependentUpon>
+      <DependentUpon>QLTuiXach.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\GioHang.cs">
-      <DependentUpon>QLTuiXach1.tt</DependentUpon>
+      <DependentUpon>QLTuiXach.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\MaKhuyenMai.cs">
-      <DependentUpon>QLTuiXach1.tt</DependentUpon>
+      <DependentUpon>QLTuiXach.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\NguoiDung.cs">
-      <DependentUpon>QLTuiXach1.tt</DependentUpon>
+      <DependentUpon>QLTuiXach.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\PhieuDoiTra.cs">
-      <DependentUpon>QLTuiXach1.tt</DependentUpon>
+      <DependentUpon>QLTuiXach.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\QLTuiXach.Context.cs">
       <AutoGen>True</AutoGen>
@@ -169,26 +169,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>QLTuiXach.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Models\QLTuiXach1.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>QLTuiXach1.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\QLTuiXach1.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>QLTuiXach1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\QLTuiXach1.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>QLTuiXach1.edmx</DependentUpon>
-    </Compile>
     <Compile Include="Models\SanPham.cs">
-      <DependentUpon>QLTuiXach1.tt</DependentUpon>
+      <DependentUpon>QLTuiXach.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ThuongHieu.cs">
-      <DependentUpon>QLTuiXach1.tt</DependentUpon>
+      <DependentUpon>QLTuiXach.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -228,35 +213,18 @@
       <DependentUpon>QLTuiXach.edmx</DependentUpon>
       <LastGenOutput>QLTuiXach.cs</LastGenOutput>
     </Content>
-    <EntityDeploy Include="Models\QLTuiXach.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>QLTuiXach.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\QLTuiXach.edmx.diagram">
-      <DependentUpon>QLTuiXach.edmx</DependentUpon>
-    </Content>
-    <Content Include="Models\QLTuiXach1.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>QLTuiXach1.edmx</DependentUpon>
-      <LastGenOutput>QLTuiXach1.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Models\QLTuiXach1.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>QLTuiXach1.edmx</DependentUpon>
-      <LastGenOutput>QLTuiXach1.cs</LastGenOutput>
-    </Content>
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.esm.js" />
     <Content Include="Scripts\bootstrap.esm.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <EntityDeploy Include="Models\QLTuiXach1.edmx">
+    <EntityDeploy Include="Models\QLTuiXach.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>QLTuiXach1.Designer.cs</LastGenOutput>
+      <LastGenOutput>QLTuiXach.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\QLTuiXach1.edmx.diagram">
-      <DependentUpon>QLTuiXach1.edmx</DependentUpon>
+    <Content Include="Models\QLTuiXach.edmx.diagram">
+      <DependentUpon>QLTuiXach.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-3.7.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.7.1.js" />
