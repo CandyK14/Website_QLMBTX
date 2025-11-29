@@ -1,0 +1,74 @@
+﻿@model IEnumerable<QLMuaBanTuiXach.Models.SanPham>
+
+@{
+    ViewBag.Title = "Danh sách Sản phẩm";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h3>DANH SÁCH SẢN PHẨM</h3>
+
+<p>
+    @Html.ActionLink("Thêm Sản Phẩm Mới", "Create", null, new { @class = "btn btn-primary mb-3" })
+</p>
+<table class="table table-bordered table-hover align-middle">
+    <thead>
+        <tr class="table-dark">
+            <th>
+                @Html.DisplayNameFor(model => model.TenSanPham)
+            </th>
+            <th>
+                Ảnh Bìa (Biến Thể)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ChatLieuChinh)
+            </th>
+            <th>
+                Danh Mục
+            </th>
+            <th>
+                Thương Hiệu
+            </th>
+            <th>Thao Tác</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TenSanPham)
+                </td>
+                <td>
+                    @{
+                        // Lấy biến thể đầu tiên để hiển thị ảnh đại diện
+                        var firstVariant = item.BienTheSanPham.FirstOrDefault();
+                        if (firstVariant != null && !string.IsNullOrEmpty(firstVariant.HinhAnh))
+                        {
+                            // Giả sử ảnh nằm trong thư mục /Content/img/ theo cấu trúc DB
+                            <img src="@Url.Content("~/Content"+firstVariant.HinhAnh)" alt="@item.TenSanPham" />
+                        }
+                        else
+                        {
+                            <span>(Chưa có ảnh)</span>
+                        }
+                    }
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ChatLieuChinh)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DanhMuc.TenDanhMuc)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ThuongHieu.TenThuongHieu)
+                </td>
+                <td class="action-links">
+                    @Html.ActionLink("Sửa", "Edit", new { id = item.MaSanPham }, new { @class = "btn btn-warning btn-sm" })
+                    @Html.ActionLink("Chi tiết", "Details", new { id = item.MaSanPham }, new { @class = "btn btn-info btn-sm" })
+                    @Html.ActionLink("Xóa", "Delete", new { id = item.MaSanPham }, new { @class = "btn btn-danger btn-sm" })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+

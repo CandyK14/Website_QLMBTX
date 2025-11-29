@@ -1,0 +1,252 @@
+﻿@model QLMuaBanTuiXach.Models.SanPham
+
+@{
+    ViewBag.Title = "Thêm Sản Phẩm Mới";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="card shadow-sm">
+    <div class="card-header">
+        <h3 class="mb-0"><i class="fa-solid fa-plus me-2"></i>THÊM SẢN PHẨM MỚI (và Biến Thể Đầu Tiên)</h3>
+    </div>
+    <div class="card-body">
+        @* Thêm enctype="multipart/form-data" để cho phép upload file *@
+        @using (Html.BeginForm("Create", "AdminSanPham", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken() // Chống CSRF
+
+            <div class="form-horizontal">
+                <h4>Thông tin Sản phẩm Chính</h4>
+                <hr />
+                @* Hiển thị tóm tắt lỗi ở đầu form *@
+                @Html.ValidationSummary(true, "", new { @class = "alert alert-danger" })
+
+                @* Tên Sản Phẩm *@
+                <div class="row mb-3">
+                    @Html.LabelFor(model => model.TenSanPham, "Tên Sản Phẩm", htmlAttributes: new { @class = "col-md-3 col-form-label required" })
+                    <div class="col-md-9">
+                        @Html.EditorFor(model => model.TenSanPham, new { htmlAttributes = new { @class = "form-control", placeholder = "Nhập tên túi xách...", required = "required" } })
+                        @* Hiển thị lỗi ngay dưới input *@
+                        @Html.ValidationMessageFor(model => model.TenSanPham, "", new { @class = "text-danger mt-1 d-block" })
+                    </div>
+                </div>
+
+                @* Mô Tả *@
+                <div class="row mb-3">
+                    @Html.LabelFor(model => model.MoTa, "Mô Tả", htmlAttributes: new { @class = "col-md-3 col-form-label" })
+                    <div class="col-md-9">
+                        @Html.TextAreaFor(model => model.MoTa, 5, 90, new { @class = "form-control", placeholder = "Mô tả chi tiết về sản phẩm..." })
+                        @Html.ValidationMessageFor(model => model.MoTa, "", new { @class = "text-danger mt-1 d-block" })
+                    </div>
+                </div>
+
+                @* Danh Mục *@
+                <div class="row mb-3">
+                    @Html.LabelFor(model => model.MaDanhMuc, "Danh Mục", htmlAttributes: new { @class = "col-md-3 col-form-label" })
+                    <div class="col-md-9">
+                        @Html.DropDownList("MaDanhMuc", null, "-- Chọn Danh Mục --", htmlAttributes: new { @class = "form-select" })
+                        @Html.ValidationMessageFor(model => model.MaDanhMuc, "", new { @class = "text-danger mt-1 d-block" })
+                    </div>
+                </div>
+
+                @* Thương Hiệu *@
+                <div class="row mb-3">
+                    @Html.LabelFor(model => model.MaThuongHieu, "Thương Hiệu", htmlAttributes: new { @class = "col-md-3 col-form-label" })
+                    <div class="col-md-9">
+                        @Html.DropDownList("MaThuongHieu", null, "-- Chọn Thương Hiệu --", htmlAttributes: new { @class = "form-select" })
+                        @Html.ValidationMessageFor(model => model.MaThuongHieu, "", new { @class = "text-danger mt-1 d-block" })
+                    </div>
+                </div>
+
+                <hr />
+                <h5 class="mb-3">Thuộc tính khác (Sản phẩm chính)</h5>
+
+                @* Chất Liệu Chính *@
+                <div class="row mb-3">
+                    @Html.LabelFor(model => model.ChatLieuChinh, "Chất Liệu Chính", htmlAttributes: new { @class = "col-md-3 col-form-label" })
+                    <div class="col-md-9">
+                        @Html.EditorFor(model => model.ChatLieuChinh, new { htmlAttributes = new { @class = "form-control", placeholder = "Ví dụ: Da PU, Vải Canvas..." } })
+                        @Html.ValidationMessageFor(model => model.ChatLieuChinh, "", new { @class = "text-danger mt-1 d-block" })
+                    </div>
+                </div>
+
+                @* Dịp Sử Dụng *@
+                <div class="row mb-3">
+                    @Html.LabelFor(model => model.DipSuDung, "Dịp Sử Dụng", htmlAttributes: new { @class = "col-md-3 col-form-label" })
+                    <div class="col-md-9">
+                        @Html.EditorFor(model => model.DipSuDung, new { htmlAttributes = new { @class = "form-control", placeholder = "Ví dụ: Đi làm, Dạo phố, Dự tiệc..." } })
+                        @Html.ValidationMessageFor(model => model.DipSuDung, "", new { @class = "text-danger mt-1 d-block" })
+                    </div>
+                </div>
+
+                @* Bộ Sưu Tập *@
+                <div class="row mb-3">
+                    @Html.LabelFor(model => model.BoSuuTap, "Bộ Sưu Tập", htmlAttributes: new { @class = "col-md-3 col-form-label" })
+                    <div class="col-md-9">
+                        @Html.EditorFor(model => model.BoSuuTap, new { htmlAttributes = new { @class = "form-control", placeholder = "Ví dụ: Summer Collection, Basic..." } })
+                        @Html.ValidationMessageFor(model => model.BoSuuTap, "", new { @class = "text-danger mt-1 d-block" })
+                    </div>
+                </div>
+
+
+                
+                @* PHẦN THÊM MỚI CHO BIẾN THỂ ĐẦU TIÊN *@
+                
+                <h4 class="mt-4">Thông tin Biến Thể Sản Phẩm Đầu Tiên</h4>
+                <hr />
+
+                @* SKU *@
+                <div class="row mb-3">
+                    <label class="col-md-3 col-form-label required">SKU</label>
+                    <div class="col-md-9">
+                        @* Tên input phải khớp với Controller *@
+                        <input type="text" name="BienTheSanPham.SKU" class="form-control" placeholder="Mã định danh duy nhất (ví dụ: TXV001-BLK)" required />
+                        @* Hiển thị lỗi validation cho SKU *@
+                        @Html.ValidationMessage("BienTheSanPham.SKU", null, new { @class = "text-danger mt-1 d-block" })
+                    </div>
+                </div>
+
+                @* Màu Sắc *@
+                <div class="row mb-3">
+                    <label class="col-md-3 col-form-label">Màu Sắc</label>
+                    <div class="col-md-9">
+                        <input type="text" name="BienTheSanPham.MauSac" class="form-control" placeholder="Ví dụ: Đen, Trắng, Be..." />
+                        
+                    </div>
+                </div>
+
+                @* Giá Bán *@
+                <div class="row mb-3">
+                    <label class="col-md-3 col-form-label required">Giá Bán (VNĐ)</label>
+                    <div class="col-md-9">
+                        <input type="number" step="1000" min="0" name="BienTheSanPham.GiaBan" class="form-control" placeholder="Nhập giá bán..." required />
+                        @Html.ValidationMessage("BienTheSanPham.GiaBan", null, new { @class = "text-danger mt-1 d-block" })
+                    </div>
+                </div>
+
+                @* Số Lượng Tồn Kho *@
+                <div class="row mb-3">
+                    <label class="col-md-3 col-form-label required">Số Lượng Tồn</label>
+                    <div class="col-md-9">
+                        <input type="number" min="0" name="BienTheSanPham.SoLuongTonKho" class="form-control" placeholder="Nhập số lượng ban đầu..." required />
+                        @Html.ValidationMessage("BienTheSanPham.SoLuongTonKho", null, new { @class = "text-danger mt-1 d-block" })
+                    </div>
+                </div>
+
+                @* Chiều Dài *@
+                <div class="row mb-3">
+                    <label class="col-md-3 col-form-label">Chiều Dài (cm)</label>
+                    <div class="col-md-9">
+                        <input type="number" step="0.1" min="0" name="BienTheSanPham.ChieuDaiCM" class="form-control" placeholder="Để trống nếu không áp dụng" />
+                        @Html.ValidationMessage("BienTheSanPham.ChieuDaiCM", null, new { @class = "text-danger mt-1 d-block" })
+                    </div>
+                </div>
+
+                @* Chiều Rộng *@
+                <div class="row mb-3">
+                    <label class="col-md-3 col-form-label">Chiều Rộng (cm)</label>
+                    <div class="col-md-9">
+                        <input type="number" step="0.1" min="0" name="BienTheSanPham.ChieuRongCM" class="form-control" placeholder="Để trống nếu không áp dụng" />
+                        @Html.ValidationMessage("BienTheSanPham.ChieuRongCM", null, new { @class = "text-danger mt-1 d-block" })
+                    </div>
+                </div>
+
+                @* Chiều Cao *@
+                <div class="row mb-3">
+                    <label class="col-md-3 col-form-label">Chiều Cao (cm)</label>
+                    <div class="col-md-9">
+                        <input type="number" step="0.1" min="0" name="BienTheSanPham.ChieuCaoCM" class="form-control" placeholder="Để trống nếu không áp dụng" />
+                        @Html.ValidationMessage("BienTheSanPham.ChieuCaoCM", null, new { @class = "text-danger mt-1 d-block" })
+                    </div>
+                </div>
+
+                @* Cân Nặng *@
+                <div class="row mb-3">
+                    <label class="col-md-3 col-form-label">Cân Nặng (gram)</label>
+                    <div class="col-md-9">
+                        <input type="number" min="0" name="BienTheSanPham.CanNangGram" class="form-control" placeholder="Để trống nếu không áp dụng" />
+                        @Html.ValidationMessage("BienTheSanPham.CanNangGram", null, new { @class = "text-danger mt-1 d-block" })
+                    </div>
+                </div>
+
+                @* Hình Ảnh *@
+                <div class="row mb-3">
+                    <label class="col-md-3 col-form-label required">Hình Ảnh</label>
+                    <div class="col-md-9">
+                       
+                        <input type="file" name="HinhAnhUpload" class="form-control" accept="image/*" required />
+                        @Html.ValidationMessage("HinhAnhUpload", null, new { @class = "text-danger mt-1 d-block" })
+                    </div>
+                </div>
+
+                @* Nút Lưu và Quay lại *@
+                <div class="row mt-4">
+                    <div class="col-md-9 offset-md-3">
+                        <button type="submit" class="btn btn-primary btn-submit-effect">
+                            <i class="fa-solid fa-plus me-1"></i> Tạo Mới Sản Phẩm & Biến Thể
+                        </button>
+                        @Html.ActionLink("Quay lại Danh sách", "Index", null, new { @class = "btn btn-secondary btn-cancel-effect ms-2" })
+                    </div>
+                </div>
+
+            </div> @* Đóng div form-horizontal *@
+        } @* Đóng using Html.BeginForm *@
+    </div> @* Đóng div card-body *@
+    <div class="card-footer bg-light">
+        Lưu ý: Bạn sẽ quản lý các biến thể khác (nếu có) trong trang Chỉnh sửa sản phẩm.
+    </div>
+</div> @* Đóng div card *@
+
+@* Section scripts để chứa CSS riêng cho trang này *@
+@section scripts {
+    @* @Scripts.Render("~/bundles/jqueryval") *@
+    <style>
+        .required::after {
+            content: " *";
+            color: red;
+        }
+
+        .form-control, .form-select {
+            transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+            border-radius: 0.3rem;
+        }
+
+            .form-control:focus, .form-select:focus {
+                border-color: #86b7fe;
+                outline: 0;
+                box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+            }
+
+        .btn-submit-effect, .btn-cancel-effect {
+            transition: transform 0.1s ease-out, background-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+            border-radius: 0.3rem;
+        }
+
+            .btn-submit-effect:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+            }
+
+            .btn-cancel-effect:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            }
+
+        .btn-primary i {
+            margin-right: 0.3rem;
+        }
+
+        .col-form-label {
+            font-weight: 500;
+        }
+
+        .form-horizontal .row {
+            align-items: flex-start;
+        }
+
+        .text-danger {
+            font-size: 0.875em;
+        }
+    </style>
+}
+

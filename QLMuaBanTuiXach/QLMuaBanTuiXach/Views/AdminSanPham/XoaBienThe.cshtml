@@ -1,0 +1,67 @@
+﻿@model QLMuaBanTuiXach.Models.BienTheSanPham
+
+@{
+    ViewBag.Title = "Xác Nhận Xóa Biến Thể";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    string tenSanPhamGoc = ViewBag.TenSanPhamGoc ?? "Sản phẩm không xác định";
+    int maSanPhamGoc = Model.MaSanPham; // Lấy MaSanPham từ Model để quay lại
+}
+
+<div class="card shadow-sm border-danger">
+    @* Thêm border-danger để nhấn mạnh *@
+    <div class="card-header bg-danger text-white">
+        @* Header màu đỏ *@
+        <h3 class="mb-0">XÁC NHẬN XÓA BIẾN THỂ SẢN PHẨM</h3>
+        <small>Cho sản phẩm: <strong>@tenSanPhamGoc</strong></small>
+    </div>
+    <div class="card-body">
+        <p class="lead text-danger">Bạn có chắc chắn muốn xóa biến thể này không?</p>
+        <p class="text-muted">Hành động này không thể hoàn tác.</p>
+        <hr />
+
+        <dl class="row">
+            <dt class="col-sm-3">SKU</dt>
+            <dd class="col-sm-9">@Html.DisplayFor(model => model.SKU)</dd>
+
+            <dt class="col-sm-3">Màu Sắc</dt>
+            <dd class="col-sm-9">@Html.DisplayFor(model => model.MauSac)</dd>
+
+            <dt class="col-sm-3">Giá Bán</dt>
+            <dd class="col-sm-9">@String.Format("{0:N0} VNĐ", Model.GiaBan)</dd>
+
+            <dt class="col-sm-3">Số Lượng Tồn</dt>
+            <dd class="col-sm-9">@Html.DisplayFor(model => model.SoLuongTonKho)</dd>
+
+            <dt class="col-sm-3">Hình Ảnh</dt>
+            <dd class="col-sm-9">
+                @if (!string.IsNullOrEmpty(Model.HinhAnh))
+                {
+                    <img src="@Url.Content(Model.HinhAnh)" alt="Ảnh biến thể" style="max-width: 80px; height: auto;" />
+                }
+                else
+                {
+                    <span class="text-muted fst-italic">(Chưa có ảnh)</span>
+                }
+            </dd>
+
+            @* Có thể thêm các trường khác nếu muốn *@
+        </dl>
+
+    </div>
+    <div class="card-footer bg-light text-end">
+        @* SỬA LẠI TÊN ACTION Ở ĐÂY *@
+        @using (Html.BeginForm("XoaBienTheConfirmed", "AdminSanPham", new { id = Model.MaBienThe }, FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color">
+                <button type="submit" class="btn btn-danger">
+                    <i class="fa-solid fa-trash-alt me-1"></i> Xác Nhận Xóa Biến Thể
+                </button>
+                @* Nút quay lại trang Edit của sản phẩm gốc *@
+                @Html.ActionLink("Hủy", "Edit", "AdminSanPham", new { id = maSanPhamGoc }, new { @class = "btn btn-secondary ms-2" }) @* Thêm Controller name cho ActionLink *@
+            </div>
+        }
+    </div>
+</div>
+
