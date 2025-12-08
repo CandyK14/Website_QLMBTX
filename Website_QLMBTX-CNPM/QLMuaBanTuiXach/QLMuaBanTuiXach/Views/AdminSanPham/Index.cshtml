@@ -1,0 +1,165 @@
+﻿@using QLMuaBanTuiXach.Models
+@model IEnumerable<SanPham>
+
+@{
+    ViewBag.Title = "Quản Lý Sản Phẩm";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+
+    // Hứng dữ liệu Ticket từ Controller
+    var listYeuCau = ViewBag.ListYeuCau as List<YeuCauThemSanPham>;
+    int soLuongYeuCau = listYeuCau != null ? listYeuCau.Count : 0;
+}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h3 class="text-primary fw-bold mb-0">DANH SÁCH SẢN PHẨM</h3>
+
+    @* --- NÚT TICKET (CHUÔNG THÔNG BÁO) --- *@
+    <button type="button" class="btn btn-warning position-relative shadow-sm fw-bold" data-bs-toggle="modal" data-bs-target="#ticketModal">
+        <i class="fa-solid fa-bell me-2"></i> Yêu Cầu Từ Kho
+        @if (soLuongYeuCau > 0)
+        {
+            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger border border-light">
+                @soLuongYeuCau
+                <span class="visually-hidden">yêu cầu mới</span>
+            </span>
+        }
+    </button>
+</div>
+
+@if (TempData["ThongBao"] != null)
+{
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <i class="fa-solid fa-check-circle me-2"></i> @TempData["ThongBao"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+}
+
+<p>
+    @Html.ActionLink("Thêm Sản Phẩm Mới", "Create", null, new { @class = "btn btn-primary" })
+</p>
+
+@* --- BẢNG SẢN PHẨM (GIỮ NGUYÊN) --- *@
+<div class="card shadow-sm">
+    <div class="card-body p-0">
+        <table class="table table-hover table-bordered align-middle mb-0">
+            <thead class="table-dark">
+                <tr>
+                    <th>Tên Sản Phẩm</th>
+                    <th>Ảnh Đại Diện</th>
+                    <th>Chất Liệu</th>
+                    <th>Danh Mục</th>
+                    <th>Thương Hiệu</th>
+                    <th style="width: 220px;">Thao Tác</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td class="fw-bold">@item.TenSanPham</td>
+                        <td class="text-center">
+                            @{
+                                var firstVariant = item.BienTheSanPham.FirstOrDefault();
+                                if (firstVariant != null && !string.IsNullOrEmpty(firstVariant.HinhAnh))
+                                {
+                                    <img src="@Url.Content(firstVariant.HinhAnh)" style="width: 50px; height: 50px; object-fit: cover; border-radius: 4px; border: 1px solid #ddd;" />
+                                }
+                                else
+                                {
+                                    <span class="text-muted small fst-italic">(Chưa có ảnh)</span>
+                                }
+                            }
+                        </td>
+                        <td>@item.ChatLieuChinh</td>
+                        <td>@(item.DanhMuc?.TenDanhMuc)</td>
+                        <td>@(item.ThuongHieu?.TenThuongHieu)</td>
+                        <td>
+                            <a href="@Url.Action("Edit", new { id = item.MaSanPham })" class="btn btn-warning btn-sm" title="Sửa">
+                                <i class="fa-solid fa-pen"></i>
+                            </a>
+                            <a href="@Url.Action("Details", new { id = item.MaSanPham })" class="btn btn-info btn-sm mx-1" title="Chi tiết">
+                                <i class="fa-solid fa-circle-info"></i>
+                            </a>
+                            <a href="@Url.Action("Delete", new { id = item.MaSanPham })" class="btn btn-danger btn-sm" title="Xóa">
+                                <i class="fa-solid fa-trash"></i>
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@* --- MODAL HIỂN THỊ TICKET --- *@
+<div class="modal fade" id="ticketModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header bg-warning text-dark">
+                <h5 class="modal-title fw-bold"><i class="fa-solid fa-clipboard-list me-2"></i>DANH SÁCH YÊU CẦU CẦN XỬ LÝ</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body bg-light">
+                @if (listYeuCau != null && listYeuCau.Any())
+                {
+                    <div class="row">
+                        @foreach (var ticket in listYeuCau)
+                        {
+                            <div class="col-md-6 mb-3">
+                                <div class="card h-100 border-warning shadow-sm">
+                                    <div class="card-header bg-white d-flex justify-content-between">
+                                        <span class="badge bg-danger">MỚI</span>
+                                        <small class="text-muted">Ngày gửi: @(ticket.NgayYeuCau.HasValue ? ticket.NgayYeuCau.Value.ToString("dd/MM/yyyy HH:mm") : "")</small>
+                                    </div>
+                                    <div class="card-body">
+                                        <h5 class="card-title text-primary fw-bold">@ticket.TenSanPhamYeuCau</h5>
+                                        <hr />
+                                        @* Hiển thị mô tả (có xuống dòng) *@
+                                        <div class="card-text bg-light p-2 rounded border" style="white-space: pre-line; font-family: monospace; font-size: 0.95rem;">
+                                            @ticket.MoTaChiTiet
+                                        </div>
+                                    </div>
+                                    <div class="card-footer bg-white text-end">
+
+                                        @* Nút đi tạo sản phẩm (Giữ nguyên) *@
+                                        <a href="@Url.Action("Create", new {
+                                                        tenGoiY = ticket.TenSanPhamYeuCau,
+                                                        moTaGoiY = ticket.MoTaChiTiet})"
+                                           class="btn btn-outline-primary btn-sm me-2" target="_blank">
+                                            <i class="fa-solid fa-plus"></i> Đi tới trang Tạo SP
+                                        </a>
+
+                                        @* [MỚI] NÚT TỪ CHỐI *@
+                                        <a href="@Url.Action("TuChoiYeuCau", new { id = ticket.MaYeuCau })"
+                                           class="btn btn-danger btn-sm me-2"
+                                           onclick="return confirm('Bạn có chắc muốn TỪ CHỐI yêu cầu này không? Yêu cầu sẽ bị hủy bỏ.')">
+                                            <i class="fa-solid fa-xmark"></i> Từ Chối
+                                        </a>
+
+                                        @* Nút Hoàn tất (Giữ nguyên) *@
+                                        <a href="@Url.Action("HoanThanhYeuCau", new { id = ticket.MaYeuCau })"
+                                           class="btn btn-success btn-sm"
+                                           onclick="return confirm('Bạn đã tạo xong mã hàng cho yêu cầu này chưa?')">
+                                            <i class="fa-solid fa-check"></i> Đã Xử Lý Xong
+                                        </a>
+
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                }
+                else
+                {
+                    <div class="text-center py-5">
+                        <i class="fa-solid fa-check-circle text-success fa-4x mb-3"></i>
+                        <h5 class="text-muted">Tuyệt vời! Không có yêu cầu nào tồn đọng.</h5>
+                    </div>
+                }
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+            </div>
+        </div>
+    </div>
+</div>

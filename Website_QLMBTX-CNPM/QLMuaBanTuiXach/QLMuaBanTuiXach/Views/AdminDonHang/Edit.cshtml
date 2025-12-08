@@ -1,0 +1,92 @@
+﻿@model QLMuaBanTuiXach.Models.DonHang
+
+@{
+    ViewBag.Title = "Cập Nhật Trạng Thái Đơn Hàng";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="card shadow-sm" style="max-width: 800px; margin: 0 auto;">
+    <div class="card-header bg-warning text-dark">
+        <h4 class="mb-0"><i class="fa-solid fa-pen-to-square me-2"></i>CẬP NHẬT TRẠNG THÁI ĐƠN HÀNG #@Model.MaDonHang</h4>
+    </div>
+    <div class="card-body">
+
+        @* Hiển thị thông tin tóm tắt để Admin không bị nhầm lẫn *@
+        <div class="alert alert-info d-flex justify-content-between align-items-center">
+            <div>
+                <strong>Khách hàng:</strong> @(Model.NguoiDung != null ? Model.NguoiDung.HoTen : "Khách vãng lai") <br />
+                <strong>Tổng tiền:</strong> <span class="text-danger fw-bold">@Model.TongThanhToan.ToString("N0") ₫</span>
+            </div>
+            <div class="text-end">
+                <span>Ngày đặt: @Model.NgayDat.Value.ToString("dd/MM/yyyy")</span>
+            </div>
+        </div>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            @Html.HiddenFor(model => model.MaDonHang)
+
+            <div class="form-horizontal">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                @* 1. Cập nhật Trạng Thái Đơn Hàng *@
+                <div class="mb-4">
+                    <label class="form-label fw-bold">Trạng Thái Đơn Hàng:</label>
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="fa-solid fa-truck"></i></span>
+                        @{
+                            // Tạo danh sách trạng thái khớp với ràng buộc trong SQL (CHECK constraints)
+                            var listTrangThai = new List<SelectListItem>
+                                        {
+                                new SelectListItem { Value = "ChoXuLy", Text = "Chờ Xử Lý (Mới)" },
+                                new SelectListItem { Value = "DangXuLy", Text = "Đang Xử Lý (Chuẩn bị hàng)" },
+                                new SelectListItem { Value = "DangGiao", Text = "Đang Giao Hàng" },
+                                new SelectListItem { Value = "DaGiao", Text = "Đã Giao Thành Công" },
+                                new SelectListItem { Value = "DaHuy", Text = "Đã Hủy" },
+                                new SelectListItem { Value = "DoiTra", Text = "Đổi / Trả Hàng" }
+                            };
+                        }
+                        @Html.DropDownListFor(model => model.TrangThai, listTrangThai, new { @class = "form-select form-select-lg" })
+                    </div>
+                    <small class="text-muted fst-italic ps-1">Chọn "Đang Giao" khi shipper đã lấy hàng. Chọn "Đã Giao" khi khách đã nhận.</small>
+                </div>
+
+                @* 2. Cập nhật Trạng Thái Thanh Toán *@
+                <div class="mb-4">
+                    <label class="form-label fw-bold">Trạng Thái Thanh Toán:</label>
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="fa-solid fa-money-bill-wave"></i></span>
+                        @{
+                            var listTTThanhToan = new List<SelectListItem>
+                                        {
+                                new SelectListItem { Value = "ChuaThanhToan", Text = "Chưa Thanh Toán" },
+                                new SelectListItem { Value = "DaThanhToan", Text = "Đã Thanh Toán" }
+                            };
+                        }
+                        @Html.DropDownListFor(model => model.TrangThaiThanhToan, listTTThanhToan, new { @class = "form-select" })
+                    </div>
+                </div>
+
+                @* 3. Ghi Chú (Admin có thể note lại lý do hủy, hoặc mã vận đơn) *@
+                <div class="mb-4">
+                    <label class="form-label fw-bold">Ghi Chú Đơn Hàng:</label>
+                    @Html.TextAreaFor(model => model.GhiChu, new { @class = "form-control", rows = "4", placeholder = "Nhập ghi chú nội bộ (VD: Lý do hủy đơn, Mã vận đơn GHTK...)" })
+                    @Html.ValidationMessageFor(model => model.GhiChu, "", new { @class = "text-danger" })
+                </div>
+
+                <hr />
+
+                @* Nút bấm *@
+                <div class="d-flex justify-content-end gap-2">
+                    <a href="@Url.Action("Index")" class="btn btn-secondary">
+                        <i class="fa-solid fa-arrow-left me-1"></i> Quay Lại
+                    </a>
+                    <button type="submit" class="btn btn-success px-4">
+                        <i class="fa-solid fa-save me-1"></i> Lưu Cập Nhật
+                    </button>
+                </div>
+            </div>
+        }
+    </div>
+</div>

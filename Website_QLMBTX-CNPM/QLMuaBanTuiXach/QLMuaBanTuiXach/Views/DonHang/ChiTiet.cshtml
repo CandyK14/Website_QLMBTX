@@ -1,0 +1,57 @@
+﻿@model QLMuaBanTuiXach.Models.DonHang
+@{
+    ViewBag.Title = "Chi Tiết Đơn Hàng #" + Model.MaDonHang;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container" style="margin-top: 40px;">
+    <a href="@Url.Action("Index", "DonHang")" style="color:#555;">&larr; Quay lại danh sách</a>
+    <h2 style="margin-top: 10px;">Chi tiết đơn hàng #@Model.MaDonHang</h2>
+
+    <div class="row">
+        <div class="col-md-6">
+            <h4>Thông tin giao hàng</h4>
+            <p><strong>Người nhận:</strong> @Model.DiaChi.TenNguoiNhan</p>
+            <p><strong>SĐT:</strong> @Model.DiaChi.SoDienThoai</p>
+            <p><strong>Địa chỉ:</strong> @Model.DiaChi.SoNhaDuong, @Model.DiaChi.PhuongXa, @Model.DiaChi.QuanHuyen, @Model.DiaChi.TinhThanhPho</p>
+            <p><strong>Ghi chú:</strong> @Model.GhiChu</p>
+        </div>
+        <div class="col-md-6">
+            <h4>Thanh toán</h4>
+            <p><strong>Trạng thái đơn:</strong> @Model.TrangThai</p>
+            <p><strong>Thanh toán:</strong> @Model.PhuongThucThanhToan (@Model.TrangThaiThanhToan)</p>
+            <h3 style="color:#B22222;">Tổng cộng: @Model.TongThanhToan.ToString("N0") ₫</h3>
+        </div>
+    </div>
+
+    <hr />
+    <h4>Sản phẩm đã mua</h4>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Sản phẩm</th>
+                <th>Phân loại</th>
+                <th>Giá mua</th>
+                <th>Số lượng</th>
+                <th>Thành tiền</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var ct in Model.ChiTietDonHang)
+            {
+                <tr>
+                    <td style="display:flex; align-items:center;">
+                        <img src="@Url.Content(ct.BienTheSanPham.HinhAnh)" width="50" style="margin-right:10px;" />
+                        <a href="@Url.Action("Detail", "Home", new { id = ct.BienTheSanPham.MaSanPham })">
+                            @ct.BienTheSanPham.SanPham.TenSanPham
+                        </a>
+                    </td>
+                    <td>@ct.BienTheSanPham.MauSac</td>
+                    <td>@ct.GiaLucMua.ToString("N0") ₫</td>
+                    <td>@ct.SoLuong</td>
+                    <td>@((ct.GiaLucMua * ct.SoLuong).ToString("N0")) ₫</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

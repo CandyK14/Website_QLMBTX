@@ -1,0 +1,438 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\datpq\\Downloads\\cnpm\\Website_QLMBTX-cuoicungthi\\Website_QLMBTX-cuoicungthi\\QLMuaBanTuiXach\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{38D03565-A8A7-4FBC-A867-53B84ABD718B}|QLMuaBanTuiXach\\QLMuaBanTuiXach.csproj|c:\\users\\datpq\\downloads\\cnpm\\website_qlmbtx-cuoicungthi\\website_qlmbtx-cuoicungthi\\qlmuabantuixach\\qlmuabantuixach\\views\\admindanhmuc\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{38D03565-A8A7-4FBC-A867-53B84ABD718B}|QLMuaBanTuiXach\\QLMuaBanTuiXach.csproj|solutionrelative:qlmuabantuixach\\views\\admindanhmuc\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{38D03565-A8A7-4FBC-A867-53B84ABD718B}|QLMuaBanTuiXach\\QLMuaBanTuiXach.csproj|c:\\users\\datpq\\downloads\\cnpm\\website_qlmbtx-cuoicungthi\\website_qlmbtx-cuoicungthi\\qlmuabantuixach\\qlmuabantuixach\\views\\admindanhmuc\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{38D03565-A8A7-4FBC-A867-53B84ABD718B}|QLMuaBanTuiXach\\QLMuaBanTuiXach.csproj|solutionrelative:qlmuabantuixach\\views\\admindanhmuc\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{38D03565-A8A7-4FBC-A867-53B84ABD718B}|QLMuaBanTuiXach\\QLMuaBanTuiXach.csproj|c:\\users\\datpq\\downloads\\cnpm\\website_qlmbtx-cuoicungthi\\website_qlmbtx-cuoicungthi\\qlmuabantuixach\\qlmuabantuixach\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{38D03565-A8A7-4FBC-A867-53B84ABD718B}|QLMuaBanTuiXach\\QLMuaBanTuiXach.csproj|solutionrelative:qlmuabantuixach\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{38D03565-A8A7-4FBC-A867-53B84ABD718B}|QLMuaBanTuiXach\\QLMuaBanTuiXach.csproj|c:\\users\\datpq\\downloads\\cnpm\\website_qlmbtx-cuoicungthi\\website_qlmbtx-cuoicungthi\\qlmuabantuixach\\qlmuabantuixach\\views\\adminsanpham\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{38D03565-A8A7-4FBC-A867-53B84ABD718B}|QLMuaBanTuiXach\\QLMuaBanTuiXach.csproj|solutionrelative:qlmuabantuixach\\views\\adminsanpham\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{38D03565-A8A7-4FBC-A867-53B84ABD718B}|QLMuaBanTuiXach\\QLMuaBanTuiXach.csproj|c:\\users\\datpq\\downloads\\cnpm\\website_qlmbtx-cuoicungthi\\website_qlmbtx-cuoicungthi\\qlmuabantuixach\\qlmuabantuixach\\views\\adminsanpham\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{38D03565-A8A7-4FBC-A867-53B84ABD718B}|QLMuaBanTuiXach\\QLMuaBanTuiXach.csproj|solutionrelative:qlmuabantuixach\\views\\adminsanpham\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{38D03565-A8A7-4FBC-A867-53B84ABD718B}|QLMuaBanTuiXach\\QLMuaBanTuiXach.csproj|c:\\users\\datpq\\downloads\\cnpm\\website_qlmbtx-cuoicungthi\\website_qlmbtx-cuoicungthi\\qlmuabantuixach\\qlmuabantuixach\\views\\adminsanpham\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{38D03565-A8A7-4FBC-A867-53B84ABD718B}|QLMuaBanTuiXach\\QLMuaBanTuiXach.csproj|solutionrelative:qlmuabantuixach\\views\\adminsanpham\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{38D03565-A8A7-4FBC-A867-53B84ABD718B}|QLMuaBanTuiXach\\QLMuaBanTuiXach.csproj|c:\\users\\datpq\\downloads\\cnpm\\website_qlmbtx-cuoicungthi\\website_qlmbtx-cuoicungthi\\qlmuabantuixach\\qlmuabantuixach\\views\\adminkho\\taoyeucau.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{38D03565-A8A7-4FBC-A867-53B84ABD718B}|QLMuaBanTuiXach\\QLMuaBanTuiXach.csproj|solutionrelative:qlmuabantuixach\\views\\adminkho\\taoyeucau.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{38D03565-A8A7-4FBC-A867-53B84ABD718B}|QLMuaBanTuiXach\\QLMuaBanTuiXach.csproj|c:\\users\\datpq\\downloads\\cnpm\\website_qlmbtx-cuoicungthi\\website_qlmbtx-cuoicungthi\\qlmuabantuixach\\qlmuabantuixach\\controllers\\adminkhocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{38D03565-A8A7-4FBC-A867-53B84ABD718B}|QLMuaBanTuiXach\\QLMuaBanTuiXach.csproj|solutionrelative:qlmuabantuixach\\controllers\\adminkhocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{38D03565-A8A7-4FBC-A867-53B84ABD718B}|QLMuaBanTuiXach\\QLMuaBanTuiXach.csproj|c:\\users\\datpq\\downloads\\cnpm\\website_qlmbtx-cuoicungthi\\website_qlmbtx-cuoicungthi\\qlmuabantuixach\\qlmuabantuixach\\controllers\\adminsanphamcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{38D03565-A8A7-4FBC-A867-53B84ABD718B}|QLMuaBanTuiXach\\QLMuaBanTuiXach.csproj|solutionrelative:qlmuabantuixach\\controllers\\adminsanphamcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{38D03565-A8A7-4FBC-A867-53B84ABD718B}|QLMuaBanTuiXach\\QLMuaBanTuiXach.csproj|c:\\users\\datpq\\downloads\\cnpm\\website_qlmbtx-cuoicungthi\\website_qlmbtx-cuoicungthi\\qlmuabantuixach\\qlmuabantuixach\\views\\admindanhmuc\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{38D03565-A8A7-4FBC-A867-53B84ABD718B}|QLMuaBanTuiXach\\QLMuaBanTuiXach.csproj|solutionrelative:qlmuabantuixach\\views\\admindanhmuc\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{38D03565-A8A7-4FBC-A867-53B84ABD718B}|QLMuaBanTuiXach\\QLMuaBanTuiXach.csproj|c:\\users\\datpq\\downloads\\cnpm\\website_qlmbtx-cuoicungthi\\website_qlmbtx-cuoicungthi\\qlmuabantuixach\\qlmuabantuixach\\controllers\\admindanhmuccontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{38D03565-A8A7-4FBC-A867-53B84ABD718B}|QLMuaBanTuiXach\\QLMuaBanTuiXach.csproj|solutionrelative:qlmuabantuixach\\controllers\\admindanhmuccontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{38D03565-A8A7-4FBC-A867-53B84ABD718B}|QLMuaBanTuiXach\\QLMuaBanTuiXach.csproj|c:\\users\\datpq\\downloads\\cnpm\\website_qlmbtx-cuoicungthi\\website_qlmbtx-cuoicungthi\\qlmuabantuixach\\qlmuabantuixach\\views\\adminsanpham\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{38D03565-A8A7-4FBC-A867-53B84ABD718B}|QLMuaBanTuiXach\\QLMuaBanTuiXach.csproj|solutionrelative:qlmuabantuixach\\views\\adminsanpham\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{38D03565-A8A7-4FBC-A867-53B84ABD718B}|QLMuaBanTuiXach\\QLMuaBanTuiXach.csproj|c:\\users\\datpq\\downloads\\cnpm\\website_qlmbtx-cuoicungthi\\website_qlmbtx-cuoicungthi\\qlmuabantuixach\\qlmuabantuixach\\views\\adminsanpham\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{38D03565-A8A7-4FBC-A867-53B84ABD718B}|QLMuaBanTuiXach\\QLMuaBanTuiXach.csproj|solutionrelative:qlmuabantuixach\\views\\adminsanpham\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{38D03565-A8A7-4FBC-A867-53B84ABD718B}|QLMuaBanTuiXach\\QLMuaBanTuiXach.csproj|c:\\users\\datpq\\downloads\\cnpm\\website_qlmbtx-cuoicungthi\\website_qlmbtx-cuoicungthi\\qlmuabantuixach\\qlmuabantuixach\\views\\shared\\_layoutadmin.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{38D03565-A8A7-4FBC-A867-53B84ABD718B}|QLMuaBanTuiXach\\QLMuaBanTuiXach.csproj|solutionrelative:qlmuabantuixach\\views\\shared\\_layoutadmin.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{38D03565-A8A7-4FBC-A867-53B84ABD718B}|QLMuaBanTuiXach\\QLMuaBanTuiXach.csproj|c:\\users\\datpq\\downloads\\cnpm\\website_qlmbtx-cuoicungthi\\website_qlmbtx-cuoicungthi\\qlmuabantuixach\\qlmuabantuixach\\views\\nguoidung\\dangky.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{38D03565-A8A7-4FBC-A867-53B84ABD718B}|QLMuaBanTuiXach\\QLMuaBanTuiXach.csproj|solutionrelative:qlmuabantuixach\\views\\nguoidung\\dangky.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{38D03565-A8A7-4FBC-A867-53B84ABD718B}|QLMuaBanTuiXach\\QLMuaBanTuiXach.csproj|c:\\users\\datpq\\downloads\\cnpm\\website_qlmbtx-cuoicungthi\\website_qlmbtx-cuoicungthi\\qlmuabantuixach\\qlmuabantuixach\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{38D03565-A8A7-4FBC-A867-53B84ABD718B}|QLMuaBanTuiXach\\QLMuaBanTuiXach.csproj|solutionrelative:qlmuabantuixach\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{38D03565-A8A7-4FBC-A867-53B84ABD718B}|QLMuaBanTuiXach\\QLMuaBanTuiXach.csproj|c:\\users\\datpq\\downloads\\cnpm\\website_qlmbtx-cuoicungthi\\website_qlmbtx-cuoicungthi\\qlmuabantuixach\\qlmuabantuixach\\controllers\\adminthuonghieucontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{38D03565-A8A7-4FBC-A867-53B84ABD718B}|QLMuaBanTuiXach\\QLMuaBanTuiXach.csproj|solutionrelative:qlmuabantuixach\\controllers\\adminthuonghieucontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{38D03565-A8A7-4FBC-A867-53B84ABD718B}|QLMuaBanTuiXach\\QLMuaBanTuiXach.csproj|c:\\users\\datpq\\downloads\\cnpm\\website_qlmbtx-cuoicungthi\\website_qlmbtx-cuoicungthi\\qlmuabantuixach\\qlmuabantuixach\\views\\adminthuonghieu\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{38D03565-A8A7-4FBC-A867-53B84ABD718B}|QLMuaBanTuiXach\\QLMuaBanTuiXach.csproj|solutionrelative:qlmuabantuixach\\views\\adminthuonghieu\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{38D03565-A8A7-4FBC-A867-53B84ABD718B}|QLMuaBanTuiXach\\QLMuaBanTuiXach.csproj|c:\\users\\datpq\\downloads\\cnpm\\website_qlmbtx-cuoicungthi\\website_qlmbtx-cuoicungthi\\qlmuabantuixach\\qlmuabantuixach\\views\\adminthuonghieu\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{38D03565-A8A7-4FBC-A867-53B84ABD718B}|QLMuaBanTuiXach\\QLMuaBanTuiXach.csproj|solutionrelative:qlmuabantuixach\\views\\adminthuonghieu\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{38D03565-A8A7-4FBC-A867-53B84ABD718B}|QLMuaBanTuiXach\\QLMuaBanTuiXach.csproj|c:\\users\\datpq\\downloads\\cnpm\\website_qlmbtx-cuoicungthi\\website_qlmbtx-cuoicungthi\\qlmuabantuixach\\qlmuabantuixach\\views\\adminthuonghieu\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{38D03565-A8A7-4FBC-A867-53B84ABD718B}|QLMuaBanTuiXach\\QLMuaBanTuiXach.csproj|solutionrelative:qlmuabantuixach\\views\\adminthuonghieu\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{38D03565-A8A7-4FBC-A867-53B84ABD718B}|QLMuaBanTuiXach\\QLMuaBanTuiXach.csproj|c:\\users\\datpq\\downloads\\cnpm\\website_qlmbtx-cuoicungthi\\website_qlmbtx-cuoicungthi\\qlmuabantuixach\\qlmuabantuixach\\views\\adminkho\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{38D03565-A8A7-4FBC-A867-53B84ABD718B}|QLMuaBanTuiXach\\QLMuaBanTuiXach.csproj|solutionrelative:qlmuabantuixach\\views\\adminkho\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{38D03565-A8A7-4FBC-A867-53B84ABD718B}|QLMuaBanTuiXach\\QLMuaBanTuiXach.csproj|c:\\users\\datpq\\downloads\\cnpm\\website_qlmbtx-cuoicungthi\\website_qlmbtx-cuoicungthi\\qlmuabantuixach\\qlmuabantuixach\\views\\adminkho\\tonkhothap.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{38D03565-A8A7-4FBC-A867-53B84ABD718B}|QLMuaBanTuiXach\\QLMuaBanTuiXach.csproj|solutionrelative:qlmuabantuixach\\views\\adminkho\\tonkhothap.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{38D03565-A8A7-4FBC-A867-53B84ABD718B}|QLMuaBanTuiXach\\QLMuaBanTuiXach.csproj|c:\\users\\datpq\\downloads\\cnpm\\website_qlmbtx-cuoicungthi\\website_qlmbtx-cuoicungthi\\qlmuabantuixach\\qlmuabantuixach\\views\\adminkho\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{38D03565-A8A7-4FBC-A867-53B84ABD718B}|QLMuaBanTuiXach\\QLMuaBanTuiXach.csproj|solutionrelative:qlmuabantuixach\\views\\adminkho\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{38D03565-A8A7-4FBC-A867-53B84ABD718B}|QLMuaBanTuiXach\\QLMuaBanTuiXach.csproj|c:\\users\\datpq\\downloads\\cnpm\\website_qlmbtx-cuoicungthi\\website_qlmbtx-cuoicungthi\\qlmuabantuixach\\qlmuabantuixach\\views\\adminkho\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{38D03565-A8A7-4FBC-A867-53B84ABD718B}|QLMuaBanTuiXach\\QLMuaBanTuiXach.csproj|solutionrelative:qlmuabantuixach\\views\\adminkho\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 6,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "C:\\Users\\datpq\\Downloads\\cnpm\\Website_QLMBTX-cuoicungthi\\Website_QLMBTX-cuoicungthi\\QLMuaBanTuiXach\\QLMuaBanTuiXach\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "QLMuaBanTuiXach\\Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "C:\\Users\\datpq\\Downloads\\cnpm\\Website_QLMBTX-cuoicungthi\\Website_QLMBTX-cuoicungthi\\QLMuaBanTuiXach\\QLMuaBanTuiXach\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "QLMuaBanTuiXach\\Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AgIAAI4AAAAAAAAAAAAAAJgAAABOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-12-08T16:51:48.058Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Edit.cshtml",
+              "DocumentMoniker": "C:\\Users\\datpq\\Downloads\\cnpm\\Website_QLMBTX-cuoicungthi\\Website_QLMBTX-cuoicungthi\\QLMuaBanTuiXach\\QLMuaBanTuiXach\\Views\\AdminSanPham\\Edit.cshtml",
+              "RelativeDocumentMoniker": "QLMuaBanTuiXach\\Views\\AdminSanPham\\Edit.cshtml",
+              "ToolTip": "C:\\Users\\datpq\\Downloads\\cnpm\\Website_QLMBTX-cuoicungthi\\Website_QLMBTX-cuoicungthi\\QLMuaBanTuiXach\\QLMuaBanTuiXach\\Views\\AdminSanPham\\Edit.cshtml",
+              "RelativeToolTip": "QLMuaBanTuiXach\\Views\\AdminSanPham\\Edit.cshtml",
+              "ViewState": "AgIAACEAAAAAAAAAAAAwwC0AAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-12-08T16:51:40.024Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Details.cshtml",
+              "DocumentMoniker": "C:\\Users\\datpq\\Downloads\\cnpm\\Website_QLMBTX-cuoicungthi\\Website_QLMBTX-cuoicungthi\\QLMuaBanTuiXach\\QLMuaBanTuiXach\\Views\\AdminSanPham\\Details.cshtml",
+              "RelativeDocumentMoniker": "QLMuaBanTuiXach\\Views\\AdminSanPham\\Details.cshtml",
+              "ToolTip": "C:\\Users\\datpq\\Downloads\\cnpm\\Website_QLMBTX-cuoicungthi\\Website_QLMBTX-cuoicungthi\\QLMuaBanTuiXach\\QLMuaBanTuiXach\\Views\\AdminSanPham\\Details.cshtml",
+              "RelativeToolTip": "QLMuaBanTuiXach\\Views\\AdminSanPham\\Details.cshtml",
+              "ViewState": "AgIAABcAAAAAAAAAAAAAABcAAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-12-08T16:51:38.422Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Delete.cshtml",
+              "DocumentMoniker": "C:\\Users\\datpq\\Downloads\\cnpm\\Website_QLMBTX-cuoicungthi\\Website_QLMBTX-cuoicungthi\\QLMuaBanTuiXach\\QLMuaBanTuiXach\\Views\\AdminSanPham\\Delete.cshtml",
+              "RelativeDocumentMoniker": "QLMuaBanTuiXach\\Views\\AdminSanPham\\Delete.cshtml",
+              "ToolTip": "C:\\Users\\datpq\\Downloads\\cnpm\\Website_QLMBTX-cuoicungthi\\Website_QLMBTX-cuoicungthi\\QLMuaBanTuiXach\\QLMuaBanTuiXach\\Views\\AdminSanPham\\Delete.cshtml",
+              "RelativeToolTip": "QLMuaBanTuiXach\\Views\\AdminSanPham\\Delete.cshtml",
+              "ViewState": "AgIAABYAAAAAAAAAAAAAABYAAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-12-08T16:51:35.045Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "DangKy.cshtml",
+              "DocumentMoniker": "C:\\Users\\datpq\\Downloads\\cnpm\\Website_QLMBTX-cuoicungthi\\Website_QLMBTX-cuoicungthi\\QLMuaBanTuiXach\\QLMuaBanTuiXach\\Views\\NguoiDung\\DangKy.cshtml",
+              "RelativeDocumentMoniker": "QLMuaBanTuiXach\\Views\\NguoiDung\\DangKy.cshtml",
+              "ToolTip": "C:\\Users\\datpq\\Downloads\\cnpm\\Website_QLMBTX-cuoicungthi\\Website_QLMBTX-cuoicungthi\\QLMuaBanTuiXach\\QLMuaBanTuiXach\\Views\\NguoiDung\\DangKy.cshtml",
+              "RelativeToolTip": "QLMuaBanTuiXach\\Views\\NguoiDung\\DangKy.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-12-08T16:44:53.775Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\datpq\\Downloads\\cnpm\\Website_QLMBTX-cuoicungthi\\Website_QLMBTX-cuoicungthi\\QLMuaBanTuiXach\\QLMuaBanTuiXach\\Views\\Home\\Index.cshtml",
+              "RelativeDocumentMoniker": "QLMuaBanTuiXach\\Views\\Home\\Index.cshtml",
+              "ToolTip": "C:\\Users\\datpq\\Downloads\\cnpm\\Website_QLMBTX-cuoicungthi\\Website_QLMBTX-cuoicungthi\\QLMuaBanTuiXach\\QLMuaBanTuiXach\\Views\\Home\\Index.cshtml",
+              "RelativeToolTip": "QLMuaBanTuiXach\\Views\\Home\\Index.cshtml",
+              "ViewState": "AgIAALcAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-12-08T16:44:35.571Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\datpq\\Downloads\\cnpm\\Website_QLMBTX-cuoicungthi\\Website_QLMBTX-cuoicungthi\\QLMuaBanTuiXach\\QLMuaBanTuiXach\\Views\\AdminDanhMuc\\Index.cshtml",
+              "RelativeDocumentMoniker": "QLMuaBanTuiXach\\Views\\AdminDanhMuc\\Index.cshtml",
+              "ToolTip": "C:\\Users\\datpq\\Downloads\\cnpm\\Website_QLMBTX-cuoicungthi\\Website_QLMBTX-cuoicungthi\\QLMuaBanTuiXach\\QLMuaBanTuiXach\\Views\\AdminDanhMuc\\Index.cshtml",
+              "RelativeToolTip": "QLMuaBanTuiXach\\Views\\AdminDanhMuc\\Index.cshtml",
+              "ViewState": "AgIAAAQAAAAAAAAAAAAwwCQAAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-12-08T16:35:17.33Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\datpq\\Downloads\\cnpm\\Website_QLMBTX-cuoicungthi\\Website_QLMBTX-cuoicungthi\\QLMuaBanTuiXach\\QLMuaBanTuiXach\\Views\\AdminThuongHieu\\Index.cshtml",
+              "RelativeDocumentMoniker": "QLMuaBanTuiXach\\Views\\AdminThuongHieu\\Index.cshtml",
+              "ToolTip": "C:\\Users\\datpq\\Downloads\\cnpm\\Website_QLMBTX-cuoicungthi\\Website_QLMBTX-cuoicungthi\\QLMuaBanTuiXach\\QLMuaBanTuiXach\\Views\\AdminThuongHieu\\Index.cshtml",
+              "RelativeToolTip": "QLMuaBanTuiXach\\Views\\AdminThuongHieu\\Index.cshtml",
+              "ViewState": "AgIAADYAAAAAAAAAAAAuwFEAAAAGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-12-08T16:35:05.176Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Edit.cshtml",
+              "DocumentMoniker": "C:\\Users\\datpq\\Downloads\\cnpm\\Website_QLMBTX-cuoicungthi\\Website_QLMBTX-cuoicungthi\\QLMuaBanTuiXach\\QLMuaBanTuiXach\\Views\\AdminDanhMuc\\Edit.cshtml",
+              "RelativeDocumentMoniker": "QLMuaBanTuiXach\\Views\\AdminDanhMuc\\Edit.cshtml",
+              "ToolTip": "C:\\Users\\datpq\\Downloads\\cnpm\\Website_QLMBTX-cuoicungthi\\Website_QLMBTX-cuoicungthi\\QLMuaBanTuiXach\\QLMuaBanTuiXach\\Views\\AdminDanhMuc\\Edit.cshtml",
+              "RelativeToolTip": "QLMuaBanTuiXach\\Views\\AdminDanhMuc\\Edit.cshtml",
+              "ViewState": "AgIAAAoAAAAAAAAAAAAwwBkAAABMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-12-08T16:33:24.191Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Create.cshtml",
+              "DocumentMoniker": "C:\\Users\\datpq\\Downloads\\cnpm\\Website_QLMBTX-cuoicungthi\\Website_QLMBTX-cuoicungthi\\QLMuaBanTuiXach\\QLMuaBanTuiXach\\Views\\AdminDanhMuc\\Create.cshtml",
+              "RelativeDocumentMoniker": "QLMuaBanTuiXach\\Views\\AdminDanhMuc\\Create.cshtml",
+              "ToolTip": "C:\\Users\\datpq\\Downloads\\cnpm\\Website_QLMBTX-cuoicungthi\\Website_QLMBTX-cuoicungthi\\QLMuaBanTuiXach\\QLMuaBanTuiXach\\Views\\AdminDanhMuc\\Create.cshtml",
+              "RelativeToolTip": "QLMuaBanTuiXach\\Views\\AdminDanhMuc\\Create.cshtml",
+              "ViewState": "AgIAABcAAAAAAAAAAAAwwCUAAABOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-12-08T16:33:10.649Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "AdminDanhMucController.cs",
+              "DocumentMoniker": "C:\\Users\\datpq\\Downloads\\cnpm\\Website_QLMBTX-cuoicungthi\\Website_QLMBTX-cuoicungthi\\QLMuaBanTuiXach\\QLMuaBanTuiXach\\Controllers\\AdminDanhMucController.cs",
+              "RelativeDocumentMoniker": "QLMuaBanTuiXach\\Controllers\\AdminDanhMucController.cs",
+              "ToolTip": "C:\\Users\\datpq\\Downloads\\cnpm\\Website_QLMBTX-cuoicungthi\\Website_QLMBTX-cuoicungthi\\QLMuaBanTuiXach\\QLMuaBanTuiXach\\Controllers\\AdminDanhMucController.cs",
+              "RelativeToolTip": "QLMuaBanTuiXach\\Controllers\\AdminDanhMucController.cs",
+              "ViewState": "AgIAAF8AAAAAAAAAAAAgwHIAAAAzAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-08T16:32:52.539Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "Edit.cshtml",
+              "DocumentMoniker": "C:\\Users\\datpq\\Downloads\\cnpm\\Website_QLMBTX-cuoicungthi\\Website_QLMBTX-cuoicungthi\\QLMuaBanTuiXach\\QLMuaBanTuiXach\\Views\\AdminThuongHieu\\Edit.cshtml",
+              "RelativeDocumentMoniker": "QLMuaBanTuiXach\\Views\\AdminThuongHieu\\Edit.cshtml",
+              "ToolTip": "C:\\Users\\datpq\\Downloads\\cnpm\\Website_QLMBTX-cuoicungthi\\Website_QLMBTX-cuoicungthi\\QLMuaBanTuiXach\\QLMuaBanTuiXach\\Views\\AdminThuongHieu\\Edit.cshtml",
+              "RelativeToolTip": "QLMuaBanTuiXach\\Views\\AdminThuongHieu\\Edit.cshtml",
+              "ViewState": "AgIAABcAAAAAAAAAAAAuwDIAAAAGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-12-08T16:32:30.23Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "Create.cshtml",
+              "DocumentMoniker": "C:\\Users\\datpq\\Downloads\\cnpm\\Website_QLMBTX-cuoicungthi\\Website_QLMBTX-cuoicungthi\\QLMuaBanTuiXach\\QLMuaBanTuiXach\\Views\\AdminThuongHieu\\Create.cshtml",
+              "RelativeDocumentMoniker": "QLMuaBanTuiXach\\Views\\AdminThuongHieu\\Create.cshtml",
+              "ToolTip": "C:\\Users\\datpq\\Downloads\\cnpm\\Website_QLMBTX-cuoicungthi\\Website_QLMBTX-cuoicungthi\\QLMuaBanTuiXach\\QLMuaBanTuiXach\\Views\\AdminThuongHieu\\Create.cshtml",
+              "RelativeToolTip": "QLMuaBanTuiXach\\Views\\AdminThuongHieu\\Create.cshtml",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAuwCkAAAAGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-12-08T16:32:13.787Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "AdminThuongHieuController.cs",
+              "DocumentMoniker": "C:\\Users\\datpq\\Downloads\\cnpm\\Website_QLMBTX-cuoicungthi\\Website_QLMBTX-cuoicungthi\\QLMuaBanTuiXach\\QLMuaBanTuiXach\\Controllers\\AdminThuongHieuController.cs",
+              "RelativeDocumentMoniker": "QLMuaBanTuiXach\\Controllers\\AdminThuongHieuController.cs",
+              "ToolTip": "C:\\Users\\datpq\\Downloads\\cnpm\\Website_QLMBTX-cuoicungthi\\Website_QLMBTX-cuoicungthi\\QLMuaBanTuiXach\\QLMuaBanTuiXach\\Controllers\\AdminThuongHieuController.cs",
+              "RelativeToolTip": "QLMuaBanTuiXach\\Controllers\\AdminThuongHieuController.cs",
+              "ViewState": "AgIAAAcAAAAAAAAAAAAuwBkAAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-08T16:31:52.574Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "_LayoutAdmin.cshtml",
+              "DocumentMoniker": "C:\\Users\\datpq\\Downloads\\cnpm\\Website_QLMBTX-cuoicungthi\\Website_QLMBTX-cuoicungthi\\QLMuaBanTuiXach\\QLMuaBanTuiXach\\Views\\Shared\\_LayoutAdmin.cshtml",
+              "RelativeDocumentMoniker": "QLMuaBanTuiXach\\Views\\Shared\\_LayoutAdmin.cshtml",
+              "ToolTip": "C:\\Users\\datpq\\Downloads\\cnpm\\Website_QLMBTX-cuoicungthi\\Website_QLMBTX-cuoicungthi\\QLMuaBanTuiXach\\QLMuaBanTuiXach\\Views\\Shared\\_LayoutAdmin.cshtml",
+              "RelativeToolTip": "QLMuaBanTuiXach\\Views\\Shared\\_LayoutAdmin.cshtml",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAAABkAAACCAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-12-08T16:28:33.888Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "Create.cshtml",
+              "DocumentMoniker": "C:\\Users\\datpq\\Downloads\\cnpm\\Website_QLMBTX-cuoicungthi\\Website_QLMBTX-cuoicungthi\\QLMuaBanTuiXach\\QLMuaBanTuiXach\\Views\\AdminSanPham\\Create.cshtml",
+              "RelativeDocumentMoniker": "QLMuaBanTuiXach\\Views\\AdminSanPham\\Create.cshtml",
+              "ToolTip": "C:\\Users\\datpq\\Downloads\\cnpm\\Website_QLMBTX-cuoicungthi\\Website_QLMBTX-cuoicungthi\\QLMuaBanTuiXach\\QLMuaBanTuiXach\\Views\\AdminSanPham\\Create.cshtml",
+              "RelativeToolTip": "QLMuaBanTuiXach\\Views\\AdminSanPham\\Create.cshtml",
+              "ViewState": "AgIAAC0AAAAAAAAAAAAwwDsAAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-12-08T16:02:40.48Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\datpq\\Downloads\\cnpm\\Website_QLMBTX-cuoicungthi\\Website_QLMBTX-cuoicungthi\\QLMuaBanTuiXach\\QLMuaBanTuiXach\\Views\\AdminSanPham\\Index.cshtml",
+              "RelativeDocumentMoniker": "QLMuaBanTuiXach\\Views\\AdminSanPham\\Index.cshtml",
+              "ToolTip": "C:\\Users\\datpq\\Downloads\\cnpm\\Website_QLMBTX-cuoicungthi\\Website_QLMBTX-cuoicungthi\\QLMuaBanTuiXach\\QLMuaBanTuiXach\\Views\\AdminSanPham\\Index.cshtml",
+              "RelativeToolTip": "QLMuaBanTuiXach\\Views\\AdminSanPham\\Index.cshtml",
+              "ViewState": "AgIAACMAAAAAAAAAAAAwwDEAAAAgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-12-08T15:22:06.224Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "TaoYeuCau.cshtml",
+              "DocumentMoniker": "C:\\Users\\datpq\\Downloads\\cnpm\\Website_QLMBTX-cuoicungthi\\Website_QLMBTX-cuoicungthi\\QLMuaBanTuiXach\\QLMuaBanTuiXach\\Views\\AdminKho\\TaoYeuCau.cshtml",
+              "RelativeDocumentMoniker": "QLMuaBanTuiXach\\Views\\AdminKho\\TaoYeuCau.cshtml",
+              "ToolTip": "C:\\Users\\datpq\\Downloads\\cnpm\\Website_QLMBTX-cuoicungthi\\Website_QLMBTX-cuoicungthi\\QLMuaBanTuiXach\\QLMuaBanTuiXach\\Views\\AdminKho\\TaoYeuCau.cshtml",
+              "RelativeToolTip": "QLMuaBanTuiXach\\Views\\AdminKho\\TaoYeuCau.cshtml",
+              "ViewState": "AgIAABgAAAAAAAAAAAAwwCYAAABAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-12-08T15:37:46.159Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "AdminSanPhamController.cs",
+              "DocumentMoniker": "C:\\Users\\datpq\\Downloads\\cnpm\\Website_QLMBTX-cuoicungthi\\Website_QLMBTX-cuoicungthi\\QLMuaBanTuiXach\\QLMuaBanTuiXach\\Controllers\\AdminSanPhamController.cs",
+              "RelativeDocumentMoniker": "QLMuaBanTuiXach\\Controllers\\AdminSanPhamController.cs",
+              "ToolTip": "C:\\Users\\datpq\\Downloads\\cnpm\\Website_QLMBTX-cuoicungthi\\Website_QLMBTX-cuoicungthi\\QLMuaBanTuiXach\\QLMuaBanTuiXach\\Controllers\\AdminSanPhamController.cs",
+              "RelativeToolTip": "QLMuaBanTuiXach\\Controllers\\AdminSanPhamController.cs",
+              "ViewState": "AgIAAFsAAAAAAAAAAAAvwGoAAABUAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-08T15:12:12.968Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "TonKhoThap.cshtml",
+              "DocumentMoniker": "C:\\Users\\datpq\\Downloads\\cnpm\\Website_QLMBTX-cuoicungthi\\Website_QLMBTX-cuoicungthi\\QLMuaBanTuiXach\\QLMuaBanTuiXach\\Views\\AdminKho\\TonKhoThap.cshtml",
+              "RelativeDocumentMoniker": "QLMuaBanTuiXach\\Views\\AdminKho\\TonKhoThap.cshtml",
+              "ToolTip": "C:\\Users\\datpq\\Downloads\\cnpm\\Website_QLMBTX-cuoicungthi\\Website_QLMBTX-cuoicungthi\\QLMuaBanTuiXach\\QLMuaBanTuiXach\\Views\\AdminKho\\TonKhoThap.cshtml",
+              "RelativeToolTip": "QLMuaBanTuiXach\\Views\\AdminKho\\TonKhoThap.cshtml",
+              "ViewState": "AgIAABkAAAAAAAAAAAAkwDUAAAAHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-12-08T15:01:30.151Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "Details.cshtml",
+              "DocumentMoniker": "C:\\Users\\datpq\\Downloads\\cnpm\\Website_QLMBTX-cuoicungthi\\Website_QLMBTX-cuoicungthi\\QLMuaBanTuiXach\\QLMuaBanTuiXach\\Views\\AdminKho\\Details.cshtml",
+              "RelativeDocumentMoniker": "QLMuaBanTuiXach\\Views\\AdminKho\\Details.cshtml",
+              "ToolTip": "C:\\Users\\datpq\\Downloads\\cnpm\\Website_QLMBTX-cuoicungthi\\Website_QLMBTX-cuoicungthi\\QLMuaBanTuiXach\\QLMuaBanTuiXach\\Views\\AdminKho\\Details.cshtml",
+              "RelativeToolTip": "QLMuaBanTuiXach\\Views\\AdminKho\\Details.cshtml",
+              "ViewState": "AgIAADoAAAAAAAAAAAAkwFYAAAAGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-12-08T14:46:04.84Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\datpq\\Downloads\\cnpm\\Website_QLMBTX-cuoicungthi\\Website_QLMBTX-cuoicungthi\\QLMuaBanTuiXach\\QLMuaBanTuiXach\\Views\\AdminKho\\Index.cshtml",
+              "RelativeDocumentMoniker": "QLMuaBanTuiXach\\Views\\AdminKho\\Index.cshtml",
+              "ToolTip": "C:\\Users\\datpq\\Downloads\\cnpm\\Website_QLMBTX-cuoicungthi\\Website_QLMBTX-cuoicungthi\\QLMuaBanTuiXach\\QLMuaBanTuiXach\\Views\\AdminKho\\Index.cshtml",
+              "RelativeToolTip": "QLMuaBanTuiXach\\Views\\AdminKho\\Index.cshtml",
+              "ViewState": "AgIAABAAAAAAAAAAAAAkwD4AAAAGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-12-08T14:45:48.793Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "Create.cshtml",
+              "DocumentMoniker": "C:\\Users\\datpq\\Downloads\\cnpm\\Website_QLMBTX-cuoicungthi\\Website_QLMBTX-cuoicungthi\\QLMuaBanTuiXach\\QLMuaBanTuiXach\\Views\\AdminKho\\Create.cshtml",
+              "RelativeDocumentMoniker": "QLMuaBanTuiXach\\Views\\AdminKho\\Create.cshtml",
+              "ToolTip": "C:\\Users\\datpq\\Downloads\\cnpm\\Website_QLMBTX-cuoicungthi\\Website_QLMBTX-cuoicungthi\\QLMuaBanTuiXach\\QLMuaBanTuiXach\\Views\\AdminKho\\Create.cshtml",
+              "RelativeToolTip": "QLMuaBanTuiXach\\Views\\AdminKho\\Create.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-12-08T14:45:36.605Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "AdminKhoController.cs",
+              "DocumentMoniker": "C:\\Users\\datpq\\Downloads\\cnpm\\Website_QLMBTX-cuoicungthi\\Website_QLMBTX-cuoicungthi\\QLMuaBanTuiXach\\QLMuaBanTuiXach\\Controllers\\AdminKhoController.cs",
+              "RelativeDocumentMoniker": "QLMuaBanTuiXach\\Controllers\\AdminKhoController.cs",
+              "ToolTip": "C:\\Users\\datpq\\Downloads\\cnpm\\Website_QLMBTX-cuoicungthi\\Website_QLMBTX-cuoicungthi\\QLMuaBanTuiXach\\QLMuaBanTuiXach\\Controllers\\AdminKhoController.cs",
+              "RelativeToolTip": "QLMuaBanTuiXach\\Controllers\\AdminKhoController.cs",
+              "ViewState": "AgIAAK8AAAAAAAAAAAAkwLwAAAAnAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-08T14:45:14.921Z",
+              "EditorCaption": ""
+            }
+          ]
+        },
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": -1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{6324226f-61b6-4f28-92ee-18d4b5fe1e48}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

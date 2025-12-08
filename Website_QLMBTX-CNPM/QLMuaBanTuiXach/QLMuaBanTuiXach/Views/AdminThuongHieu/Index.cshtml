@@ -1,0 +1,82 @@
+﻿@model IEnumerable<QLMuaBanTuiXach.Models.ThuongHieu>
+
+@{
+    ViewBag.Title = "Quản Lý Thương Hiệu";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h3 class="text-uppercase fw-bold text-primary">DANH SÁCH THƯƠNG HIỆU</h3>
+    <a href="@Url.Action("Create")" class="btn btn-primary shadow-sm">
+        <i class="fa-solid fa-plus me-1"></i> Thêm Thương Hiệu
+    </a>
+</div>
+
+@if (TempData["ThongBao"] != null)
+{
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <i class="fa-solid fa-check-circle me-2"></i> @TempData["ThongBao"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+}
+
+@if (TempData["Loi"] != null)
+{
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <i class="fa-solid fa-triangle-exclamation me-2"></i> @TempData["Loi"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+}
+
+<div class="card shadow-sm">
+    <div class="card-body p-0">
+        <table class="table table-hover table-bordered align-middle mb-0">
+            <thead class="table-dark text-center">
+                <tr>
+                    <th style="width: 50px;">ID</th>
+                    <th style="width: 120px;">Logo</th>
+                    <th>Tên Thương Hiệu</th>
+                    <th>Mô Tả</th>
+                    <th style="width: 150px;">Thao Tác</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model != null && Model.Any())
+                {
+                    foreach (var item in Model)
+                    {
+                        <tr>
+                            <td class="text-center">@item.MaThuongHieu</td>
+                            <td class="text-center bg-light">
+                                @if (!string.IsNullOrEmpty(item.Logo))
+                                {
+                                    <img src="@Url.Content(item.Logo)" style="height: 50px; width: auto; max-width: 100px; object-fit: contain;" />
+                                }
+                                else
+                                {
+                                    <span class="text-muted small fst-italic">(Chưa có)</span>
+                                }
+                            </td>
+                            <td class="fw-bold text-primary">@item.TenThuongHieu</td>
+                            <td>@item.MoTa</td>
+                            <td class="text-center">
+                                <a href="@Url.Action("Edit", new { id = item.MaThuongHieu })" class="btn btn-warning btn-sm" title="Sửa">
+                                    <i class="fa-solid fa-pen"></i>
+                                </a>
+                                <a href="@Url.Action("Delete", new { id = item.MaThuongHieu })" class="btn btn-danger btn-sm ms-1" title="Xóa" onclick="return confirm('Bạn có chắc muốn xóa thương hiệu này?');">
+                                    <i class="fa-solid fa-trash"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                }
+                else
+                {
+                    <tr>
+                        <td colspan="5" class="text-center py-4 text-muted">Chưa có thương hiệu nào.</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

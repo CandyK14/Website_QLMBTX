@@ -1,0 +1,166 @@
+﻿@model QLMuaBanTuiXach.Models.DonHang
+
+@{
+    ViewBag.Title = "Chi Tiết Đơn Hàng #" + Model.MaDonHang;
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="container-fluid">
+    @* Thanh tiêu đề và nút bấm *@
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+            <h4 class="mb-0 text-uppercase fw-bold">Chi Tiết Đơn Hàng #@Model.MaDonHang</h4>
+            <span class="text-muted">Ngày đặt: @Model.NgayDat.Value.ToString("dd/MM/yyyy HH:mm")</span>
+        </div>
+        <div>
+            <a href="@Url.Action("Edit", new { id = Model.MaDonHang })" class="btn btn-warning shadow-sm">
+                <i class="fa-solid fa-pen-to-square me-2"></i>Cập Nhật Trạng Thái
+            </a>
+            <a href="@Url.Action("Index")" class="btn btn-secondary shadow-sm ms-2">
+                <i class="fa-solid fa-arrow-left me-2"></i>Quay Lại
+            </a>
+        </div>
+    </div>
+
+    <div class="row g-4">
+        @* Cột Trái: Thông tin người dùng & Giao hàng *@
+        <div class="col-lg-4">
+            <div class="card shadow-sm mb-4">
+                <div class="card-header bg-light fw-bold"><i class="fa-solid fa-user me-2"></i>Thông Tin Khách Hàng</div>
+                <div class="card-body">
+                    <p class="mb-1"><strong>Họ tên:</strong> @(Model.NguoiDung?.HoTen ?? "Khách vãng lai")</p>
+                    <p class="mb-1"><strong>Email:</strong> @(Model.NguoiDung?.Email ?? "N/A")</p>
+                    <p class="mb-0"><strong>SĐT Đăng ký:</strong> @(Model.NguoiDung?.SoDienThoai ?? "N/A")</p>
+                </div>
+            </div>
+
+            <div class="card shadow-sm mb-4">
+                <div class="card-header bg-light fw-bold"><i class="fa-solid fa-truck-fast me-2"></i>Thông Tin Giao Hàng</div>
+                <div class="card-body">
+                    @if (Model.DiaChi != null)
+                    {
+                        <p class="mb-1"><strong>Người nhận:</strong> @Model.DiaChi.TenNguoiNhan</p>
+                        <p class="mb-1"><strong>SĐT Liên hệ:</strong> @Model.DiaChi.SoDienThoai</p>
+                        <hr class="my-2" />
+                        <p class="mb-0">
+                            <strong>Địa chỉ:</strong><br />
+                            @Model.DiaChi.SoNhaDuong,<br />
+                            @Model.DiaChi.PhuongXa, @Model.DiaChi.QuanHuyen,<br />
+                            @Model.DiaChi.TinhThanhPho
+                        </p>
+                    }
+                    else
+                    {
+                        <span class="text-muted">Không tìm thấy thông tin địa chỉ</span>
+                    }
+                </div>
+            </div>
+
+            <div class="card shadow-sm border-info">
+                <div class="card-header bg-info text-white fw-bold"><i class="fa-solid fa-user-shield me-2"></i>Thông Tin Xử Lý (Admin)</div>
+                <div class="card-body">
+                    <p class="mb-2">
+                        <strong>NV Bán Hàng:</strong>
+                        @* Cần kiểm tra lại tên biến navigation property trong Model *@
+                        <span class="text-primary">@(Model.MaNhanVienBanHang != null ? "ID: " + Model.MaNhanVienBanHang : "Chưa có")</span>
+                    </p>
+                    <p class="mb-0">
+                        <strong>QL Duyệt Đơn:</strong>
+                        <span class="text-danger fw-bold">@(Model.MaQLDonHangDuyet != null ? "ID: " + Model.MaQLDonHangDuyet : "Chưa duyệt")</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        @* Cột Phải: Danh sách sản phẩm & Tổng tiền *@
+        <div class="col-lg-8">
+            <div class="card shadow-sm h-100">
+                <div class="card-header bg-light d-flex justify-content-between align-items-center">
+                    <span class="fw-bold"><i class="fa-solid fa-box-open me-2"></i>Danh Sách Sản Phẩm</span>
+                    <span class="badge bg-primary">@Model.TrangThai</span>
+                </div>
+                <div class="card-body p-0">
+                    <div class="table-responsive">
+                        <table class="table table-bordered mb-0 align-middle">
+                            <thead class="bg-light text-center">
+                                <tr>
+                                    <th style="width: 50px;">Ảnh</th>
+                                    <th>Sản Phẩm</th>
+                                    <th>Đơn Giá</th>
+                                    <th>SL</th>
+                                    <th>Thành Tiền</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var ct in Model.ChiTietDonHang)
+                                {
+                                    <tr>
+                                        <td class="text-center">
+                                            <img src="@Url.Content(ct.BienTheSanPham.HinhAnh ?? "~/Content/HinhAnh/no-image.png")"
+                                                 class="rounded" style="width: 50px; height: 50px; object-fit: cover;" />
+                                        </td>
+                                        <td>
+                                            <div class="fw-bold">@ct.BienTheSanPham.SanPham.TenSanPham</div>
+                                            <small class="text-muted">
+                                                Phân loại: @ct.BienTheSanPham.MauSac
+                                                @(ct.BienTheSanPham.ChieuDaiCM != null ? $"| {ct.BienTheSanPham.ChieuDaiCM}cm" : "")
+                                            </small>
+                                            <br />
+                                            <small class="text-muted">SKU: @ct.BienTheSanPham.SKU</small>
+                                        </td>
+                                        <td class="text-end">@ct.GiaLucMua.ToString("N0") ₫</td>
+                                        <td class="text-center">@ct.SoLuong</td>
+                                        <td class="text-end fw-bold">@((ct.GiaLucMua * ct.SoLuong).ToString("N0")) ₫</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="card-footer bg-white">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h6 class="fw-bold">Ghi chú đơn hàng:</h6>
+                            <div class="alert alert-secondary mb-0">
+                                @(string.IsNullOrEmpty(Model.GhiChu) ? "Không có ghi chú" : Model.GhiChu)
+                            </div>
+
+                            <div class="mt-3">
+                                <h6 class="fw-bold">Phương thức thanh toán:</h6>
+                                <span class="badge bg-secondary p-2">@Model.PhuongThucThanhToan</span>
+                                <span class="ms-2">
+                                    Trạng thái:
+                                    @if (Model.TrangThaiThanhToan == "DaThanhToan")
+                                    {<span class="text-success fw-bold">Đã thanh toán</span> }
+                                    else
+                                    { <span class="text-warning fw-bold">Chưa thanh toán</span>}
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <table class="table table-borderless table-sm text-end">
+                                <tr>
+                                    <td class="text-muted">Tổng tiền hàng:</td>
+                                    <td class="fw-bold">@Model.TongTienHang.ToString("N0") ₫</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-muted">Phí vận chuyển:</td>
+                                    <td>+ @((Model.PhiVanChuyen ?? 0).ToString("N0")) ₫</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-muted">Giảm giá (Voucher):</td>
+                                    <td class="text-success">- @((Model.SoTienGiamGia ?? 0).ToString("N0")) ₫</td>
+                                </tr>
+                                <tr class="border-top">
+                                    <td class="pt-3 fs-5 fw-bold text-dark">TỔNG THANH TOÁN:</td>
+                                    <td class="pt-3 fs-4 fw-bold text-danger">@Model.TongThanhToan.ToString("N0") ₫</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

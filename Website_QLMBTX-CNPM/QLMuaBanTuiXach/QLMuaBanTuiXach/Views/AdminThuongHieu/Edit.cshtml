@@ -1,0 +1,51 @@
+﻿@model QLMuaBanTuiXach.Models.ThuongHieu
+
+@{
+    ViewBag.Title = "Cập Nhật Thương Hiệu";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="card shadow-sm" style="max-width: 600px; margin: 0 auto;">
+    <div class="card-header bg-warning text-dark">
+        <h4 class="mb-0">CẬP NHẬT THƯƠNG HIỆU</h4>
+    </div>
+    <div class="card-body">
+        @using (Html.BeginForm("Edit", "AdminThuongHieu", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+            @Html.HiddenFor(model => model.MaThuongHieu)
+            @Html.HiddenFor(model => model.Logo) @* Giữ logo cũ *@
+
+            <div class="form-horizontal">
+                <div class="mb-3">
+                    <label class="form-label fw-bold">Tên Thương Hiệu</label>
+                    @Html.EditorFor(model => model.TenThuongHieu, new { htmlAttributes = new { @class = "form-control", required = "required" } })
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label fw-bold">Mô Tả</label>
+                    @Html.TextAreaFor(model => model.MoTa, new { @class = "form-control", rows = 3 })
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label fw-bold">Logo Hiện Tại</label>
+                    <div class="mb-2">
+                        @if (!string.IsNullOrEmpty(Model.Logo))
+                        {
+                            <img src="@Url.Content(Model.Logo)" style="height: 50px;" />
+                        }
+                        else
+                        { <span>(Chưa có)</span>}
+                    </div>
+                    <label class="form-label text-muted small">Chọn ảnh mới nếu muốn thay đổi:</label>
+                    <input type="file" name="LogoUpload" class="form-control" accept="image/*" />
+                </div>
+
+                <div class="d-flex justify-content-end gap-2 mt-4">
+                    <a href="@Url.Action("Index")" class="btn btn-secondary">Quay lại</a>
+                    <button type="submit" class="btn btn-warning">Lưu Thay Đổi</button>
+                </div>
+            </div>
+        }
+    </div>
+</div>

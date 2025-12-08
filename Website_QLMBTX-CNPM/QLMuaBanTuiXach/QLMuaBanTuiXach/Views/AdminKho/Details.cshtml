@@ -1,0 +1,87 @@
+﻿@model QLMuaBanTuiXach.Models.PhieuNhap
+
+@{
+    ViewBag.Title = "Chi Tiết Phiếu Nhập " + Model.SoPhieu;
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="container-fluid">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h4 class="text-uppercase fw-bold text-secondary">Chi Tiết Phiếu Nhập: <span class="text-dark">@Model.SoPhieu</span></h4>
+        <a href="@Url.Action("Index")" class="btn btn-secondary">
+            <i class="fa-solid fa-arrow-left me-2"></i>Quay Lại
+        </a>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card shadow-sm mb-4">
+                <div class="card-header bg-info text-white fw-bold">Thông Tin Chung</div>
+                <div class="card-body">
+                    <p><strong>Ngày tạo:</strong> @Model.NgayNhap.Value.ToString("dd/MM/yyyy HH:mm")</p>
+                    <p><strong>Nhà cung cấp:</strong> @(Model.NhaCungCap?.TenNhaCungCap)</p>
+                    <p><strong>Người tạo:</strong> @(Model.NguoiDung?.HoTen)</p>
+                    <hr />
+                    <p>
+                        <strong>Trạng thái:</strong>
+                        @if (Model.TrangThai == "DaDuyet")
+                        {<span class="text-success fw-bold">ĐÃ DUYỆT (Đã vào kho)</span> }
+                        else
+                        { <span class="text-warning fw-bold">CHỜ DUYỆT</span>}
+                    </p>
+
+                    @if (Model.TrangThai == "ChoDuyet")
+                    {
+                        <div class="alert alert-warning mt-3">
+                            <i class="fa-solid fa-triangle-exclamation"></i> Phiếu này chưa được duyệt. Tồn kho chưa được cộng.
+                        </div>
+                        <a href="@Url.Action("DuyetPhieu", new { id = Model.MaPhieuNhap })" class="btn btn-success w-100" onclick="return confirm('Xác nhận duyệt phiếu nhập này? Tồn kho sẽ được cộng ngay lập tức.')">
+                            <i class="fa-solid fa-check-double me-2"></i> DUYỆT PHIẾU NHẬP
+                        </a>
+                    }
+                    else if (Model.TrangThai == "DaDuyet")
+                    {
+                        <p class="text-muted"><small>Duyệt bởi: @(Model.NguoiDung1?.HoTen ?? "Admin") vào lúc @Model.NgayDuyet</small></p>
+                    }
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-8">
+            <div class="card shadow-sm">
+                <div class="card-header bg-light fw-bold">Danh Sách Sản Phẩm Nhập</div>
+                <div class="card-body p-0">
+                    <table class="table table-bordered mb-0">
+                        <thead>
+                            <tr>
+                                <th>Sản Phẩm</th>
+                                <th>Phân Loại</th>
+                                <th class="text-center">Số Lượng</th>
+                                <th class="text-end">Giá Vốn</th>
+                                <th class="text-end">Thành Tiền</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.ChiTietPhieuNhap)
+                            {
+                                <tr>
+                                    <td>@item.BienTheSanPham.SanPham.TenSanPham</td>
+                                    <td>@item.BienTheSanPham.MauSac (@item.BienTheSanPham.SKU)</td>
+                                    <td class="text-center fw-bold">@item.SoLuong</td>
+                                    <td class="text-end">@((item.GiaNhap ?? 0).ToString("N0")) ₫</td>
+                                    <td class="text-end fw-bold">@((item.SoLuong * item.GiaNhap ?? 0).ToString("N0")) ₫</td>
+                                </tr>
+                            }
+                        </tbody>
+                        <tfoot>
+                            <tr class="bg-light">
+                                <td colspan="4" class="text-end fw-bold">TỔNG CỘNG:</td>
+                                <td class="text-end text-danger fw-bold fs-5">@((Model.TongTien ?? 0).ToString("N0")) ₫</td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

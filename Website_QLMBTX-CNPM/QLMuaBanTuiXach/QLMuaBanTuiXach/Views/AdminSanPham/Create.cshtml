@@ -1,0 +1,189 @@
+﻿@model QLMuaBanTuiXach.Models.SanPham
+
+@{
+    ViewBag.Title = "Thêm Sản Phẩm Mới";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+
+    // Lấy dữ liệu tự động điền từ ViewBag (nếu có)
+    string autoTenSP = Model != null ? Model.TenSanPham : "";
+    string autoMoTa = Model != null ? Model.MoTa : "";
+    string autoMau = ViewBag.AutoMau as string;
+    string autoGia = ViewBag.AutoGia as string;
+    string autoSL = ViewBag.AutoSL as string;
+    string autoSize = ViewBag.AutoSize as string; // Kích thước nếu có
+}
+
+<div class="card shadow-sm">
+    <div class="card-header bg-primary text-white">
+        <h3 class="mb-0"><i class="fa-solid fa-plus me-2"></i>THÊM SẢN PHẨM MỚI (và Biến Thể Đầu Tiên)</h3>
+    </div>
+    <div class="card-body">
+
+        @* Hiển thị thông báo nếu đang tạo từ Ticket *@
+        @if (!string.IsNullOrEmpty(autoTenSP))
+        {
+            <div class="alert alert-info border-info mb-4">
+                <i class="fa-solid fa-wand-magic-sparkles me-2"></i>
+                Hệ thống đã tự động điền thông tin từ yêu cầu của Kho. Vui lòng kiểm tra và bổ sung ảnh.
+            </div>
+        }
+
+        @* Thêm enctype="multipart/form-data" để cho phép upload file *@
+        @using (Html.BeginForm("Create", "AdminSanPham", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken() // Chống CSRF
+
+            <div class="form-horizontal">
+                <h4 class="text-primary border-bottom pb-2">I. Thông tin Sản phẩm Chính</h4>
+
+                @Html.ValidationSummary(true, "", new { @class = "alert alert-danger" })
+
+                @* Tên Sản Phẩm (Tự động điền value) *@
+                <div class="row mb-3">
+                    @Html.LabelFor(model => model.TenSanPham, "Tên Sản Phẩm", htmlAttributes: new { @class = "col-md-3 col-form-label required" })
+                    <div class="col-md-9">
+                        @Html.EditorFor(model => model.TenSanPham, new { htmlAttributes = new { @class = "form-control fw-bold", placeholder = "Nhập tên túi xách...", required = "required", Value = autoTenSP } })
+                        @Html.ValidationMessageFor(model => model.TenSanPham, "", new { @class = "text-danger mt-1 d-block" })
+                    </div>
+                </div>
+
+                @* Mô Tả (Tự động điền) *@
+                <div class="row mb-3">
+                    @Html.LabelFor(model => model.MoTa, "Mô Tả", htmlAttributes: new { @class = "col-md-3 col-form-label" })
+                    <div class="col-md-9">
+                        @* Dùng TextArea thay vì EditorFor để dễ gán Value *@
+                        <textarea name="MoTa" class="form-control" rows="5" placeholder="Mô tả chi tiết...">@autoMoTa</textarea>
+                        @Html.ValidationMessageFor(model => model.MoTa, "", new { @class = "text-danger mt-1 d-block" })
+                    </div>
+                </div>
+
+                @* Danh Mục *@
+                <div class="row mb-3">
+                    @Html.LabelFor(model => model.MaDanhMuc, "Danh Mục", htmlAttributes: new { @class = "col-md-3 col-form-label" })
+                    <div class="col-md-9">
+                        @Html.DropDownList("MaDanhMuc", null, "-- Chọn Danh Mục --", htmlAttributes: new { @class = "form-select" })
+                        @Html.ValidationMessageFor(model => model.MaDanhMuc, "", new { @class = "text-danger mt-1 d-block" })
+                    </div>
+                </div>
+
+                @* Thương Hiệu *@
+                <div class="row mb-3">
+                    @Html.LabelFor(model => model.MaThuongHieu, "Thương Hiệu", htmlAttributes: new { @class = "col-md-3 col-form-label" })
+                    <div class="col-md-9">
+                        @Html.DropDownList("MaThuongHieu", null, "-- Chọn Thương Hiệu --", htmlAttributes: new { @class = "form-select" })
+                        @Html.ValidationMessageFor(model => model.MaThuongHieu, "", new { @class = "text-danger mt-1 d-block" })
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    @Html.LabelFor(model => model.ChatLieuChinh, "Chất Liệu Chính", htmlAttributes: new { @class = "col-md-3 col-form-label" })
+                    <div class="col-md-9">
+                        @Html.EditorFor(model => model.ChatLieuChinh, new { htmlAttributes = new { @class = "form-control", placeholder = "Ví dụ: Da PU..." } })
+                    </div>
+                </div>
+
+                @* ... Các thuộc tính phụ (DipSuDung, BoSuuTap...) giữ nguyên ... *@
+
+                @* PHẦN BIẾN THỂ *@
+                <h4 class="mt-5 text-success border-bottom pb-2">II. Thông tin Biến Thể Đầu Tiên</h4>
+
+                @* SKU (Tự động gợi ý) *@
+                <div class="row mb-3">
+                    <label class="col-md-3 col-form-label required">SKU</label>
+                    <div class="col-md-9">
+                        @{
+                            // Tạo mã SKU gợi ý đơn giản: TênSP-Mau
+                            string skuGoiY = "";
+                            if (!string.IsNullOrEmpty(autoTenSP))
+                            {
+                                // Lấy 3 chữ cái đầu của tên SP
+                                string prefix = autoTenSP.Length >= 3 ? autoTenSP.Substring(0, 3).ToUpper() : "SP";
+                                string suffix = !string.IsNullOrEmpty(autoMau) ? "-" + autoMau.ToUpper() : "";
+                                skuGoiY = prefix + suffix;
+                            }
+                        }
+                        <input type="text" name="BienTheSanPham.SKU" value="@skuGoiY" class="form-control fw-bold text-uppercase" placeholder="Mã định danh (VD: GUC-DO)" required />
+                        @Html.ValidationMessage("BienTheSanPham.SKU", null, new { @class = "text-danger mt-1 d-block" })
+                    </div>
+                </div>
+
+                @* Màu Sắc (Tự động điền) *@
+                <div class="row mb-3">
+                    <label class="col-md-3 col-form-label">Màu Sắc</label>
+                    <div class="col-md-9">
+                        <input type="text" name="BienTheSanPham.MauSac" value="@autoMau" class="form-control" placeholder="Ví dụ: Đen, Trắng..." />
+                    </div>
+                </div>
+
+                @* Giá Bán (Tự động điền từ Giá Nhập) *@
+                <div class="row mb-3">
+                    <label class="col-md-3 col-form-label required">Giá Bán (VNĐ)</label>
+                    <div class="col-md-9">
+                        <input type="number" step="1000" min="0" name="BienTheSanPham.GiaBan" value="@autoGia" class="form-control" placeholder="Nhập giá bán..." required />
+                        @if (!string.IsNullOrEmpty(autoGia))
+                        {
+                            <small class="text-muted fst-italic">Gợi ý từ giá nhập kho: @string.Format("{0:N0}", decimal.Parse(autoGia)) đ</small>
+                        }
+                        @Html.ValidationMessage("BienTheSanPham.GiaBan", null, new { @class = "text-danger mt-1 d-block" })
+                    </div>
+                </div>
+
+                @* Số Lượng Tồn Kho (Tự động điền) *@
+                <div class="row mb-3">
+                    <label class="col-md-3 col-form-label required">Số Lượng Tồn</label>
+                    <div class="col-md-9">
+                        <input type="number" min="0" name="BienTheSanPham.SoLuongTonKho" value="@autoSL" class="form-control" placeholder="Nhập số lượng ban đầu..." required />
+                        @if (!string.IsNullOrEmpty(autoSL))
+                        {
+                            <small class="text-muted fst-italic">Số lượng Kho yêu cầu nhập: @autoSL</small>
+                        }
+                        @Html.ValidationMessage("BienTheSanPham.SoLuongTonKho", null, new { @class = "text-danger mt-1 d-block" })
+                    </div>
+                </div>
+
+                @* Hình Ảnh *@
+                <div class="row mb-3">
+                    <label class="col-md-3 col-form-label required">Hình Ảnh</label>
+                    <div class="col-md-9">
+                        <input type="file" name="HinhAnhUpload" class="form-control" accept="image/*" required />
+                        @Html.ValidationMessage("HinhAnhUpload", null, new { @class = "text-danger mt-1 d-block" })
+                    </div>
+                </div>
+
+                @* Nút Lưu *@
+                <div class="row mt-4">
+                    <div class="col-md-9 offset-md-3">
+                        <button type="submit" class="btn btn-primary btn-submit-effect px-4">
+                            <i class="fa-solid fa-plus me-1"></i> Lưu Sản Phẩm
+                        </button>
+                        @Html.ActionLink("Hủy bỏ", "Index", null, new { @class = "btn btn-secondary btn-cancel-effect ms-2" })
+                    </div>
+                </div>
+
+            </div>
+        }
+    </div>
+</div>
+
+@section scripts {
+    <style>
+        .required::after {
+            content: " *";
+            color: red;
+        }
+
+        .form-control:focus, .form-select:focus {
+            border-color: #86b7fe;
+            box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+        }
+
+        .btn-submit-effect:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        .text-danger {
+            font-size: 0.875em;
+        }
+    </style>
+}

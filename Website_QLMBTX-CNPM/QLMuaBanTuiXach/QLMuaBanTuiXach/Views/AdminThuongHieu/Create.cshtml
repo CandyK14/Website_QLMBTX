@@ -1,0 +1,42 @@
+﻿@model QLMuaBanTuiXach.Models.ThuongHieu
+
+@{
+    ViewBag.Title = "Thêm Thương Hiệu Mới";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="card shadow-sm" style="max-width: 600px; margin: 0 auto;">
+    <div class="card-header bg-primary text-white">
+        <h4 class="mb-0">THÊM THƯƠNG HIỆU</h4>
+    </div>
+    <div class="card-body">
+        @using (Html.BeginForm("Create", "AdminThuongHieu", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+            <div class="form-horizontal">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                <div class="mb-3">
+                    <label class="form-label fw-bold">Tên Thương Hiệu</label>
+                    @Html.EditorFor(model => model.TenThuongHieu, new { htmlAttributes = new { @class = "form-control", required = "required" } })
+                    @Html.ValidationMessageFor(model => model.TenThuongHieu, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label fw-bold">Mô Tả</label>
+                    @Html.TextAreaFor(model => model.MoTa, new { @class = "form-control", rows = 3 })
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label fw-bold">Logo</label>
+                    <input type="file" name="LogoUpload" class="form-control" accept="image/*" />
+                </div>
+
+                <div class="d-flex justify-content-end gap-2 mt-4">
+                    <a href="@Url.Action("Index")" class="btn btn-secondary">Quay lại</a>
+                    <button type="submit" class="btn btn-primary">Lưu Thương Hiệu</button>
+                </div>
+            </div>
+        }
+    </div>
+</div>

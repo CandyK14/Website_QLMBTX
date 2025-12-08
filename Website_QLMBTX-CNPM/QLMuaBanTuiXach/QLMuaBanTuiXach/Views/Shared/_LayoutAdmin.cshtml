@@ -1,0 +1,76 @@
+﻿@{
+    Layout = null;
+    // 1. Thêm dòng này để lấy vai trò từ Session
+    var vaiTro = Session["VaiTro"] as string;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title - Trang Quản Trị</title>
+    <link href="~/Content/boostrap/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/admin_style.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+</head>
+<body>
+    <div class="wrapper">
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <h3 style="color:white">Trang Quản Trị</h3>
+            </div>
+            <ul class="list-unstyled components">
+                @* 1. Menu Quản lý Sản phẩm (AD & QLSP) *@
+                @if (vaiTro == "AD" || vaiTro == "QLSP")
+                {
+                    <li><a href="@Url.Action("Index", "AdminSanPham")"><i class="fa-solid fa-box me-2"></i>Quản lý Sản phẩm</a></li>
+                    <li><a href="@Url.Action("Index", "AdminDanhMuc")"><i class="fa-solid fa-list-check me-2"></i>Quản lý Danh mục</a></li>
+                    <li><a href="@Url.Action("Index", "AdminThuongHieu")"><i class="fa-solid fa-tag me-2"></i>Quản lý Thương hiệu</a></li>
+                }
+
+                @* 2. Menu Quản lý Kho (AD & QLK) *@
+                @if (vaiTro == "AD" || vaiTro == "QLK")
+                {
+                    <li>
+                        <a href="#khoSubmenu" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                            <i class="fa-solid fa-warehouse me-2"></i> Quản lý Kho
+                        </a>
+                        <ul class="collapse list-unstyled" id="khoSubmenu" style="padding-left: 20px; background: #4b545c;">
+                            <li><a href="@Url.Action("Index", "AdminKho")">Phiếu Nhập Kho</a></li>
+                            <li><a href="@Url.Action("TonKhoThap", "AdminKho")" style="color: #ffc107 !important;">Cảnh báo hết hàng</a></li>
+                            @* Link gửi yêu cầu (cho QLK) *@
+                            <li><a href="@Url.Action("TaoYeuCau", "AdminKho")">Gửi Yêu Cầu Nhập</a></li>
+                        </ul>
+                    </li>
+                }
+
+                @* 3. Menu Quản lý Đơn hàng (AD & QLDH) *@
+                @if (vaiTro == "AD" || vaiTro == "QLDH")
+                {
+                    <li><a href="@Url.Action("Index", "AdminDonHang")"><i class="fa-solid fa-receipt me-2"></i>Quản lý Đơn hàng</a></li>
+                }
+
+                @* 4. Menu Quản lý Người dùng (Chỉ AD) *@
+                @if (vaiTro == "AD")
+                {
+                    <li><a href="#"><i class="fa-solid fa-users me-2"></i>Quản lý Người dùng</a></li>
+                }
+
+                <li><a href="@Url.Action("Index", "Home")"><i class="fa-solid fa-house me-2"></i>Về trang chủ</a></li>
+
+                @if (Session["TaiKhoan"] != null)
+                {
+                    <li><a href="@Url.Action("DangXuat", "NguoiDung")"><i class="fa-solid fa-arrow-right-from-bracket me-2"></i>Đăng xuất</a></li>
+                }
+            </ul>
+        </nav>
+
+        <div id="content" class="container-fluid p-4">
+            @RenderBody()
+        </div>
+    </div>
+
+    <script src="~/Scripts/jquery-3.7.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.bundle.min.js"></script>
+    @RenderSection("scripts", required: false)
+</body>
+</html>

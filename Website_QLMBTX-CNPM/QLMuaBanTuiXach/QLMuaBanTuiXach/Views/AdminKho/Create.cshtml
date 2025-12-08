@@ -1,0 +1,143 @@
+﻿@model QLMuaBanTuiXach.Models.PhieuNhap
+@{
+    ViewBag.Title = "Tạo Phiếu Nhập Kho (Theo Biến Thể)";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="card shadow-sm">
+    <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+        <h4 class="mb-0"><i class="fa-solid fa-boxes-packing me-2"></i>NHẬP KHO BIẾN THỂ</h4>
+    </div>
+    <div class="card-body">
+
+        @* [HƯỚNG DẪN]: Nhắc nhở nhân viên về quy tắc nhập hàng  *@
+        <div class="alert alert-info border-info">
+            <i class="fa-solid fa-circle-info me-2"></i>
+            <strong>Quy tắc nhập kho:</strong> Bạn chỉ được nhập các biến thể ĐÃ CÓ.
+            Nếu là hàng mới, vui lòng
+            @* --- SỬA DÒNG NÀY --- *@
+            <a href="@Url.Action("TaoYeuCau", "AdminKho")" target="_blank" class="fw-bold text-decoration-underline text-danger">
+                Gửi Yêu Cầu Thêm Mới Tại Đây
+            </a>.
+        </div>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            @* 1. Thông tin chung *@
+            <div class="row mb-4">
+                <div class="col-md-4">
+                    <label class="form-label fw-bold">Mã Phiếu Nhập</label>
+                    @Html.EditorFor(model => model.SoPhieu, new { htmlAttributes = new { @class = "form-control", placeholder = "VD: PN" + DateTime.Now.ToString("ddMM"), required = "required" } })
+                </div>
+                <div class="col-md-5">
+                    <label class="form-label fw-bold">Nhà Cung Cấp</label>
+                    @Html.DropDownList("MaNhaCungCap", null, "-- Chọn Nhà Cung Cấp --", htmlAttributes: new { @class = "form-select", required = "required" })
+                </div>
+                <div class="col-md-3">
+                    <label class="form-label fw-bold">Ngày Nhập</label>
+                    <input type="text" class="form-control" value="@DateTime.Now.ToString("dd/MM/yyyy")" disabled readonly />
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label fw-bold">Ghi chú</label>
+                @Html.TextAreaFor(model => model.GhiChu, new { @class = "form-control", rows = 2, placeholder = "Ghi chú về lô hàng..." })
+            </div>
+
+            <hr />
+
+            <h5 class="mb-3 text-primary"><i class="fa-solid fa-list-check me-2"></i>Chi Tiết Các Biến Thể Cần Nhập</h5>
+
+            @* 2. Bảng nhập chi tiết biến thể [cite: 187] *@
+            <table class="table table-bordered table-striped" id="tblChiTiet">
+                <thead class="table-dark">
+                    <tr>
+                        <th style="width: 45%">Chọn Biến Thể (Sản phẩm - Màu - SKU)</th>
+                        <th style="width: 20%">Số Lượng Nhập</th>
+                        <th style="width: 25%">Giá Vốn (VNĐ)</th>
+                        <th style="width: 10%">Xóa</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="item-row">
+                        <td>
+                            @* Dropdown này hiển thị chuỗi: "Gucci - Đen (GUC-BLK)" giúp chọn chính xác [cite: 184] *@
+                            @Html.DropDownList("ListSanPham", null, "🔍 Tìm & Chọn biến thể...", new { @class = "form-select product-select", name = "chiTietNhap[0].MaBienThe", required = "required" })
+                        </td>
+                        <td>
+                            <input type="number" name="chiTietNhap[0].SoLuong" class="form-control text-center fw-bold" min="1" value="1" placeholder="SL" required />
+                        </td>
+                        <td>
+                            <input type="number" name="chiTietNhap[0].GiaNhap" class="form-control text-end" min="0" step="1000" placeholder="Giá nhập" required />
+                        </td>
+                        <td class="text-center">
+                            <button type="button" class="btn btn-danger btn-sm btn-remove" disabled><i class="fa-solid fa-trash"></i></button>
+                        </td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="4">
+                            <button type="button" id="btnAddRow" class="btn btn-outline-primary btn-sm">
+                                <i class="fa-solid fa-plus"></i> Thêm dòng nhập hàng
+                            </button>
+                            <span class="float-end fw-bold">Tổng tiền dự kiến: <span id="totalAmount" class="text-danger fs-5">0 ₫</span></span>
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+
+            <div class="mt-4 text-end">
+                <a href="@Url.Action("Index")" class="btn btn-secondary me-2">Hủy bỏ</a>
+                <button type="submit" class="btn btn-success btn-lg px-5">
+                    <i class="fa-solid fa-floppy-disk me-2"></i> LƯU PHIẾU NHẬP
+                </button>
+            </div>
+        }
+    </div>
+</div>
+
+@section scripts {
+    <script>
+        $(document).ready(function () {
+            // Logic JS để thêm dòng, tính tiền giữ nguyên như cũ vì nó đã đúng logic nhập nhiều dòng
+            $("#btnAddRow").click(function () {
+                var rowCount = $("#tblChiTiet tbody tr").length;
+                var newRow = $(".item-row:first").clone();
+                newRow.find("input").val("");
+                newRow.find("select").val("");
+
+                // Cập nhật index name để MVC Binding hiểu được List<>
+                newRow.find("select").attr("name", "chiTietNhap[" + rowCount + "].MaBienThe");
+                newRow.find("input[type='number']").eq(0).attr("name", "chiTietNhap[" + rowCount + "].SoLuong");
+                newRow.find("input[type='number']").eq(1).attr("name", "chiTietNhap[" + rowCount + "].GiaNhap");
+
+                newRow.find(".btn-remove").prop("disabled", false);
+                $("#tblChiTiet tbody").append(newRow);
+            });
+
+            $(document).on("click", ".btn-remove", function () {
+                if ($("#tblChiTiet tbody tr").length > 1) {
+                    $(this).closest("tr").remove();
+                    updateTotal();
+                }
+            });
+
+            $(document).on("input", "input[name*='SoLuong'], input[name*='GiaNhap']", function () {
+                updateTotal();
+            });
+
+            function updateTotal() {
+                var total = 0;
+                $("#tblChiTiet tbody tr").each(function () {
+                    var sl = parseFloat($(this).find("input[name*='SoLuong']").val()) || 0;
+                    var gia = parseFloat($(this).find("input[name*='GiaNhap']").val()) || 0;
+                    total += sl * gia;
+                });
+                $("#totalAmount").text(total.toLocaleString('vi-VN') + " ₫");
+            }
+        });
+    </script>
+}

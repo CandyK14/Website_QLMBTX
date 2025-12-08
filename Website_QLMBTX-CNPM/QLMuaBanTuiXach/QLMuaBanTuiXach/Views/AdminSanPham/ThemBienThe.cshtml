@@ -1,0 +1,188 @@
+﻿@model QLMuaBanTuiXach.Models.BienTheSanPham
+
+@{
+    ViewBag.Title = "Thêm Biến Thể Mới";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    string tenSanPhamGoc = ViewBag.TenSanPhamGoc ?? "Sản phẩm không xác định";
+    int maSanPhamGoc = Model.MaSanPham; // Lấy MaSanPham từ Model
+}
+
+<div class="card shadow-sm">
+    <div class="card-header">
+        <h3 class="mb-0"><i class="fa-solid fa-tags me-2"></i>THÊM BIẾN THỂ MỚI</h3>
+        <small class="text-muted">Cho sản phẩm: <strong>@tenSanPhamGoc</strong></small>
+    </div>
+    <div class="card-body">
+        @* Thêm enctype="multipart/form-data" cho upload ảnh *@
+        @using (Html.BeginForm("ThemBienThe", "AdminSanPham", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+                @Html.ValidationSummary(true, "", new { @class = "alert alert-danger" })
+
+                @* Gửi kèm MaSanPham để biết biến thể này thuộc sản phẩm nào *@
+                @Html.HiddenFor(model => model.MaSanPham)
+
+                @* SKU *@
+                <div class="row mb-3">
+                    @Html.LabelFor(model => model.SKU, htmlAttributes: new { @class = "col-md-3 col-form-label required" })
+                    <div class="col-md-9">
+                        @Html.EditorFor(model => model.SKU, new { htmlAttributes = new { @class = "form-control", placeholder = "Mã định danh duy nhất...", required = "required" } })
+                        @Html.ValidationMessageFor(model => model.SKU, "", new { @class = "text-danger mt-1 d-block" })
+                    </div>
+                </div>
+
+                @* Màu Sắc *@
+                <div class="row mb-3">
+                    @Html.LabelFor(model => model.MauSac, "Màu Sắc", htmlAttributes: new { @class = "col-md-3 col-form-label" })
+                    <div class="col-md-9">
+                        @Html.EditorFor(model => model.MauSac, new { htmlAttributes = new { @class = "form-control", placeholder = "Ví dụ: Đen, Trắng..." } })
+                        @Html.ValidationMessageFor(model => model.MauSac, "", new { @class = "text-danger mt-1 d-block" })
+                    </div>
+                </div>
+
+                @* Giá Bán *@
+                <div class="row mb-3">
+                    @Html.LabelFor(model => model.GiaBan, "Giá Bán (VNĐ)", htmlAttributes: new { @class = "col-md-3 col-form-label required" })
+                    <div class="col-md-9">
+                        @Html.EditorFor(model => model.GiaBan, new { htmlAttributes = new { @class = "form-control", type = "number", step = "1000", min = "0", required = "required" } })
+                        @Html.ValidationMessageFor(model => model.GiaBan, "", new { @class = "text-danger mt-1 d-block" })
+                    </div>
+                </div>
+
+                @* Giá Gốc (Tùy chọn) *@
+                <div class="row mb-3">
+                    @Html.LabelFor(model => model.GiaGoc, "Giá Gốc (VNĐ)", htmlAttributes: new { @class = "col-md-3 col-form-label" })
+                    <div class="col-md-9">
+                        @Html.EditorFor(model => model.GiaGoc, new { htmlAttributes = new { @class = "form-control", type = "number", step = "1000", min = "0", placeholder = "Giá trước khi giảm (nếu có)" } })
+                        @Html.ValidationMessageFor(model => model.GiaGoc, "", new { @class = "text-danger mt-1 d-block" })
+                    </div>
+                </div>
+
+                @* Số Lượng Tồn Kho *@
+                <div class="row mb-3">
+                    @Html.LabelFor(model => model.SoLuongTonKho, "Số Lượng Tồn", htmlAttributes: new { @class = "col-md-3 col-form-label required" })
+                    <div class="col-md-9">
+                        @Html.EditorFor(model => model.SoLuongTonKho, new { htmlAttributes = new { @class = "form-control", type = "number", min = "0", required = "required" } })
+                        @Html.ValidationMessageFor(model => model.SoLuongTonKho, "", new { @class = "text-danger mt-1 d-block" })
+                    </div>
+                </div>
+
+                <hr />
+                <h5 class="mb-3">Kích thước & Cân nặng (Tùy chọn)</h5>
+
+                @* Chiều Dài *@
+                <div class="row mb-3">
+                    @Html.LabelFor(model => model.ChieuDaiCM, "Chiều Dài (cm)", htmlAttributes: new { @class = "col-md-3 col-form-label" })
+                    <div class="col-md-9">
+                        @Html.EditorFor(model => model.ChieuDaiCM, new { htmlAttributes = new { @class = "form-control", type = "number", step = "0.1", min = "0" } })
+                        @Html.ValidationMessageFor(model => model.ChieuDaiCM, "", new { @class = "text-danger mt-1 d-block" })
+                    </div>
+                </div>
+
+                @* Chiều Rộng *@
+                <div class="row mb-3">
+                    @Html.LabelFor(model => model.ChieuRongCM, "Chiều Rộng (cm)", htmlAttributes: new { @class = "col-md-3 col-form-label" })
+                    <div class="col-md-9">
+                        @Html.EditorFor(model => model.ChieuRongCM, new { htmlAttributes = new { @class = "form-control", type = "number", step = "0.1", min = "0" } })
+                        @Html.ValidationMessageFor(model => model.ChieuRongCM, "", new { @class = "text-danger mt-1 d-block" })
+                    </div>
+                </div>
+
+                @* Chiều Cao *@
+                <div class="row mb-3">
+                    @Html.LabelFor(model => model.ChieuCaoCM, "Chiều Cao (cm)", htmlAttributes: new { @class = "col-md-3 col-form-label" })
+                    <div class="col-md-9">
+                        @Html.EditorFor(model => model.ChieuCaoCM, new { htmlAttributes = new { @class = "form-control", type = "number", step = "0.1", min = "0" } })
+                        @Html.ValidationMessageFor(model => model.ChieuCaoCM, "", new { @class = "text-danger mt-1 d-block" })
+                    </div>
+                </div>
+
+                @* Cân Nặng *@
+                <div class="row mb-3">
+                    @Html.LabelFor(model => model.CanNangGram, "Cân Nặng (gram)", htmlAttributes: new { @class = "col-md-3 col-form-label" })
+                    <div class="col-md-9">
+                        @Html.EditorFor(model => model.CanNangGram, new { htmlAttributes = new { @class = "form-control", type = "number", min = "0" } })
+                        @Html.ValidationMessageFor(model => model.CanNangGram, "", new { @class = "text-danger mt-1 d-block" })
+                    </div>
+                </div>
+
+                @* Hình Ảnh *@
+                <div class="row mb-3">
+                    <label class="col-md-3 col-form-label">Hình Ảnh</label> @* Có thể không bắt buộc khi thêm *@
+                    <div class="col-md-9">
+                        <input type="file" name="HinhAnhUpload" class="form-control" accept="image/*" />
+                        @Html.ValidationMessage("HinhAnhUpload", null, new { @class = "text-danger mt-1 d-block" })
+                    </div>
+                </div>
+
+                @* Nút Lưu và Quay lại *@
+                <div class="row mt-4">
+                    <div class="col-md-9 offset-md-3">
+                        <button type="submit" class="btn btn-success btn-submit-effect">
+                            <i class="fa-solid fa-plus me-1"></i> Thêm Biến Thể
+                        </button>
+                        @* Nút quay lại trang Edit của sản phẩm gốc *@
+                        @Html.ActionLink("Hủy", "Edit", new { id = maSanPhamGoc }, new { @class = "btn btn-secondary btn-cancel-effect ms-2" })
+                    </div>
+                </div>
+
+            </div> @* Đóng div form-horizontal *@
+        } @* Đóng using Html.BeginForm *@
+    </div> @* Đóng div card-body *@
+</div> @* Đóng div card *@
+
+@* Section scripts nếu cần *@
+@section scripts {
+    @* @Scripts.Render("~/bundles/jqueryval") *@
+    <style>
+        .required::after {
+            content: " *";
+            color: red;
+        }
+
+        .form-control, .form-select {
+            transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+            border-radius: 0.3rem;
+        }
+
+            .form-control:focus, .form-select:focus {
+                border-color: #86b7fe;
+                outline: 0;
+                box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+            }
+
+        .btn-submit-effect, .btn-cancel-effect {
+            transition: transform 0.1s ease-out, background-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+            border-radius: 0.3rem;
+        }
+
+            .btn-submit-effect:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+            }
+
+            .btn-cancel-effect:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            }
+
+        .btn-success i {
+            margin-right: 0.3rem;
+        }
+
+        .col-form-label {
+            font-weight: 500;
+        }
+
+        .form-horizontal .row {
+            align-items: flex-start;
+        }
+
+        .text-danger {
+            font-size: 0.875em;
+        }
+    </style>
+}
+

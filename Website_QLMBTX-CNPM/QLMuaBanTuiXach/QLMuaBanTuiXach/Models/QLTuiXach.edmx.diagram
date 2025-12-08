@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="fe0c4f4aed3a460b86bb16428852ee6f" Name="Diagram1" ZoomLevel="64">
+        <EntityTypeShape EntityType="QL_TuiXachModel.BienTheSanPham" Width="1.5" PointX="6" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QL_TuiXachModel.CaLamViec" Width="1.5" PointX="3" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QL_TuiXachModel.ChiTietDonHang" Width="1.5" PointX="9.75" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QL_TuiXachModel.ChiTietPhieuNhap" Width="1.5" PointX="12.5" PointY="11.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="QL_TuiXachModel.DanhGia" Width="1.5" PointX="5.25" PointY="10.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="QL_TuiXachModel.DanhMuc" Width="1.5" PointX="1.5" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="QL_TuiXachModel.DiaChi" Width="1.5" PointX="5.25" PointY="14.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="QL_TuiXachModel.DonHang" Width="1.5" PointX="7.5" PointY="11.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="QL_TuiXachModel.GioHang" Width="1.5" PointX="8.25" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="QL_TuiXachModel.MaKhuyenMai" Width="1.5" PointX="5.25" PointY="18.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QL_TuiXachModel.NguoiDung" Width="1.5" PointX="3" PointY="10.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="QL_TuiXachModel.NhaCungCap" Width="1.5" PointX="8" PointY="19.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QL_TuiXachModel.PhanCa" Width="1.5" PointX="5.25" PointY="6.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="QL_TuiXachModel.PhieuDoiTra" Width="1.5" PointX="12" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QL_TuiXachModel.PhieuNhap" Width="1.5" PointX="10.25" PointY="11" IsExpanded="true" />
+        <EntityTypeShape EntityType="QL_TuiXachModel.SanPham" Width="1.5" PointX="3.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="QL_TuiXachModel.ThuongHieu" Width="1.5" PointX="1.5" PointY="16.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="QL_TuiXachModel.VaiTro" Width="1.5" PointX="0.75" PointY="11.875" IsExpanded="true" />
+        <AssociationConnector Association="QL_TuiXachModel.FK__BienTheSa__MaSan__2A4B4B5E" ManuallyRouted="false" />
+        <AssociationConnector Association="QL_TuiXachModel.FK__ChiTietDo__MaBie__5629CD9C" ManuallyRouted="false" />
+        <AssociationConnector Association="QL_TuiXachModel.FK__ChiTietPh__MaBie__3A81B327" ManuallyRouted="false" />
+        <AssociationConnector Association="QL_TuiXachModel.FK__GioHang__MaBienT__5CD6CB2B" ManuallyRouted="false" />
+        <AssociationConnector Association="QL_TuiXachModel.FK__PhanCa__MaCa__1BFD2C07" ManuallyRouted="false" />
+        <AssociationConnector Association="QL_TuiXachModel.FK__ChiTietDo__MaDon__5535A963" ManuallyRouted="false" />
+        <AssociationConnector Association="QL_TuiXachModel.FK__PhieuDoiT__MaChi__693CA210" ManuallyRouted="false" />
+        <AssociationConnector Association="QL_TuiXachModel.FK__ChiTietPh__MaPhi__398D8EEE" ManuallyRouted="false" />
+        <AssociationConnector Association="QL_TuiXachModel.FK__DanhGia__MaNguoi__628FA481" ManuallyRouted="false" />
+        <AssociationConnector Association="QL_TuiXachModel.FK__DanhGia__MaSanPh__619B8048" ManuallyRouted="false" />
+        <AssociationConnector Association="QL_TuiXachModel.FK__DanhMuc__MaDanhM__20C1E124" ManuallyRouted="false" />
+        <AssociationConnector Association="QL_TuiXachModel.FK__SanPham__MaDanhM__24927208" ManuallyRouted="false" />
+        <AssociationConnector Association="QL_TuiXachModel.FK__DiaChi__MaNguoiD__3E52440B" ManuallyRouted="false" />
+        <AssociationConnector Association="QL_TuiXachModel.FK__DonHang__MaDiaCh__4F7CD00D" ManuallyRouted="false" />
+        <AssociationConnector Association="QL_TuiXachModel.FK__DonHang__MaKMID__5070F446" ManuallyRouted="false" />
+        <AssociationConnector Association="QL_TuiXachModel.FK__DonHang__MaNguoi__4E88ABD4" ManuallyRouted="false" />
+        <AssociationConnector Association="QL_TuiXachModel.FK__DonHang__MaNhanV__5165187F" ManuallyRouted="false" />
+        <AssociationConnector Association="QL_TuiXachModel.FK__DonHang__MaQLDon__52593CB8" ManuallyRouted="false" />
+        <AssociationConnector Association="QL_TuiXachModel.FK__GioHang__MaNguoi__5BE2A6F2" ManuallyRouted="false" />
+        <AssociationConnector Association="QL_TuiXachModel.FK__NguoiDung__MaVai__164452B1" ManuallyRouted="false" />
+        <AssociationConnector Association="QL_TuiXachModel.FK__PhanCa__MaNguoiD__1B0907CE" ManuallyRouted="false" />
+        <AssociationConnector Association="QL_TuiXachModel.FK__PhieuDoiT__MaNgu__6A30C649" ManuallyRouted="false" />
+        <AssociationConnector Association="QL_TuiXachModel.FK__PhieuDoiT__MaQLD__6B24EA82" ManuallyRouted="false" />
+        <AssociationConnector Association="QL_TuiXachModel.FK__PhieuNhap__MaAdm__35BCFE0A" ManuallyRouted="false" />
+        <AssociationConnector Association="QL_TuiXachModel.FK__PhieuNhap__MaNha__34C8D9D1" ManuallyRouted="false" />
+        <AssociationConnector Association="QL_TuiXachModel.FK__PhieuNhap__MaNha__33D4B598" ManuallyRouted="false" />
+        <AssociationConnector Association="QL_TuiXachModel.FK__SanPham__MaThuon__25869641" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="QL_TuiXachModel.YeuCauThemSanPham" Width="1.5" PointX="2.375" PointY="21.875" />
+        <AssociationConnector Association="QL_TuiXachModel.FK__YeuCauThe__MaNgu__71D1E811" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

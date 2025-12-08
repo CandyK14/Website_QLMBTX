@@ -1,0 +1,463 @@
+﻿@using QLMuaBanTuiXach.Models
+@model QLMuaBanTuiXach.Models.SanPham
+@{
+    ViewBag.Title = Model.TenSanPham;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    // Lấy biến thể đầu tiên để làm ảnh đại diện mặc định
+    var firstVariant = Model.BienTheSanPham.FirstOrDefault();
+    string defaultImage = firstVariant != null ? firstVariant.HinhAnh : "/Content/img/placeholder.png";
+    decimal minPrice = Model.BienTheSanPham.Any() ? Model.BienTheSanPham.Min(x => x.GiaBan) : 0;
+    decimal maxPrice = Model.BienTheSanPham.Any() ? Model.BienTheSanPham.Max(x => x.GiaBan) : 0;
+
+    // === [MỚI] LẤY THÔNG TIN NGƯỜI DÙNG ĐỂ CHECK QUYỀN ===
+    var currentUser = Session["TaiKhoan"] as QLMuaBanTuiXach.Models.NguoiDung;
+    var currentRole = Session["VaiTro"] as string;
+}
+
+<main>
+    <div class="container" style="margin-top: 30px; margin-bottom: 50px;">
+
+        @* === [MỚI] HIỂN THỊ THÔNG BÁO LỖI TỪ CONTROLLER === *@
+        @if (TempData["LoiDatHang"] != null)
+        {
+            <div class="alert alert-danger" style="margin-bottom: 20px;">
+                <i class="fa-solid fa-circle-exclamation me-2"></i> @TempData["LoiDatHang"]
+            </div>
+        }
+
+        <div class="product-detail-wrapper">
+
+            <div class="product-gallery">
+                <div class="main-image-frame">
+                    <img id="mainImage" src="@Url.Content(defaultImage)" alt="@Model.TenSanPham" />
+                </div>
+            </div>
+
+            <div class="product-info-column">
+                <h1 class="product-title">@Model.TenSanPham</h1>
+
+                <div class="product-meta">
+                    <span>Thương hiệu: <strong>@Model.ThuongHieu.TenThuongHieu</strong></span>
+                    <span class="divider">|</span>
+                    <span>Mã SP: #@Model.MaSanPham</span>
+                </div>
+
+                <div class="product-price-highlight">
+                    @if (minPrice == maxPrice)
+                    {
+                        <span>@minPrice.ToString("N0") VNĐ</span>
+                    }
+                    else
+                    {
+                        <span>@minPrice.ToString("N0") - @maxPrice.ToString("N0") VNĐ</span>
+                    }
+                </div>
+
+                <div class="product-description-short">
+                    <p><strong>Chất liệu:</strong> @Model.ChatLieuChinh</p>
+                    <p>@Model.MoTa</p>
+                </div>
+
+                <hr style="border-top: 1px dashed #ddd; margin: 20px 0;" />
+
+                <div class="variant-selection-section">
+                    <h3>Chọn phiên bản màu sắc:</h3>
+
+                    <div class="variant-grid">
+                        @foreach (var bt in Model.BienTheSanPham)
+                        {
+                            <div class="variant-item-card">
+                                <div class="variant-thumb" onclick="changeMainImage('@Url.Content(bt.HinhAnh)')">
+                                    <img src="@Url.Content(bt.HinhAnh)" alt="@bt.MauSac" />
+                                </div>
+
+                                <div class="variant-details">
+                                    <div class="variant-name">@bt.MauSac</div>
+                                    <div class="variant-sku">SKU: @bt.SKU</div>
+                                    <div class="variant-price-small">@bt.GiaBan.ToString("N0") đ</div>
+                                    <div class="variant-size">KT: @bt.ChieuDaiCM x @bt.ChieuRongCM x @bt.ChieuCaoCM cm</div>
+
+                                    <div class="variant-action">
+                                        @if (bt.SoLuongTonKho > 0)
+                                        {
+                                            // === [MỚI] LOGIC CHẶN NHÂN VIÊN MUA HÀNG ===
+                                            // Nếu đã đăng nhập VÀ KHÔNG PHẢI KHÁCH HÀNG -> Chặn
+                                            if (currentUser != null && currentRole != "KH")
+                                            {
+                                                <button class="btn-restricted" disabled title="Tài khoản nội bộ không được mua hàng">
+                                                    <i class="fa-solid fa-user-lock"></i> Hạn chế
+                                                </button>
+                                            }
+                                            else
+                                            {
+                                                // Khách hàng hoặc Khách vãng lai -> Hiện nút mua
+                                                using (Html.BeginForm("ThemVaoGio", "GioHang", FormMethod.Post, new { @class = "add-to-cart-form" }))
+                                                {
+                                                    @Html.Hidden("maBienThe", bt.MaBienThe)
+                                                    @Html.Hidden("maSanPham", Model.MaSanPham)
+
+                                                    <div class="quantity-selector">
+                                                        <label>SL:</label>
+                                                        <input type="number" name="soLuong" value="1" min="1" max="@bt.SoLuongTonKho" class="qty-input-detail" />
+                                                    </div>
+
+                                                    <button type="submit" class="btn-buy-now add-to-cart">
+                                                        <i class="fa-solid fa-cart-plus"></i> Thêm vào giỏ
+                                                    </button>
+                                                }
+                                            }
+                                        }
+                                        else
+                                        {
+                                            <button class="btn-sold-out" disabled>Hết hàng</button>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="related-products-section">
+            <hr style="margin-top: 50px; margin-bottom: 30px;" />
+            <h3>Sản Phẩm Cùng Thương Hiệu</h3>
+            @{
+                var related = (ViewBag.RelatedProducts as List<SanPham>);
+                if (related != null && related.Any())
+                {
+                    <div class="products">
+                        @foreach (var sp in related)
+                        {
+                            var v = sp.BienTheSanPham.FirstOrDefault();
+                            <a href="@Url.Action("Detail", "Home", new { id = sp.MaSanPham })" class="product-card-link">
+                                <div class="product-card">
+                                    <div class="product-image">
+                                        <img src="@Url.Content(v?.HinhAnh ?? "~/Content/img/placeholder.png")" />
+                                    </div>
+                                    <div class="product-info">
+                                        <h3>@sp.TenSanPham</h3>
+                                        <p class="product-price">@(v?.GiaBan.ToString("N0") ?? "Liên hệ") VNĐ</p>
+                                    </div>
+                                </div>
+                            </a>
+                        }
+                    </div>
+                }
+            }
+        </div>
+    </div>
+</main>
+
+<script>
+    function changeMainImage(imageUrl) {
+        document.getElementById('mainImage').src = imageUrl;
+    }
+</script>
+
+<style>
+    /* BỐ CỤC CHÍNH: 2 CỘT */
+    .product-detail-wrapper {
+        display: flex;
+        gap: 40px;
+        flex-wrap: wrap; /* Để xuống dòng trên điện thoại */
+    }
+
+    /* CỘT TRÁI: HÌNH ẢNH */
+    .product-gallery {
+        flex: 0 0 450px; /* Chiều rộng cố định cho ảnh */
+        max-width: 100%;
+    }
+
+    .main-image-frame {
+        width: 100%;
+        height: 450px;
+        border: 1px solid #eee;
+        border-radius: 10px;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #f9f9f9;
+    }
+
+        .main-image-frame img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+
+    /* CỘT PHẢI: THÔNG TIN */
+    .product-info-column {
+        flex: 1; /* Chiếm phần còn lại */
+    }
+
+    .product-title {
+        font-size: 28px;
+        font-weight: 700;
+        margin-top: 0;
+        color: #333;
+    }
+
+    .product-meta {
+        color: #777;
+        font-size: 14px;
+        margin-bottom: 15px;
+    }
+
+        .product-meta .divider {
+            margin: 0 10px;
+            color: #ccc;
+        }
+
+    .product-price-highlight {
+        font-size: 26px;
+        color: #B22222; /* Màu đỏ đô */
+        font-weight: bold;
+        background: #fafafa;
+        padding: 15px;
+        border-radius: 8px;
+        margin-bottom: 20px;
+    }
+
+    /*DANH SÁCH BIẾN THỂ */
+    .variant-selection-section h3 {
+        font-size: 16px;
+        margin-bottom: 15px;
+        font-weight: 600;
+    }
+
+    .variant-grid {
+        display: flex;
+        flex-direction: column; /* Xếp dọc từng dòng chọn */
+        gap: 15px;
+        max-height: 400px; /* Nếu nhiều quá thì cuộn */
+        overflow-y: auto;
+    }
+
+    .variant-item-card {
+        display: flex;
+        align-items: center;
+        border: 1px solid #e0e0e0;
+        border-radius: 8px;
+        padding: 10px;
+        transition: all 0.2s;
+        background: white;
+    }
+
+        .variant-item-card:hover {
+            border-color: #333;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+    .variant-thumb {
+        width: 80px;
+        height: 80px;
+        border-radius: 5px;
+        overflow: hidden;
+        border: 1px solid #eee;
+        cursor: pointer;
+        margin-right: 15px;
+        flex-shrink: 0;
+    }
+
+        .variant-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+    .variant-details {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+
+    .variant-name {
+        font-weight: bold;
+        min-width: 100px;
+    }
+
+    .variant-sku {
+        font-size: 12px;
+        color: #888;
+        margin-right: 10px;
+    }
+
+    .variant-size {
+        font-size: 12px;
+        color: #555;
+        margin-right: auto;
+    }
+    /* Đẩy nút mua sang phải */
+
+    .variant-price-small {
+        font-weight: bold;
+        color: #B22222;
+        font-size: 16px;
+        margin-right: 15px;
+    }
+
+    /* NÚT BẤM */
+    .btn-buy-now {
+        background-color: #333;
+        color: white;
+        border: none;
+        padding: 8px 15px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-weight: 600;
+        transition: 0.3s;
+    }
+
+        .btn-buy-now:hover {
+            background-color: #B22222;
+        }
+
+    .btn-sold-out {
+        background-color: #eee;
+        color: #999;
+        border: 1px solid #ddd;
+        padding: 8px 15px;
+        border-radius: 5px;
+        cursor: not-allowed;
+    }
+
+    /* [MỚI] Style cho nút bị chặn (nhân viên) */
+    .btn-restricted {
+        background-color: #fff3cd;
+        color: #856404;
+        border: 1px solid #ffeeba;
+        padding: 8px 15px;
+        border-radius: 5px;
+        cursor: not-allowed;
+        font-weight: 600;
+    }
+
+    /* SỬA LẠI CHO PHẦN SẢN PHẨM LIÊN QUAN*/
+    .related-products-section {
+        margin-top: 50px;
+        margin-bottom: 30px;
+    }
+
+        .related-products-section h3 {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            border-left: 4px solid #333; /* Thêm cái vạch bên trái cho đẹp */
+            padding-left: 10px;
+        }
+
+        /* Sử dụng Grid để chia cột, giống hệt trang chủ */
+        .related-products-section .products {
+            display: grid;
+            /* Tự động chia cột: nhỏ nhất 220px, lớn nhất là chia đều khoảng trống còn lại */
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        /* CSS cho từng card sản phẩm nhỏ bên trong */
+        .related-products-section .product-card {
+            border: 1px solid #eee;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.2s, box-shadow 0.2s;
+            background: #fff;
+        }
+
+            .related-products-section .product-card:hover {
+                transform: translateY(-3px);
+                box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            }
+
+        .related-products-section .product-image img {
+            width: 100%;
+            height: 200px; /* Cố định chiều cao ảnh nhỏ lại */
+            object-fit: contain; /* Đảm bảo ảnh không bị méo */
+            background-color: #f9f9f9;
+        }
+
+        .related-products-section .product-info {
+            padding: 10px;
+            text-align: center;
+        }
+
+            .related-products-section .product-info h3 {
+                font-size: 14px; /* Tên sản phẩm nhỏ gọn */
+                margin: 5px 0;
+                white-space: nowrap; /* Không xuống dòng */
+                overflow: hidden;
+                text-overflow: ellipsis; /* Thêm dấu ... nếu tên quá dài */
+            }
+
+        .related-products-section .product-price {
+            color: #B22222;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+
+    .add-to-cart-form {
+        display: flex;
+        align-items: center;
+        gap: 15px; /* Tăng khoảng cách một chút cho thoáng */
+    }
+
+    /* Khung bao quanh ô số lượng */
+    .quantity-selector {
+        display: flex;
+        align-items: center;
+        border: 1px solid #e0e0e0; /* Viền màu xám nhạt tinh tế */
+        border-radius: 4px; /* Bo góc nhẹ nhàng, hiện đại */
+        padding: 0 10px; /* Khoảng cách đệm bên trong */
+        height: 38px; /* Chiều cao cố định, nên khớp với chiều cao nút "Thêm vào giỏ" */
+        background-color: #f9f9f9; /* Màu nền xám rất nhạt */
+        transition: all 0.3s ease; /* Hiệu ứng chuyển đổi mượt mà */
+    }
+
+        /* Hiệu ứng khi di chuột vào hoặc khi đang nhập số */
+        .quantity-selector:hover,
+        .quantity-selector:focus-within {
+            border-color: #333; /* Viền đậm lên khi tương tác */
+            background-color: #fff; /* Nền chuyển sang trắng sáng */
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05); /* Đổ bóng nhẹ */
+        }
+
+        /* Nhãn chữ "SL:" */
+        .quantity-selector label {
+            font-size: 14px; /* Kích thước chữ vừa phải */
+            color: #666; /* Màu chữ xám trung tính */
+            font-weight: 600; /* Chữ hơi đậm */
+            margin-right: 8px; /* Khoảng cách với số */
+            cursor: default; /* Con trỏ mặc định */
+        }
+
+    /* Ô nhập số chính */
+    .qty-input-detail {
+        width: 50px; /* Chiều rộng đủ cho 2 chữ số */
+        border: none; /* Loại bỏ viền riêng của input */
+        outline: none; /* Loại bỏ đường highlight mặc định */
+        text-align: center; /* Căn giữa số */
+        font-weight: 700; /* Số đậm và rõ ràng */
+        font-size: 15px; /* Kích thước số lớn hơn chữ "SL" một chút */
+        background-color: transparent; /* Nền trong suốt để ăn theo nền của khung */
+        color: #333; /* Màu số đen */
+    }
+
+        /* --- Ẩn nút tăng/giảm mặc định xấu xí của trình duyệt --- */
+        /* Chrome, Safari, Edge, Opera */
+        .qty-input-detail::-webkit-inner-spin-button,
+        .qty-input-detail::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+    /* Firefox */
+    .qty-input-detail {
+        -moz-appearance: textfield;
+    }
+</style>

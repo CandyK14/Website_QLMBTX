@@ -1,0 +1,252 @@
+﻿@{
+    var nguoiDung = Session["TaiKhoan"] as QLMuaBanTuiXach.Models.NguoiDung;
+    var vaiTro = Session["VaiTro"] as string;
+}
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <link href="~/Content/style.css" rel="stylesheet" />
+    <link href="~/Content/boostrap/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <title>@ViewBag.Title - Túi Xách CharlesNola & CandyK</title>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <a href="@Url.Action("Index", "Home")" class="logo">
+                <img style="height: 120px; width: auto; object-fit: contain; display: block; margin-top: 0px;" src="~/Content/HinhAnh/Logo.jpg" alt="Túi Xách CharlesNoLa & CandyK" />
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="@Url.Action("Index", "Home")">Trang Chủ</a></li>
+                    <li><a href="#">Sản Phẩm Mới</a></li>
+                    <li><a href="#">Bộ Sưu Tập</a></li>
+                    <li><a href="#">Liên Hệ</a></li>
+                </ul>
+            </nav>
+            <div class="search-bar">
+                <form action="/Home/Index" class="search-form" method="get">
+                    <input type="text" name="searchString" class="search-input" placeholder="Tìm kiếm sản phẩm" />
+                    <button type="submit" class="search-btn">
+                        <i class="fa-solid fa-search"></i>
+                    </button>
+                </form>
+            </div>
+            @{
+                // Tính toán số lượng giỏ hàng
+                int cartCount = 0;
+                if (Session["TaiKhoan"] != null)
+                {
+                    var user = (QLMuaBanTuiXach.Models.NguoiDung)Session["TaiKhoan"];
+
+                    using (var dbContext = new QLMuaBanTuiXach.Models.QL_TuiXachEntities())
+                    {
+                        cartCount = dbContext.GioHang
+                           .Where(g => g.MaNguoiDung == user.MaNguoiDung)
+                           .Sum(g => (int?)g.SoLuong) ?? 0;
+                    }
+                }
+            }
+
+            <a href="@Url.Action("Index", "GioHang")" style="text-decoration: none; color: inherit;">
+                <div class="cart-icon">
+                    <i class="fa-solid fa-cart-shopping"></i> <span class="cart-count">@cartCount</span>
+                </div>
+            </a>
+            <div class="avatar-icon">
+                @if (nguoiDung == null)
+                {
+                    <button id="user-icon-btn" style="padding: 10px 14px; border-radius: 100% ; border: solid; background-color: transparent; color: gray; cursor: pointer; margin-top: 5px">
+                        <i class="fa-solid fa-user"></i>
+                    </button>
+                }
+                else
+                {
+                    <div style="display:inline-flex; align-items:center;">
+                        <button id="user-icon-btn" style="padding: 10px 14px; border-radius: 100% ; border: solid; background-color: transparent; color: gray; cursor: pointer; margin-top: 5px">
+                            <i class="fa-solid fa-user"></i>
+                        </button>
+
+                        <span style="margin-left: 5px; font-weight: bold;">
+                            @nguoiDung.HoTen
+                        </span>
+                    </div>
+                }
+            </div>
+        </div>
+    </header>
+
+    @RenderBody()
+
+    @if (nguoiDung == null)
+    {
+        <div id="auth-modal-overlay" class="auth-modal-overlay">
+            <div class="auth-modal-content">
+                <span class="auth-modal-close"><i class="fa-solid fa-xmark"></i></span>
+                <div class="auth-section">
+                    <h2>ĐĂNG NHẬP</h2>
+
+
+                    @if (TempData["LoiDangNhap"] != null)
+                    {
+                        <div style="background-color: #f8d7da; color: #721c24; padding: 10px 15px; border-radius: 5px; margin-bottom: 15px; text-align: center; font-size: 14px;">
+                            @TempData["LoiDangNhap"]
+                        </div>
+                    }
+
+
+                    <p>Mời bạn điền email và mật khẩu.</p>
+                    @using (Html.BeginForm("DangNhap", "NguoiDung", FormMethod.Post))
+                    {
+                        <div class="form-group">
+                            <input type="email" name="Email" class="form-input" placeholder="Địa chỉ email" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="password" name="MatKhau" class="form-input" placeholder="Mật khẩu" required>
+                        </div>
+                        <button type="submit" class="form-button">ĐĂNG NHẬP</button>
+                    }
+                    <a href="#" class="form-link">Quên mật khẩu?</a>
+                    <div class="form-divider">Hoặc tiếp tục với</div>
+                    <button class="google-btn">
+                        <i class="fa-brands fa-google"></i> Google
+                    </button>
+                </div>
+                <div class="auth-section create-account">
+                    <h2>TẠO TÀI KHOẢN</h2>
+                    <p>Lưu thông tin của bạn để thanh toán nhanh hơn và xem đơn hàng.</p>
+                    <a href="@Url.Action("DangKy", "NguoiDung")" class="form-button form-button-outline">
+                        TẠO TÀI KHOẢN
+                    </a>
+                </div>
+            </div>
+        </div>
+    }
+
+    @if (nguoiDung != null)
+    {
+
+
+
+        if (vaiTro == "AD" || vaiTro == "QLDH" || vaiTro == "QLSP" || vaiTro == "QLK")
+        {
+            <div id="admin-menu-overlay" class="user-menu-overlay" style="display:none;">
+                <div id="admin-menu-sidebar" class="user-menu-sidebar">
+                    <span id="admin-menu-close" class="user-menu-close"><i class="fa-solid fa-xmark"></i></span>
+
+                    <div class="user-info-header" style="background-color: #343a40; color: white;">
+                        <h3>QUẢN TRỊ: @nguoiDung.HoTen</h3>
+                        <p style="color: #adb5bd;">@nguoiDung.Email (@vaiTro)</p>
+                    </div>
+
+                    @* === DÁN ĐOẠN CODE CỦA BẠN VÀO ĐÂY (THAY THẾ UL CŨ) === *@
+                    <ul class="user-menu-links">
+                        @* --- Code cũ của Sản phẩm --- *@
+                        @if (vaiTro == "AD" || vaiTro == "QLSP")
+                        {
+                            <li><a href="@Url.Action("Index", "AdminSanPham")"><i class="fa-solid fa-box"></i> Quản lý Sản phẩm</a></li>
+                            <li><a href="@Url.Action("Index", "AdminDanhMuc")"><i class="fa-solid fa-list-check"></i> Quản lý Danh mục</a></li>
+                            <li><a href="@Url.Action("Index", "AdminThuongHieu")"><i class="fa-solid fa-tag"></i> Quản lý Thương hiệu</a></li>
+                        }
+
+                        @* --- Code cũ của Đơn hàng --- *@
+                        @if (vaiTro == "AD" || vaiTro == "QLDH")
+                        {
+                            <li><a href="@Url.Action("Index", "AdminDonHang")"><i class="fa-solid fa-box-archive"></i> Quản lý đơn hàng</a></li>
+                        }
+
+                        @* --- [MỚI] THÊM ĐOẠN NÀY CHO KHO --- *@
+                        @if (vaiTro == "AD" || vaiTro == "QLK")
+                        {
+                            <li><a href="@Url.Action("Index", "AdminKho")"><i class="fa-solid fa-warehouse"></i> Quản lý Kho hàng</a></li>
+                        }
+                        @* ------------------------------------ *@
+
+                        @* --- Code cũ của Người dùng --- *@
+                        @if (vaiTro == "AD")
+                        {
+                            <li><a href="#"><i class="fa-solid fa-users"></i> Quản lý Người dùng</a></li>
+                        }
+
+                        <li><a href="@Url.Action("DangXuat", "NguoiDung")"><i class="fa-solid fa-arrow-right-from-bracket"></i> Đăng xuất</a></li>
+                    </ul>
+                    @* ======================================================== *@
+
+                </div>
+            </div>
+        }
+
+        // === NẾU LÀ USER (KhachHang) ===
+        else // Mặc định là Khách hàng
+        {
+            <div id="user-menu-overlay" class="user-menu-overlay" style="display:none;">
+                <div id="user-menu-sidebar" class="user-menu-sidebar">
+                    <span id="user-menu-close" class="user-menu-close"><i class="fa-solid fa-xmark"></i></span>
+
+                    <div class="user-info-header">
+                        <h3>@nguoiDung.HoTen</h3>
+                        <p>@nguoiDung.Email</p>
+                    </div>
+
+                    <ul class="user-menu-links">
+                        <li><a href="@Url.Action("ThongTinCaNhan", "NguoiDung")"><i class="fa-solid fa-user-pen"></i> Thông tin</a></li>
+                        <li><a href="@Url.Action("Index", "DonHang")"><i class="fa-solid fa-box-archive"></i> Đơn hàng</a></li>
+                        <li><a href="#"><i class="fa-solid fa-location-dot"></i> Địa chỉ đã lưu</a></li>
+                        <li><a href="#"><i class="fa-solid fa-heart"></i> Danh sách yêu thích</a></li>
+                        <li><a href="@Url.Action("DangXuat", "NguoiDung")"><i class="fa-solid fa-arrow-right-from-bracket"></i> Đăng xuất</a></li>
+                    </ul>
+                </div>
+            </div>
+        }
+    }
+
+
+    <footer>
+        <div class="container">
+
+            <div class="footer-top">
+                <div class="footer-col">
+                    <div class="banner2">
+                        <img class="banner-footer" src="~/Content/HinhAnh/banner2-removebg-preview.png" alt="Logo Footer" />
+                    </div>
+                    <p class="copyright-text">© @DateTime.Now.Year Túi Xách CharlesNola & CandyK.<br>Mọi quyền được bảo lưu.</p>
+                </div>
+
+                <div class="footer-col contact-col">
+                    <h4>LIÊN HỆ</h4>
+                    <ul class="footer-contact">
+                        <li><i class="fa-solid fa-location-dot"></i> 140 Lê Trọng Tấn, TPHCM</li>
+                        <li><i class="fa-solid fa-phone"></i> 012 234 5678</li>
+                        <li><i class="fa-solid fa-envelope"></i> hotro@tuixach.com</li>
+                        <li><i class="fa-solid fa-clock"></i> 8:00 - 22:00 (Hàng ngày)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-map-full">
+                <h4>BẢN ĐỒ</h4>
+                <div class="map-frame">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.067347872709!2d106.62609067451116!3d10.806153889344452!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752be27d8b4f4d%3A0x92dcba2950430867!2sHCMC%20University%20of%20Industry%20and%20Trade!5e0!3m2!1sen!2s!4v1764402290815!5m2!1sen!2s" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+                        width="100%"
+                        height="350"
+                        style="border:0;"
+                        allowfullscreen=""
+                        loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+
+                </div>
+            </div>
+
+        </div>
+    </footer>
+
+    <script src="~/Scripts/main.js"></script>
+    @RenderSection("scripts", required: false)
+
+</body>
+</html>

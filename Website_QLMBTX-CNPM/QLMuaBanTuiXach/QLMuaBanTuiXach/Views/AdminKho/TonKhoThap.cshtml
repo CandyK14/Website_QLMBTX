@@ -1,0 +1,54 @@
+﻿@model IEnumerable<QLMuaBanTuiXach.Models.BienTheSanPham>
+
+@{
+    ViewBag.Title = "Cảnh Báo Tồn Kho Thấp";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="card shadow-sm border-warning">
+    <div class="card-header bg-warning text-dark">
+        <h4 class="mb-0"><i class="fa-solid fa-triangle-exclamation me-2"></i>SẢN PHẨM SẮP HẾT HÀNG (< 10)</h4>
+    </div>
+    <div class="card-body">
+        <div class="mb-3">
+            <a href="@Url.Action("Create")" class="btn btn-primary">
+                <i class="fa-solid fa-plus me-2"></i> Tạo Phiếu Nhập Ngay
+            </a>
+        </div>
+
+        <table class="table table-bordered table-hover">
+            <thead class="table-light">
+                <tr>
+                    <th>SKU</th>
+                    <th>Sản Phẩm</th>
+                    <th>Màu Sắc</th>
+                    <th>Tồn Kho</th>
+                    <th>Trạng Thái</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.SKU</td>
+                        <td>@item.SanPham.TenSanPham</td>
+                        <td>@item.MauSac</td>
+                        <td class="fw-bold text-danger text-center" style="font-size: 1.2em;">
+                            @item.SoLuongTonKho
+                        </td>
+                        <td>
+                            @if (item.SoLuongTonKho == 0)
+                            {
+                                <span class="badge bg-danger">HẾT HÀNG</span>
+                            }
+                            else
+                            {
+                                <span class="badge bg-warning text-dark">Sắp hết</span>
+                            }
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div> 
